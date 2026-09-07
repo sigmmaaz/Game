@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#1b1410" />
+  <title>Crown of Ash</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="meters" id="meters"></header>
+
+    <main class="stage" id="stage">
+      <div class="answer answer-left" id="answer-left"></div>
+      <div class="answer answer-right" id="answer-right"></div>
+      <div class="card-wrap" id="card-wrap">
+        <div class="card" id="card">
+          <div class="portrait" id="portrait"></div>
+          <div class="card-body">
+            <p class="card-text" id="card-text"></p>
+          </div>
+          <div class="new-tag" id="new-tag">new</div>
+        </div>
+      </div>
+      <div class="card-name" id="card-name"></div>
+    </main>
+
+    <footer class="status">
+      <div class="king" id="king"></div>
+      <div class="year" id="year"></div>
+      <div class="effects" id="effects"></div>
+    </footer>
+
+    <button class="menu-btn" id="menu-btn" aria-label="Menu">≡</button>
+
+    <section class="overlay death" id="death" hidden>
+      <div class="death-glyph" id="death-glyph"></div>
+      <h1 id="death-title"></h1>
+      <p id="death-text"></p>
+      <p class="death-years" id="death-years"></p>
+      <div class="timeline" id="timeline"></div>
+      <button class="big" id="next-king">Long live the King</button>
+    </section>
+
+    <section class="overlay menu" id="menu" hidden>
+      <h1>Crown of Ash</h1>
+      <div class="tabs">
+        <button data-tab="objectives" class="active">Objectives</button>
+        <button data-tab="deaths">Deaths</button>
+        <button data-tab="kings">Kings</button>
+        <button data-tab="effects">Effects</button>
+      </div>
+      <div class="tab-body" id="tab-body"></div>
+      <div class="menu-actions">
+        <button id="close-menu">Back to the throne</button>
+        <button id="reset" class="danger">Forget everything</button>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" hidden></div>
+    <div class="flash" id="flash"></div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

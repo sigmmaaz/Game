@@ -1,0 +1,82 @@
+// Every petitioner in the game. `hue` seeds the procedural portrait; `kind`
+// picks the silhouette (ears, tusks, beard, etc.).
+export const CHARACTERS = {
+  // Court
+  chancellor: { name: "Aldric Vane", title: "Lord Chancellor", kind: "human", hue: 220, hair: "grey", beard: true },
+  treasurer: { name: "Odile Penn", title: "Mistress of Coin", kind: "human", hue: 45, hair: "black", female: true },
+  general: { name: "Brannoc Thorne", title: "Marshal of Vael", kind: "human", hue: 0, hair: "red", beard: true, helm: true },
+  spymaster: { name: "The Whisperer", title: "Master of Rumours", kind: "hooded", hue: 260 },
+  flamekeeper: { name: "Osric", title: "High Flamekeeper", kind: "human", hue: 30, hair: "none", fat: true, mitre: true },
+  steward: { name: "Wendel", title: "Palace Steward", kind: "human", hue: 200, hair: "brown", thin: true },
+  jester: { name: "Pib", title: "Fool", kind: "human", hue: 300, hair: "orange", hat: "jester" },
+  healer: { name: "Doctor Amaury", title: "Court Physician", kind: "human", hue: 180, hair: "grey", glasses: true },
+  queen: { name: "The Queen", title: "Your Wife", kind: "human", hue: 330, hair: "dark", female: true, crown: true },
+  prince: { name: "The Prince", title: "Your Son", kind: "human", hue: 210, hair: "brown", young: true, crown: "small" },
+  princess: { name: "The Princess", title: "Your Daughter", kind: "human", hue: 340, hair: "brown", female: true, young: true, crown: "small" },
+  brother: { name: "Duke Edmund", title: "Your Brother", kind: "human", hue: 230, hair: "dark", beard: "short" },
+  mother: { name: "The Dowager", title: "Your Mother", kind: "human", hue: 280, hair: "white", female: true, old: true },
+  captain: { name: "Captain Rook", title: "Palace Guard", kind: "human", hue: 15, hair: "black", helm: true },
+  executioner: { name: "The Executioner", title: "Royal Headsman", kind: "hooded", hue: 350, mask: true },
+  judge: { name: "Justiciar Maud", title: "High Judge", kind: "human", hue: 40, hair: "grey", female: true, old: true },
+  architect: { name: "Master Fennick", title: "Royal Builder", kind: "human", hue: 25, hair: "brown", beard: "short" },
+  bard: { name: "Lute-Tam", title: "Wandering Bard", kind: "human", hue: 120, hair: "blond", hat: "feather" },
+  peasant: { name: "A Farmer", title: "Of the Fields", kind: "human", hue: 80, hair: "brown", hat: "straw" },
+  merchant: { name: "Tobias Crane", title: "Guildmaster", kind: "human", hue: 50, hair: "black", fat: true, hat: "round" },
+  innkeeper: { name: "Bess", title: "Innkeeper", kind: "human", hue: 20, hair: "red", female: true, fat: true },
+  child: { name: "A Child", title: "Of the City", kind: "human", hue: 60, hair: "blond", child: true },
+  hermit: { name: "The Hermit", title: "Prophet, Allegedly", kind: "human", hue: 90, hair: "white", beard: "long", wild: true },
+  ghost: { name: "A Dead King", title: "Your Ancestor", kind: "ghost", hue: 190, crown: true },
+  old_woman: { name: "Granny Hesse", title: "Of Tanner Lane", kind: "human", hue: 35, hair: "white", female: true, old: true },
+  messenger: { name: "A Rider", title: "Royal Post", kind: "human", hue: 205, hair: "brown", young: true, helm: "cap" },
+  knight: { name: "Sir Gavriel", title: "Knight of Vael", kind: "human", hue: 215, hair: "blond", helm: true },
+  pirate: { name: "Captain Sable", title: "Of No Flag", kind: "human", hue: 170, hair: "black", female: true, hat: "tricorn", eyepatch: true },
+  foreign_king: { name: "Emperor Tavian", title: "Of Kethra", kind: "human", hue: 350, hair: "black", beard: "short", crown: true },
+  foreign_envoy: { name: "Envoy of Kethra", title: "Diplomat", kind: "human", hue: 355, hair: "grey", hat: "round" },
+
+  // Elves
+  elf_envoy: { name: "Lord Cael", title: "Envoy of Greenreach", kind: "elf", hue: 130, hair: "silver" },
+  elf_queen: { name: "Lady Aerinwe", title: "Of Greenreach", kind: "elf", hue: 150, hair: "white", female: true, crown: "leaf" },
+  elf_ranger: { name: "Warden Ithil", title: "Ranger", kind: "elf", hue: 110, hair: "dark", hood: true },
+  elf_scholar: { name: "Loremaster Faen", title: "Elf Scholar", kind: "elf", hue: 140, hair: "blond", glasses: true },
+  half_elf: { name: "Sera", title: "Half-Elf", kind: "elf", hue: 160, hair: "brown", female: true, halfEars: true },
+
+  // Orcs
+  orc_warchief: { name: "Grukhar", title: "Warchief of Ashfang", kind: "orc", hue: 100, scars: true, helm: "horn" },
+  orc_envoy: { name: "Shazza", title: "Daughter of Grukhar", kind: "orc", hue: 95, female: true },
+  orc_shaman: { name: "Old Muzgash", title: "Ashfang Shaman", kind: "orc", hue: 85, old: true, paint: true },
+  orc_mercenary: { name: "Dorg", title: "Sword for Hire", kind: "orc", hue: 105, helm: true },
+
+  // Dwarves
+  dwarf_thane: { name: "Thane Borri Ironledger", title: "Of the Deep Holds", kind: "dwarf", hue: 30, hair: "red", beard: "braided" },
+  dwarf_engineer: { name: "Master Hesk", title: "Dwarf Engineer", kind: "dwarf", hue: 20, hair: "black", beard: "singed", goggles: true },
+  dwarf_envoy: { name: "Envoy Dunna", title: "Of the Deep Holds", kind: "dwarf", hue: 40, hair: "brown", female: true, beard: "short" },
+  dwarf_smith: { name: "Smith Grombold", title: "Forge-Master", kind: "dwarf", hue: 15, hair: "grey", beard: "long" },
+
+  // Others
+  goblin: { name: "Nizzik", title: "Goblin Trader", kind: "goblin", hue: 70 },
+  troll: { name: "The Troll", title: "Owns a Bridge", kind: "troll", hue: 200 },
+  halfling: { name: "Mayor Posy Underhill", title: "Of the River-Farms", kind: "halfling", hue: 55, hair: "curly", female: true },
+  gnome: { name: "Tock", title: "Gnome Tinkerer", kind: "gnome", hue: 10, hair: "white", goggles: true },
+  giant: { name: "Ombrun", title: "A Giant", kind: "giant", hue: 210 },
+  dragon: { name: "Vorrath the Old", title: "Dragon", kind: "dragon", hue: 0 },
+  fae: { name: "Lady Thistlewick", title: "Of the Fair Court", kind: "fae", hue: 290, female: true, wings: true },
+  witch: { name: "Old Mab", title: "Hedge-Witch", kind: "human", hue: 120, hair: "grey", female: true, old: true, hat: "witch" },
+  alchemist: { name: "Master Quill", title: "Alchemist", kind: "human", hue: 60, hair: "singed", goggles: true },
+  mage: { name: "Archmage Sylvane", title: "Of the Tower", kind: "human", hue: 250, hair: "white", beard: "long", hat: "wizard" },
+  necromancer: { name: "Vessel Ashe", title: "Necromancer", kind: "hooded", hue: 270, skullstaff: true },
+  vampire: { name: "Count Vesper", title: "Of the Old Blood", kind: "vampire", hue: 345, hair: "black" },
+  skeleton: { name: "A Skeleton", title: "Formerly Someone", kind: "skeleton", hue: 50 },
+  wolf: { name: "The Wolf", title: "Of the Thornwood", kind: "wolf", hue: 215 },
+  demon: { name: "The Bargainer", title: "", kind: "demon", hue: 355 },
+  angel: { name: "A Flame-Messenger", title: "Of the Undying Flame", kind: "angel", hue: 45 },
+  cultist: { name: "A Cultist", title: "Of the Hollow", kind: "hooded", hue: 0, mask: "bone" },
+  assassin: { name: "An Assassin", title: "Guild of Quiet Hands", kind: "hooded", hue: 240, mask: true },
+  slaver: { name: "Marrow", title: "Flesh-Trader", kind: "human", hue: 10, hair: "black", scars: true },
+  refugee: { name: "A Refugee", title: "From the Burned Lands", kind: "human", hue: 30, hair: "dark", female: true, thin: true },
+  beast: { name: "Something", title: "From the Woods", kind: "beast", hue: 130 },
+  plague_doctor: { name: "The Plague Doctor", title: "Masked", kind: "plague", hue: 200 },
+  dog: { name: "Biscuit", title: "Your Hound", kind: "dog", hue: 35 },
+  rat: { name: "A Rat", title: "Of the Cellar", kind: "rat", hue: 30 },
+};
+
+export const CHARACTER_KEYS = Object.keys(CHARACTERS);

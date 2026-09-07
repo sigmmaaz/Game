@@ -1,0 +1,13 @@
+{
+  "name": "crown-of-ash",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A swipe-a-card kingdom game set in a fantasy empire. Rule as long as you can.",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "validate": "node tools/validate.js",
+    "simulate": "node tools/simulate.js",
+    "test": "node tools/validate.js && node tools/simulate.js"
+  }
+}
