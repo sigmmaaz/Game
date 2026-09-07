@@ -2,6 +2,7 @@
 import { EFFECTS, MAX_EFFECTS } from "./effects.js";
 import { DEATHS } from "./deaths.js";
 import { CHARACTERS } from "./characters.js";
+import { duelCard, duelChoose, deepCard, deepChoose } from "./modes.js";
 
 export const STATS = ["faith", "people", "army", "gold"];
 const SAVE_KEY = "crown-of-ash:v1";
@@ -207,8 +208,33 @@ export class Game {
     return card;
   }
 
-  get card() { return this.byId.get(this.reign.card); }
+  get card() {
+    const m = this.reign.mode;
+    if (m?.kind === "duel") return duelCard(this, m, this.rng);
+    if (m?.kind === "deep") return deepCard(this, m, this.rng);
+    return this.byId.get(this.reign.card);
+  }
   get character() { return CHARACTERS[this.card?.char]; }
+
+  startMode(spec) {
+    const m = { ...spec };
+    if (m.kind === "duel") { m.hp = m.hp ?? 3; m.foeHp = m.foeHp ?? 3; m.foeName = m.foeName ?? CHARACTERS[m.foe]?.name ?? "Your opponent"; m.tell = null; m.last = ""; }
+    if (m.kind === "deep") { m.depth = 0; m.goal = m.goal ?? 6; m.torch = m.torch ?? 6; m.room = null; m.last = ""; }
+    this.reign.mode = m;
+  }
+
+  // A swipe inside a mini-game. No year passes.
+  chooseInMode(side) {
+    const m = this.reign.mode;
+    const res = m.kind === "duel" ? duelChoose(this, m, side, this.rng) : deepChoose(this, m, side, this.rng);
+    const result = { side, card: null, choice: {}, deltas: res.deltas, death: res.death, saved: null, newEffect: null, mode: m.kind, ended: res.ended };
+    if (!result.death) result.death = this.checkStats(result);
+    if (result.death) { this.die(result.death); result.epitaph = DEATHS[result.death]; }
+    else if (res.ended) { this.checkObjectives(); this.drawCard(); }
+    this.save();
+    this.emit("choice", result);
+    return result;
+  }
 
   // Resolve `random` sub-choices for preview/execution.
   resolveChoice(choice, roll = null) {
@@ -234,8 +260,9 @@ export class Game {
 
   // ---------- the swipe ----------
   choose(side) {
-    const card = this.card;
     const r = this.reign;
+    if (r.mode) return this.chooseInMode(side);
+    const card = this.card;
     if (!card || r.dead) return null;
     const raw = card[side];
     const ch = this.resolveChoice(raw);
@@ -255,7 +282,7 @@ export class Game {
       const delay = ch.next.delay ?? 1;
       r.queue.push({ id: ch.next.id, at: this.dyn.year + 1 + delay, else: ch.next.else });
     }
-    if (ch.mode) r.mode = ch.mode;
+    if (ch.mode) this.startMode(ch.mode);
 
     // a year passes
     this.dyn.year++;
@@ -266,11 +293,13 @@ export class Game {
     else result.death = this.checkStats(result);
 
     if (result.death) {
+      r.mode = null;
       this.die(result.death);
       result.epitaph = DEATHS[result.death];
     } else {
       this.checkObjectives();
-      this.drawCard();
+      if (!r.mode) this.drawCard();
+      else this.save();
     }
     this.save();
     this.emit("choice", result);

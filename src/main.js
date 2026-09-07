@@ -58,8 +58,10 @@ function renderCard() {
   const ch = CHARACTERS[c.char];
   $("portrait").innerHTML = portraitSVG(c.char);
   $("card-text").textContent = c.text;
-  $("card-name").innerHTML = `<b>${ch.name}</b>${ch.title ? ` · ${ch.title}` : ""}`;
-  cardEl.classList.toggle("is-new", !!game.reign.isNew);
+  const modeName = c.isMode ? (game.reign.mode.kind === "duel" ? game.reign.mode.foeName : "The Deep") : ch.name;
+  $("card-name").innerHTML = `<b>${modeName}</b>${!c.isMode && ch.title ? ` · ${ch.title}` : ""}`;
+  cardEl.classList.toggle("is-new", !!game.reign.isNew && !c.isMode);
+  cardEl.classList.toggle("mode", !!c.isMode);
   $("answer-left").textContent = c.left.label ?? "";
   $("answer-right").textContent = c.right.label ?? "";
   cardEl.style.transform = "";
@@ -130,6 +132,8 @@ function commit(side, dx) {
   showDots(null);
   if (res.saved) toast(`${EFFECTS[res.saved].name} spent. It held, once.`);
   if (res.newEffect) toast(`${EFFECTS[res.newEffect].glyph} ${EFFECTS[res.newEffect].name} — ${EFFECTS[res.newEffect].desc}`);
+  if (res.ended === "win" && res.mode === "duel") toast("First blood is yours.");
+  if (res.ended === "win" && res.mode === "deep") toast("You reached the bottom.");
   renderStatus(res.newEffect);
   setTimeout(() => {
     busy = false;

@@ -71,7 +71,8 @@ button { font: inherit; cursor: pointer; }
 .portrait { position: relative; background: #2a2019; display: grid; place-items: center; overflow: hidden; }
 .portrait svg { width: 100%; height: 100%; display: block; }
 .card-body { padding: 12px 14px 14px; min-height: 96px; background: transparent; }
-.card-text { margin: 0; font-size: 15px; line-height: 1.32; text-wrap: pretty; }
+.card-text { margin: 0; font-size: 15px; line-height: 1.32; text-wrap: pretty; white-space: pre-line; }
+.card.mode { background: linear-gradient(180deg, #d9cfb8 0%, #b9a98a 100%); box-shadow: 0 18px 40px var(--shadow), inset 0 0 0 4px rgba(90, 30, 20, .25); }
 .new-tag {
   position: absolute; top: 10px; right: -30px; transform: rotate(35deg); background: var(--gold); color: var(--ink);
   font-size: 10px; letter-spacing: .12em; text-transform: uppercase; padding: 2px 34px; display: none;

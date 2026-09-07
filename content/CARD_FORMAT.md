@@ -63,6 +63,7 @@ Choice (`left` / `right`) fields:
 - `next` — `{ id, delay }` queue a follow-up card. `delay: 0` = very next card. `delay: 3` = about 3 years later. Chains are the heart of the game; write many. Optional `else: "other_id"` names a card to show instead if the target's `when` fails.
 - `effect` — add a persistent effect (see EFFECTS). `removeEffect` — remove one.
 - `die` — a death key (see DEATHS). The king dies right after this choice, with that epitaph. Use sparingly but really use it: some choices must simply kill you.
+- `mode` — start a mini-game after this choice. `{ kind: "duel", foe: "orc_warchief", lose: "orc_axe", win: { fx: { army: 15 }, set: ["flag"], next: "card_id" } }` runs a three-hit duel where the player reads the opponent's tells. `{ kind: "deep", goal: 6, exit: "card_id" }` sends the king down the Deep: forks, traps, a torch that runs out. Use `mode` at most twice per file.
 - `random` — array of `{ chance, ...choice-fields }` overrides; the engine picks one by weight. Example: `random: [ {chance: 0.6, fx:{gold:15}}, {chance: 0.4, fx:{army:-15}, next:{id:"x", delay:0}} ]`
 
 A card may also have:

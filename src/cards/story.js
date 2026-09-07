@@ -148,7 +148,7 @@ export default [
   {
     id: "story_deep_1", char: "captain", chainOnly: true,
     text: "The flagstones come up. There is a stair. It goes down further than a stair should. Captain Rook says there's a smell like a cellar that's been thinking. He'd rather not go first.",
-    left: { label: "I'll go first.", fx: { army: 5 }, setReign: ["in_deep"], next: { id: "story_deep_2", delay: 0 } },
+    left: { label: "I'll go first.", fx: { army: 5 }, next: { id: "story_deep_2", delay: 0 } },
     right: { label: "Seal it.", fx: { faith: 5, gold: -5 }, set: ["deep_sealed"] },
   },
   {
@@ -161,25 +161,22 @@ export default [
     right: { label: "Leave it.", fx: { faith: 5 }, next: { id: "story_deep_3", delay: 0 } },
   },
   {
-    id: "story_deep_3", char: "rat", chainOnly: true,
-    text: "The second landing is rats. All of them. They part for you like they've been told to. One stays. It looks at you like a clerk.",
-    left: { label: "Follow the rat.", fx: {}, next: { id: "story_deep_4", delay: 0 } },
-    right: { label: "Kick the rat.", fx: { people: -5 }, random: [
-      { chance: 0.5, next: { id: "story_deep_4", delay: 0 } },
-      { chance: 0.5, fx: { people: -15 }, effect: "plague", next: { id: "story_deep_4", delay: 0 } },
-    ] },
+    id: "story_deep_3", char: "captain", chainOnly: true,
+    text: "Below the landing the stair stops pretending to be a stair. Rook counts the torches. Six. \"That's six hours, Sire, or six wrong turns. Whichever comes first.\"",
+    left: { label: "Down.", fx: {}, mode: { kind: "deep", goal: 6, exit: "story_deep_4" } },
+    right: { label: "Back up. Seal it.", fx: { faith: 5, people: -5 }, set: ["deep_sealed"] },
   },
   {
     id: "story_deep_4", char: "mage", chainOnly: true,
     text: "At the bottom there's a room with a table, and at the table an old man in a hat, writing. \"Your grandfather sat where you're standing. He wanted the exit. It's behind you. It always was.\"",
     left: { label: "What's under the table?", fx: {}, next: { id: "story_deep_5", delay: 0 } },
-    right: { label: "Take the exit.", fx: { army: -5 }, set: ["deep_visited"], unsetReign: ["in_deep"] },
+    right: { label: "Take the exit.", fx: { army: -5 }, set: ["deep_visited"] },
   },
   {
     id: "story_deep_5", char: "mage", chainOnly: true,
     text: "\"The bargain. The original. Your grandfather's hand, his blood. I keep it because someone should. Read it if you like. It says 'kings'. Just that. He was in a hurry.\"",
-    left: { label: "Read it.", fx: { faith: -5 }, set: ["read_bargain", "dungeon_cleared", "deep_visited"], unsetReign: ["in_deep"], next: { id: "story_mab_1", delay: 3 } },
-    right: { label: "Burn it.", fx: {}, set: ["deep_visited"], unsetReign: ["in_deep"], random: [
+    left: { label: "Read it.", fx: { faith: -5 }, set: ["read_bargain", "dungeon_cleared", "deep_visited"], next: { id: "story_mab_1", delay: 3 } },
+    right: { label: "Burn it.", fx: {}, set: ["deep_visited"], random: [
       { chance: 0.5, fx: { faith: 10 }, set: ["bargain_burned", "dungeon_cleared"], next: { id: "story_demon_burned", delay: 1 } },
       { chance: 0.5, die: "explosion" },
     ] },

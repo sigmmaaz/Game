@@ -324,10 +324,7 @@ export default [
   {
     id: "orc_duel_2", char: "orc_warchief", chainOnly: true,
     text: "He is a head taller and has done this before. The clans have come to watch. So has half your court, which is worse. He hands you the heavier axe. \"Fair,\" he says.",
-    left: { label: "Fight.", fx: {}, random: [
-      { chance: 0.5, fx: { army: 20, people: 10 }, set: ["duel_won", "orc_respect"], next: { id: "orc_duel_won", delay: 1 } },
-      { chance: 0.5, die: "duel" },
-    ] },
+    left: { label: "Fight.", fx: {}, mode: { kind: "duel", foe: "orc_warchief", lose: "duel", win: { fx: { army: 20, people: 10 }, set: ["orc_respect"], next: "orc_duel_won" } } },
     right: { label: "Sir Gavriel fights for me.", fx: { army: -10, people: -10, gold: 5 }, set: ["orc_coward"], next: { id: "orc_duel_champion", delay: 0 } },
   },
   {

@@ -69,6 +69,13 @@ function checkChoice(c, side, ch, path) {
   if (ch.effect && !EFFECTS[ch.effect]) errors.push(`${path}.${side}.effect: unknown ${ch.effect}`);
   if (ch.removeEffect && !EFFECTS[ch.removeEffect]) errors.push(`${path}.${side}.removeEffect: unknown ${ch.removeEffect}`);
   if (ch.die && !DEATHS[ch.die]) errors.push(`${path}.${side}.die: unknown ${ch.die}`);
+  if (ch.mode) {
+    if (!["duel", "deep"].includes(ch.mode.kind)) errors.push(`${path}.${side}.mode: unknown kind ${ch.mode.kind}`);
+    if (ch.mode.kind === "duel" && ch.mode.foe && !CHARACTERS[ch.mode.foe]) errors.push(`${path}.${side}.mode.foe: unknown ${ch.mode.foe}`);
+    if (ch.mode.lose && !DEATHS[ch.mode.lose]) errors.push(`${path}.${side}.mode.lose: unknown ${ch.mode.lose}`);
+    if (ch.mode.win?.next) referenced.add(ch.mode.win.next);
+    if (ch.mode.exit) referenced.add(ch.mode.exit);
+  }
   for (const k of ["set", "unset", "setReign", "unsetReign"]) {
     if (ch[k] && !Array.isArray(ch[k])) errors.push(`${path}.${side}.${k}: must be array`);
   }

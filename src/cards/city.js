@@ -6,13 +6,13 @@ export default [
     id: "city_judge_bread", char: "judge", weight: 2,
     text: "A washerwoman on Tanner Lane stole three loaves. For her lodger, a dwarf, who was starving rather than eat what he hadn't paid for. The baker wants her hand. The dwarf has offered his.",
     left: { label: "Take the dwarf's.", fx: { people: -10, gold: 5 }, set: ["city_dwarf_maimed"] },
-    right: { label: "Nobody's hand. Pay the baker.", fx: { people: 10, gold: -5, faith: -3 } },
+    right: { label: "Nobody's hand. Pay the baker.", fx: { people: 10, gold: -3, faith: -3 } },
   },
   {
     id: "city_judge_horse_1", char: "judge",
     text: "Lord Verrin's son rode a fishwife down on Coin Row. Drunk, noon, sixty witnesses. Verrin says the boy will pay the family. The family says the boy can pay them from a rope.",
     left: { label: "Hang him.", fx: { people: 15, army: -10, gold: -5 } },
-    right: { label: "Let him pay.", fx: { gold: 15, people: -15 }, next: { id: "city_judge_horse_2", delay: 1 } },
+    right: { label: "Let him pay.", fx: { gold: 20, people: -15 }, next: { id: "city_judge_horse_2", delay: 1 } },
   },
   {
     id: "city_judge_horse_2", char: "judge", chainOnly: true,
@@ -33,7 +33,7 @@ export default [
     id: "city_judge_tavern", char: "judge", weight: 2,
     text: "A cooper in the Drowned Rat said the King has the chin of a turnip. He'd brought the turnip. He held it up for comparison. Bess says the room agreed.",
     left: { label: "Cut out his tongue.", fx: { people: -15, army: 5 } },
-    right: { label: "Buy him a drink.", fx: { people: 10, army: -5, gold: -3 } },
+    right: { label: "Buy him a drink.", fx: { people: 10, army: -5 } },
   },
   {
     id: "city_judge_combat_1", char: "judge",
@@ -69,13 +69,7 @@ export default [
     id: "city_judge_personal_2", char: "judge", chainOnly: true,
     text: "Your Dunning ruling is precedent now. Every twin on Coin Row is suing the other. I have forty cases and one of the Dunnings has turned out to be a Kethran called Pol.",
     left: { label: "Hang Pol.", fx: { people: 5, gold: 5, army: -5 } },
-    right: { label: "Give it all to the twins.", fx: { people: -10, gold: -15 } },
-  },
-  {
-    id: "city_judge_bribe", char: "judge", weight: 0.5, once: true,
-    text: "Lord Harrow's man left a purse on my bench. Four hundred crowns. His brother's up for the Saltgate warehouse fire. I've brought it to you, since it was evidently meant for whoever's judging.",
-    left: { label: "Keep it. Acquit.", fx: { gold: 15, faith: -5, people: -10 }, set: ["city_harrow_owned"] },
-    right: { label: "Hang the man and the brother.", fx: { people: 10, army: -10 } },
+    right: { label: "Give it all to the twins.", fx: { people: -10, gold: -10 } },
   },
   {
     id: "city_judge_dungeon", char: "judge", once: true, weight: 0.5, when: { minReign: 4 },
@@ -91,7 +85,7 @@ export default [
   {
     id: "city_exec_guild", char: "executioner", weight: 2,
     text: "The Headsmen's Guild, Sire. Six of us, one a gate. We'd like two crowns a head. It's been one since your grandfather. Rope's gone up. Everything's gone up. Heads especially.",
-    left: { label: "Two crowns.", fx: { gold: -10, people: 5 } },
+    left: { label: "Two crowns.", fx: { gold: -5, people: 5 } },
     right: { label: "One. Fewer heads, then.", fx: { gold: 5, people: -5, army: -5 } },
   },
   {
@@ -121,7 +115,7 @@ export default [
   {
     id: "city_exec_retire_1", char: "executioner",
     text: "Forty years, Sire. Hands shake now. My nephew's keen. Too keen, I'll be honest with you, but keen's what you want in a young man and a headsman. He's practised on pigs.",
-    left: { label: "The nephew.", fx: { gold: -5, people: -5 }, next: { id: "city_exec_retire_2", delay: 2 } },
+    left: { label: "The nephew.", fx: { people: -5 }, next: { id: "city_exec_retire_2", delay: 2 } },
     right: { label: "Your hands are fine.", fx: { gold: 5, people: -10 } },
   },
   {
@@ -130,19 +124,13 @@ export default [
     left: { label: "Hang the headsman.", fx: { people: 10, army: -5, gold: -5 } },
     right: { label: "Keep him. He's efficient.", fx: { army: 10, people: -15, faith: -5, gold: 5 } },
   },
-  {
-    id: "city_exec_wood", char: "executioner",
-    text: "The Church wants tomorrow's heretic to burn slow. I've a stack of wet wood and a stack of dry. Nobody checks the wood, Sire. Nobody's ever once checked the wood.",
-    left: { label: "Dry wood.", fx: { faith: -5, people: 5 } },
-    right: { label: "As the Church asks.", fx: { faith: 10, people: -10 } },
-  },
 
   // ---------- Mistress Penn ----------
   {
     id: "city_tres_budget", char: "treasurer", weight: 2,
     text: "The year's accounts. We spend forty thousand. We take in thirty-one. The difference has a name, and the name is your reign. Something has to be cut, and I'd like it not to be me.",
-    left: { label: "The garrison's pay.", fx: { gold: 15, army: -15 }, next: { id: "city_army_pay_2", delay: 2 } },
-    right: { label: "The Church's stipend.", fx: { gold: 15, faith: -15 } },
+    left: { label: "The garrison's pay.", fx: { gold: 20, army: -15 }, next: { id: "city_army_pay_2", delay: 2 } },
+    right: { label: "The Church's stipend.", fx: { gold: 20, faith: -15 } },
   },
   {
     id: "city_army_pay_2", char: "captain", chainOnly: true,
@@ -156,19 +144,19 @@ export default [
   {
     id: "city_tres_toll_1", char: "treasurer", weight: 2,
     text: "A copper to cross the Saltgate bridge. Everyone crosses it. Twice a day, most of them. I've done the arithmetic and it makes me feel something, which is rare.",
-    left: { label: "A copper.", fx: { gold: 15, people: -10 }, next: { id: "city_tres_toll_2", delay: 3 } },
-    right: { label: "Bridges are free.", fx: { people: 5, gold: -3 } },
+    left: { label: "A copper.", fx: { gold: 20, people: -10 }, next: { id: "city_tres_toll_2", delay: 3 } },
+    right: { label: "Bridges are free.", fx: { people: 5 } },
   },
   {
     id: "city_tres_toll_2", char: "treasurer", chainOnly: true,
     text: "The toll took eight thousand. It also took a ferryman's trade, so he rows people under the bridge for half a copper and calls it a protest. Half the city is protesting. Daily. Twice.",
     left: { label: "Hire him as tollkeeper.", fx: { people: 10, gold: -5 } },
-    right: { label: "Sink the boat.", fx: { gold: 10, people: -15 } },
+    right: { label: "Sink the boat.", fx: { gold: 15, people: -15 } },
   },
   {
     id: "city_tres_lottery_1", char: "treasurer",
     text: "A lottery. One copper a ticket, one prize of a thousand crowns. Half the city buys a ticket. The other half buys two. The Church calls it gambling, which it is.",
-    left: { label: "Sell tickets.", fx: { gold: 15, faith: -10 }, next: { id: "city_tres_lottery_2", delay: 1 } },
+    left: { label: "Sell tickets.", fx: { gold: 20, faith: -10 }, next: { id: "city_tres_lottery_2", delay: 1 } },
     right: { label: "No.", fx: { faith: 5, gold: -3 } },
   },
   {
@@ -180,14 +168,14 @@ export default [
   {
     id: "city_tres_audit_1", char: "treasurer",
     text: "The Church hasn't opened its books since your great-grandfather. I'd like to open them. With a crowbar, if it comes to that, and I've brought one in case.",
-    left: { label: "Open them.", fx: { faith: -15, gold: 5 }, next: { id: "city_tres_audit_2", delay: 1 } },
+    left: { label: "Open them.", fx: { faith: -15, gold: 10 }, next: { id: "city_tres_audit_2", delay: 1 } },
     right: { label: "Put the crowbar away.", fx: { faith: 5, gold: -5 } },
   },
   {
     id: "city_tres_audit_2", char: "treasurer", chainOnly: true,
     text: "Their books balance. To the copper. Every year for ninety years. Nobody's books balance, Sire. I've never seen anything so guilty in my life.",
     left: { label: "Seize what's missing.", random: [
-      { chance: 0.6, fx: { gold: 25, faith: -20 } },
+      { chance: 0.6, fx: { gold: 30, faith: -20 } },
       { chance: 0.4, fx: { gold: 5, faith: -25, people: -5 } },
     ] },
     right: { label: "Compliment their clerks.", fx: { faith: 10, gold: -5 } },
@@ -195,8 +183,8 @@ export default [
   {
     id: "city_tres_vault_1", char: "treasurer", once: true, weight: 0.5, when: { stats: { gold: [40, 100] } },
     text: "Thane Ironledger's bank offers to hold our gold under the Iron Teeth. Nobody has ever robbed a dwarf. Nobody has ever got anything back from one either. I've read the deposit terms. Twice.",
-    left: { label: "Deposit it.", fx: { gold: -15 }, effect: "vault", next: { id: "city_dwarf_bank_2", delay: 4 } },
-    right: { label: "It stays here.", fx: { gold: 5, army: -3 } },
+    left: { label: "Deposit it.", fx: { gold: -5 }, effect: "vault", next: { id: "city_dwarf_bank_2", delay: 4 } },
+    right: { label: "It stays here.", fx: { gold: 10, army: -3 } },
   },
   {
     id: "city_dwarf_bank_2", char: "dwarf_envoy", chainOnly: true, when: { effects: ["vault"] },
@@ -207,7 +195,7 @@ export default [
   {
     id: "city_tres_fleet", char: "treasurer",
     text: "Six ships to the spice coast. Crane's captains, our coin. If they come back we double it. If they don't, we've bought the sea some very expensive firewood.",
-    left: { label: "Sail.", fx: { gold: -15 }, random: [
+    left: { label: "Sail.", fx: { gold: -10 }, random: [
       { chance: 0.55, fx: { gold: 30, people: 5 } },
       { chance: 0.45, fx: { people: -5 } },
     ] },
@@ -216,7 +204,7 @@ export default [
   {
     id: "city_tres_recoin_1", char: "treasurer", when: { notEffects: ["mint"] },
     text: "Every coin in the city wears your grandfather's face. I'd like yours. Call them in, melt them, strike them fresh. We keep a tenth for the trouble. Nobody misses a tenth of a face.",
-    left: { label: "Strike them.", fx: { gold: 10, people: -5 }, effect: "mint", next: { id: "city_tres_recoin_2", delay: 2 } },
+    left: { label: "Strike them.", fx: { gold: 15, people: -5 }, effect: "mint", next: { id: "city_tres_recoin_2", delay: 2 } },
     right: { label: "Grandfather stays.", fx: { people: 3, faith: 3 } },
   },
   {
@@ -228,19 +216,19 @@ export default [
   {
     id: "city_tres_wine_1", char: "treasurer",
     text: "Greenreach wine. Every lord in the city drinks it and no peasant can afford it. Tax it at a third: the lords pay, the elves complain, and nobody riots, because peasants drink beer.",
-    left: { label: "A third.", fx: { gold: 15, army: -5 }, set: ["city_wine_taxed"], next: { id: "city_tres_wine_2", delay: 2 } },
+    left: { label: "A third.", fx: { gold: 20, army: -5 }, set: ["city_wine_taxed"], next: { id: "city_tres_wine_2", delay: 2 } },
     right: { label: "Leave the wine.", fx: { army: 3, gold: -3 } },
   },
   {
     id: "city_tres_wine_2", char: "elf_envoy", chainOnly: true,
     text: "Lord Cael has noticed the wine tax. The Greenreach will send no wine this year. Your lords will drink beer. They will remember, he observes, who made them.",
-    left: { label: "Repeal it.", fx: { gold: -10, army: 5 }, unset: ["city_wine_taxed"] },
+    left: { label: "Repeal it.", fx: { gold: -5, army: 5 }, unset: ["city_wine_taxed"] },
     right: { label: "Beer is good for them.", fx: { army: -15, gold: 5, people: 5 } },
   },
   {
     id: "city_tres_spending", char: "treasurer", weight: 2,
     text: "The royal household spent nine thousand crowns last year. Four thousand was hats. I've listed the hats. I'd like to go through the hats with you, one at a time.",
-    left: { label: "Fewer hats.", fx: { gold: 10, people: -3 } },
+    left: { label: "Fewer hats.", fx: { gold: 15, people: -3 } },
     right: { label: "More hats.", fx: { gold: -15, people: 10 } },
   },
 
@@ -248,20 +236,20 @@ export default [
   {
     id: "city_merc_goblin_market", char: "merchant", weight: 2,
     text: "Nizzik's stalls under the Elf Steps sell a knife for a copper. The Guild sells one for six. Theirs break in a week. Nobody remembers that when they're holding a copper.",
-    left: { label: "Close the goblin stalls.", fx: { gold: 5, people: -10 }, set: ["city_goblin_market_shut"] },
-    right: { label: "Sell better knives.", fx: { people: 5, gold: -5 } },
+    left: { label: "Close the goblin stalls.", fx: { gold: 10, people: -10 }, set: ["city_goblin_market_shut"] },
+    right: { label: "Sell better knives.", fx: { people: 5, gold: -3 } },
   },
   {
     id: "city_merc_salt", char: "merchant", once: true, weight: 0.5,
     text: "Give the Guild the salt. All of it, Saltgate to the Scar. Twenty thousand up front, and salt costs what we say it costs. People need salt. That's the beauty of it.",
-    left: { label: "Take the salt.", fx: { gold: 25, people: -20 }, set: ["city_salt_monopoly"] },
+    left: { label: "Take the salt.", fx: { gold: 30, people: -20 }, set: ["city_salt_monopoly"] },
     right: { label: "Salt belongs to the sea.", fx: { people: 5, gold: -5 } },
   },
   {
     id: "city_merc_strike_1", char: "merchant",
     text: "The Coin Row porters have set down their loads. Every load. There's a cart of herring in the sun outside the counting house that is rapidly becoming a public matter.",
     left: { label: "Pay them what they ask.", fx: { gold: -10, people: 10 } },
-    right: { label: "Hire the goblins.", fx: { gold: 5, people: -10 }, next: { id: "city_merc_strike_2", delay: 1 } },
+    right: { label: "Hire the goblins.", fx: { gold: 10, people: -10 }, next: { id: "city_merc_strike_2", delay: 1 } },
   },
   {
     id: "city_merc_strike_2", char: "merchant", chainOnly: true,
@@ -270,13 +258,13 @@ export default [
       { chance: 0.75, fx: { people: -15, gold: 5 } },
       { chance: 0.25, die: "torn_by_mob" },
     ] },
-    right: { label: "Give them their rate.", fx: { gold: -15, people: 10 } },
+    right: { label: "Give them their rate.", fx: { gold: -10, people: 10 } },
   },
   {
     id: "city_merc_counterfeit_1", char: "merchant",
     text: "Two thousand false crowns in the city. Lead, dipped. I know because the Guild's been paid in them, and I'd like to know by whom before I'm asked how I didn't notice.",
     left: { label: "Set the Whisperer on it.", fx: { gold: -5 }, next: { id: "city_merc_counterfeit_2", delay: 1 } },
-    right: { label: "Spend them on the Church.", fx: { gold: 10, faith: -10 } },
+    right: { label: "Spend them on the Church.", fx: { gold: 15, faith: -10 } },
   },
   {
     id: "city_merc_counterfeit_2", char: "judge", chainOnly: true,
@@ -289,25 +277,25 @@ export default [
   {
     id: "city_arch_sewers_1", char: "architect",
     text: "The city has no sewers. It has a slope. Everything the city produces goes down the slope and ends at Saltgate, which is why nothing lives at Saltgate except the garrison.",
-    left: { label: "Dig sewers.", fx: { gold: -20, people: 10 }, next: { id: "city_arch_sewers_2", delay: 2 } },
+    left: { label: "Dig sewers.", fx: { gold: -15, people: 10 }, next: { id: "city_arch_sewers_2", delay: 2 } },
     right: { label: "The slope works.", fx: { people: -5, gold: 3 } },
   },
   {
     id: "city_arch_sewers_2", char: "architect", chainOnly: true,
     text: "The main sewer's dug. It runs under the temple. The Flamekeeper has been told what will pass beneath his altar, and at what volume, and has taken to his bed.",
-    left: { label: "Reroute it.", fx: { gold: -15, faith: 5 } },
+    left: { label: "Reroute it.", fx: { gold: -10, faith: 5 } },
     right: { label: "It's a sewer. It goes down.", fx: { faith: -15, people: 5 } },
   },
   {
     id: "city_arch_market", char: "architect", weight: 2,
     text: "A new market square where the pig-yards are. Stone, drained, a fountain if you're feeling generous. The pigs would need somewhere. I have thoughts about the Church's orchard.",
-    left: { label: "Build it. Pigs to the orchard.", fx: { gold: -15, people: 10, faith: -10 } },
+    left: { label: "Build it. Pigs to the orchard.", fx: { gold: -10, people: 10, faith: -10 } },
     right: { label: "The pigs stay.", fx: { people: -5, gold: 3 } },
   },
   {
     id: "city_arch_statue_1", char: "architect",
     text: "A statue. Bronze, forty feet, on the Saltgate bar, facing Kethra. So the Kethrans can see you disapprove from the sea. The bronze alone is a year of the goose tax.",
-    left: { label: "Face it at Kethra.", fx: { gold: -20, army: 10 }, next: { id: "city_arch_statue_2", delay: 3 } },
+    left: { label: "Face it at Kethra.", fx: { gold: -15, army: 10 }, next: { id: "city_arch_statue_2", delay: 3 } },
     right: { label: "No statues.", fx: { faith: 3, people: -3 } },
   },
   {
@@ -323,7 +311,7 @@ export default [
     id: "city_arch_lighthouse", char: "architect",
     text: "Ships break on the Saltgate bar every winter. A light would save them. The wreckers who live on the bar have asked that their objection be recorded. It's recorded.",
     left: { label: "Build the light.", fx: { gold: -15, people: 5, faith: 5 } },
-    right: { label: "Let them wreck.", fx: { gold: 10, people: -5, faith: -10 } },
+    right: { label: "Let them wreck.", fx: { gold: 15, people: -5, faith: -10 } },
   },
   {
     id: "city_arch_orc_wall_1", char: "architect",
@@ -343,7 +331,7 @@ export default [
   {
     id: "city_arch_saltgate_1", char: "architect", when: { notEffects: ["high_walls"] },
     text: "The river wall at Saltgate is held up mainly by habit. If Kethra comes by water they come in through the fish market. Rebuild it and they'd have to come in like gentlemen.",
-    left: { label: "Rebuild it.", fx: { gold: -25, army: 5 }, next: { id: "city_arch_saltgate_2", delay: 3 } },
+    left: { label: "Rebuild it.", fx: { gold: -20, army: 5 }, next: { id: "city_arch_saltgate_2", delay: 3 } },
     right: { label: "Habit's held it this long.", fx: { gold: 3, army: -5 } },
   },
   {
@@ -359,13 +347,7 @@ export default [
       { chance: 0.75, fx: { people: 10, army: 5 } },
       { chance: 0.25, die: "buried_alive" },
     ] },
-    right: { label: "Pull it down.", fx: { gold: -15, people: -5 } },
-  },
-  {
-    id: "city_arch_elf_steps", char: "architect",
-    text: "The Elf Steps are worn to a slope. Elves built them, and elves don't wear. We do. I'd relay them in a season. The elves would like to be asked first. They said so, three centuries ago.",
-    left: { label: "Ask them.", fx: { gold: -10, people: 5 } },
-    right: { label: "They're our steps now.", fx: { people: 10, gold: -5 }, set: ["city_elf_wronged"] },
+    right: { label: "Pull it down.", fx: { gold: -10, people: -5 } },
   },
 
   // ---------- the Whisperer ----------
@@ -384,7 +366,7 @@ export default [
   {
     id: "city_spy_kethra_letter_2", char: "spymaster", chainOnly: true,
     text: "\"The Chancellor's clerk. Eleven years he's sold your council minutes south. Cheaply, which I find the insulting part. He has a mother on Tanner Lane and no idea we know.\"",
-    left: { label: "Hang him. Quietly.", fx: { gold: 5, people: -5, army: 5 } },
+    left: { label: "Hang him. Quietly.", fx: { gold: 10, people: -5, army: 5 } },
     right: { label: "Feed him lies.", fx: { army: 10, gold: -5 }, set: ["city_double_agent"] },
   },
   {
@@ -408,7 +390,7 @@ export default [
   {
     id: "city_spy_dossier_1", char: "spymaster",
     text: "\"I have the Flamekeeper. Three mistresses, a son in Kethra, a shipment of holy relics that came off a cow. It's all in a box. I'd like you to have the box.\"",
-    left: { label: "Give me the box.", fx: { faith: -10, gold: 15, army: 5 }, set: ["city_flame_box"], next: { id: "city_spy_dossier_2", delay: 2 } },
+    left: { label: "Give me the box.", fx: { faith: -10, gold: 20, army: 5 }, set: ["city_flame_box"], next: { id: "city_spy_dossier_2", delay: 2 } },
     right: { label: "Burn the box.", fx: { faith: 10, gold: -5 } },
   },
   {
@@ -429,14 +411,8 @@ export default [
   {
     id: "city_spy_ear", char: "spymaster", when: { effects: ["spy_network"] },
     text: "\"One of my ears was found in the river this morning. The ear. The rest of him is elsewhere. Someone in the city knows about the network and has written to say so.\"",
-    left: { label: "Find them. Whatever it costs.", fx: { gold: -15, army: 5 } },
+    left: { label: "Find them. Whatever it costs.", fx: { gold: -10, army: 5 } },
     right: { label: "Pull the network.", fx: { gold: 10, army: -5 }, removeEffect: "spy_network" },
-  },
-  {
-    id: "city_spy_harrow", char: "spymaster", when: { effects: ["spy_network"], flags: ["city_harrow_owned"] }, once: true,
-    text: "\"Lord Harrow tells his dinner guests the King is bought. Four hundred crowns, he says, and names the bench. He's not wrong, which is why I'm telling you rather than laughing.\"",
-    left: { label: "Give the money back. Publicly.", fx: { gold: -15, people: 10 } },
-    right: { label: "Harrow has an accident.", fx: { army: -5, faith: -5, gold: 5 }, unset: ["city_harrow_owned"] },
   },
   {
     id: "city_spy_identity_1", char: "spymaster", once: true, weight: 0.5, when: { minReign: 3 },
@@ -463,33 +439,33 @@ export default [
     id: "city_spy_identity_4", char: "spymaster", chainOnly: true,
     text: "The curtain is back. Nobody mentions it. This year's Treasury ledger balances to the copper, in a hand that isn't quite Penn's. \"Nothing to report,\" says the voice behind the curtain.",
     left: { label: "Good.", fx: { army: 5, gold: 5 } },
-    right: { label: "Who am I paying?", fx: { gold: -10, army: -5 } },
+    right: { label: "Who am I paying?", fx: { gold: -5, army: -5 } },
   },
 
   // ---------- the Guild of Quiet Hands ----------
   {
     id: "city_assassin_offer", char: "assassin", once: true,
     text: "A woman with no rings, at the foot of your bed, at noon. \"The Quiet Hands. The Kethran ambassador has been unhelpful. Four thousand crowns, and by spring he's a stair accident.\"",
-    left: { label: "Four thousand.", fx: { gold: -20, army: 10 }, set: ["city_hands_hired"], next: { id: "city_assassin_collect", delay: 2 } },
+    left: { label: "Four thousand.", fx: { gold: -15, army: 10 }, set: ["city_hands_hired"], next: { id: "city_assassin_collect", delay: 2 } },
     right: { label: "Guards.", fx: { army: -5 }, next: { id: "city_assassin_insulted", delay: 4 } },
   },
   {
     id: "city_assassin_collect", char: "assassin", chainOnly: true,
     text: "\"Done. Fell from a tower. Tragic. Four thousand, plus two for the tower, which we had to hire, plus one for the widow's silence, which was reasonable of her.\"",
-    left: { label: "Pay it.", fx: { gold: -15 } },
+    left: { label: "Pay it.", fx: { gold: -10 } },
     right: { label: "We agreed four.", fx: { gold: -5, army: 5 }, effect: "wanted" },
   },
   {
     id: "city_assassin_insulted", char: "assassin", chainOnly: true,
     text: "\"You set the guard on us. We don't take offence; we take notes. Someone has since paid us for you. We're offering you the chance to outbid, which is more than we offered him.\"",
-    left: { label: "Outbid.", fx: { gold: -25 } },
+    left: { label: "Outbid.", fx: { gold: -20 } },
     right: { label: "Let them try.", fx: { army: 5 }, effect: "wanted" },
   },
   {
     id: "city_assassin_pillow", char: "captain", when: { effects: ["wanted"] }, weight: 2,
     text: "Rook. There was a knife on your pillow this morning. On, not in. A note with it: \"Practice.\" The door was barred. I barred it. I've been Captain eleven years and I'd like to keep being one.",
     left: { label: "Double the guard.", fx: { army: 10, gold: -10 } },
-    right: { label: "Pay the Hands off.", fx: { gold: -20 }, removeEffect: "wanted" },
+    right: { label: "Pay the Hands off.", fx: { gold: -15 }, removeEffect: "wanted" },
   },
   {
     id: "city_assassin_figs", char: "assassin", when: { effects: ["wanted"] }, weight: 2,
@@ -515,21 +491,15 @@ export default [
 
   // ---------- Nizzik ----------
   {
-    id: "city_gob_shovels", char: "goblin", weight: 2,
-    text: "Nizzik, Majesty. A thousand shovels for your sewer works. A copper each. Shovel lasts a week. Week's all you need, Majesty. A week at a time, forever.",
-    left: { label: "A thousand shovels.", fx: { gold: 10, people: -10 } },
-    right: { label: "Dwarven shovels.", fx: { gold: -15, people: 5 } },
-  },
-  {
     id: "city_gob_loan_1", char: "goblin", when: { stats: { gold: [0, 40] } },
     text: "Money, Majesty? Nizzik has money. Ten thousand today. Eleven next month. Twelve the month after. Goblin arithmetic only goes up. Very simple. Very honest.",
-    left: { label: "Ten thousand.", fx: { gold: 20 }, next: { id: "city_gob_loan_2", delay: 3 } },
+    left: { label: "Ten thousand.", fx: { gold: 25 }, next: { id: "city_gob_loan_2", delay: 3 } },
     right: { label: "No.", fx: { gold: -3, people: -3 } },
   },
   {
     id: "city_gob_loan_2", char: "goblin", chainOnly: true,
     text: "Three months, Majesty. Thirteen thousand. But Nizzik doesn't want the money. Nizzik wants the fish market. Not the fish. The stalls, the fees, the little bit of every fish.",
-    left: { label: "Pay him.", fx: { gold: -25 } },
+    left: { label: "Pay him.", fx: { gold: -20 } },
     right: { label: "Take the fish market.", fx: { people: -15, gold: 5 }, set: ["city_goblin_fish_market"] },
   },
   {
@@ -539,12 +509,12 @@ export default [
       { chance: 0.5, fx: { army: -10 } },
       { chance: 0.5, fx: { people: -10 } },
     ] },
-    right: { label: "A hundred.", fx: { gold: -10, people: 3 } },
+    right: { label: "A hundred.", fx: { gold: -5, people: 3 } },
   },
   {
     id: "city_gob_title", char: "goblin", once: true, weight: 0.5,
     text: "Nizzik would like to be a lord. Small lord. Lord of the Elf Steps, say. Two thousand crowns, and Nizzik's cousins stop selling the knives that break. Most of the cousins.",
-    left: { label: "Lord Nizzik.", fx: { gold: 15, faith: -5, people: -5 }, set: ["city_lord_nizzik"], next: { id: "city_gob_title_2", delay: 3 } },
+    left: { label: "Lord Nizzik.", fx: { gold: 20, faith: -5, people: -5 }, set: ["city_lord_nizzik"], next: { id: "city_gob_title_2", delay: 3 } },
     right: { label: "No.", fx: { people: 3 } },
   },
   {
@@ -558,14 +528,14 @@ export default [
   {
     id: "city_slaver_1", char: "slaver", once: true,
     text: "A man who gives no name. \"Forty a month go out through the Saltgate cellars. Orcs, halflings, a dwarf once. Nobody counts them. For a fee, Your Grace, you could not count them either.\"",
-    left: { label: "Name the fee.", fx: { gold: 20, faith: -10, people: -5 }, set: ["city_slaves_ignored"] },
+    left: { label: "Name the fee.", fx: { gold: 25, faith: -10, people: -5 }, set: ["city_slaves_ignored"] },
     right: { label: "Break the cellars.", fx: { gold: -15, army: -10, faith: 10 }, next: { id: "city_slaver_2", delay: 1 } },
   },
   {
     id: "city_slaver_2", char: "captain", chainOnly: true,
     text: "Rook. Saltgate cellars are broken. Nineteen freed, four of mine dead. The man running it was Lord Harrow's steward. Harrow says he's shocked. He said it while counting something.",
     left: { label: "Hang the steward.", fx: { people: 10, army: 5 } },
-    right: { label: "Hang Harrow too.", fx: { people: 15, army: -15, gold: 10 } },
+    right: { label: "Hang Harrow too.", fx: { people: 15, army: -15, gold: 15 } },
   },
   {
     id: "city_slaver_ignored", char: "orc_envoy", when: { flags: ["city_slaves_ignored"] }, once: true,
@@ -594,7 +564,7 @@ export default [
     id: "city_inn_ale_1", char: "innkeeper", weight: 2,
     text: "Ale's at three coppers, Majesty. At four they grumble. At five they throw things. Your grain tax puts it at five by harvest. I'm not complaining. I'm telling you what gets thrown.",
     left: { label: "Drop the grain tax.", fx: { gold: -15, people: 10 } },
-    right: { label: "Five it is.", fx: { gold: 10, people: -5 }, next: { id: "city_inn_ale_2", delay: 2 } },
+    right: { label: "Five it is.", fx: { gold: 15, people: -5 }, next: { id: "city_inn_ale_2", delay: 2 } },
   },
   {
     id: "city_inn_ale_2", char: "innkeeper", chainOnly: true,
@@ -603,26 +573,20 @@ export default [
       { chance: 0.75, fx: { people: -15 } },
       { chance: 0.25, die: "torn_by_mob" },
     ] },
-    right: { label: "Drop the tax. Now.", fx: { gold: -20, people: 10 } },
-  },
-  {
-    id: "city_inn_soldiers_song", char: "innkeeper", when: { stats: { army: [60, 100] } },
-    text: "The garrison's got a new song. It's about the Marshal. It's got a verse about you and the verse is short. They sing it loud, sober, and looking at the door to see who's listening.",
-    left: { label: "Buy the garrison a round.", fx: { gold: -10, army: -5, people: 5 } },
-    right: { label: "Ban the song.", fx: { army: 10, people: -5 } },
+    right: { label: "Drop the tax. Now.", fx: { gold: -15, people: 10 } },
   },
 
   // ---------- the rats ----------
   {
     id: "city_rat_1", char: "rat", once: true,
     text: "A rat sits on the edge of the council table. Behind it, a line of rats, quite still. It has brought a very small parchment. The parchment says, in bites, NO CATS.",
-    left: { label: "No cats.", fx: { people: -10, gold: -10, faith: -5 } },
+    left: { label: "No cats.", fx: { people: -10, gold: -5, faith: -5 } },
     right: { label: "More cats.", fx: { people: 5 }, next: { id: "city_rat_2", delay: 2 } },
   },
   {
     id: "city_rat_2", char: "rat", chainOnly: true,
     text: "The cats are gone. All of them, from every cellar between Tanner Lane and Saltgate. The rats have brought you a collar. Small bell. They are not saying anything. They don't need to.",
-    left: { label: "...No cats.", fx: { people: -10, gold: -10 } },
+    left: { label: "...No cats.", fx: { people: -10, gold: -5 } },
     right: { label: "Poison. Everywhere.", fx: { gold: -10 }, random: [
       { chance: 0.75, fx: { people: 10, faith: -5 } },
       { chance: 0.25, die: "poison" },
@@ -641,15 +605,6 @@ export default [
     text: "\"Four hundred of us now. We'd like a procession, Tanner Lane to Saltgate, at dusk. With torches. The Church has torches. We would like ours, and a street to carry them down.\"",
     left: { label: "One street. One dusk.", fx: { faith: -20, people: 5 } },
     right: { label: "No torches.", fx: { faith: 5, people: -10 }, unset: ["city_cult_tolerated"] },
-  },
-  {
-    id: "city_cult_book", char: "cultist", once: true, weight: 0.5,
-    text: "\"Our book has a page about you. Most kings don't ask to see it. The ones who did said it was accurate, and then they said nothing else for some time.\"",
-    left: { label: "Show me the page.", fx: { faith: -10 }, random: [
-      { chance: 0.5, effect: "clarity" },
-      { chance: 0.5, fx: { people: -5, army: -5 } },
-    ] },
-    right: { label: "Burn the book.", fx: { faith: 10, people: -5 } },
   },
 
   // ---------- Sera ----------
@@ -674,7 +629,7 @@ export default [
   {
     id: "city_sera_pogrom_3", char: "half_elf", chainOnly: true,
     text: "Sera has one arm bound. \"Seven dead. The twelfth house is available now, if you were wondering. So are the other eleven.\" She's going to the Greenreach. She says they won't have her either.",
-    left: { label: "Rebuild the houses.", fx: { gold: -15, people: -5, faith: -5 } },
+    left: { label: "Rebuild the houses.", fx: { gold: -10, people: -5, faith: -5 } },
     right: { label: "Safe travels.", fx: { faith: 5, army: 5 } },
   },
 ];
