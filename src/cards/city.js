@@ -99,7 +99,7 @@ export default [
   },
   {
     id: "city_exec_botched_2", char: "flamekeeper", chainOnly: true,
-    text: "\"The man the rope refused sits at Saltgate now, and the city brings him bread and coin. They call him the Unhanged. He is a horse thief, Sire. The Flame does not spare horse thieves. I'd know.\"",
+    text: "\"The man the rope refused sits at Saltgate now, and the city brings him bread and coin. They call him the Unhanged. Sire, he stole a horse. The Flame does not spare horse thieves. I'd know.\"",
     left: { label: "Make him a saint. It's cheaper.", fx: { people: 10, faith: -10, gold: 5 } },
     right: { label: "Hang him properly.", fx: { faith: 10, people: -20 } },
   },
@@ -161,19 +161,19 @@ export default [
   },
   {
     id: "city_tres_lottery_2", char: "treasurer", chainOnly: true,
-    text: "The winning ticket belongs to the Flamekeeper's cook. Nobody believes it. It's true. That's the trouble with true things. Coin Row is calling it the Church's lottery.",
+    text: "The winning ticket belongs to the Flamekeeper's cook. Coin Row says it's fixed. It isn't. That's the trouble with true things. They're calling it the Church's lottery.",
     left: { label: "Pay her.", fx: { gold: -10, people: -15, faith: 5 } },
     right: { label: "Draw again.", fx: { people: 10, faith: -15 } },
   },
   {
     id: "city_tres_audit_1", char: "treasurer",
-    text: "The Church hasn't opened its books since your great-grandfather. I'd like to open them. With a crowbar, if it comes to that, and I've brought one in case.",
+    text: "The Church hasn't opened its books since your great-grandfather. Let me open them. With a crowbar, if it comes to that, and I've brought one in case.",
     left: { label: "Open them.", fx: { faith: -15, gold: 10 }, next: { id: "city_tres_audit_2", delay: 1 } },
     right: { label: "Put the crowbar away.", fx: { faith: 5, gold: -5 } },
   },
   {
     id: "city_tres_audit_2", char: "treasurer", chainOnly: true,
-    text: "Their books balance. To the copper. Every year for ninety years. Nobody's books balance, Sire. I've never seen anything so guilty in my life.",
+    text: "Their books balance. To the copper. Every year for ninety years. Sire, mine don't balance, and I am the best there is. I've never seen anything so guilty in my life.",
     left: { label: "Seize what's missing.", random: [
       { chance: 0.6, fx: { gold: 30, faith: -20 } },
       { chance: 0.4, fx: { gold: 5, faith: -25, people: -5 } },
@@ -182,7 +182,7 @@ export default [
   },
   {
     id: "city_tres_vault_1", char: "treasurer", once: true, weight: 0.5, when: { stats: { gold: [40, 100] } },
-    text: "Thane Ironledger's bank offers to hold our gold under the Iron Teeth. Nobody has ever robbed a dwarf. Nobody has ever got anything back from one either. I've read the deposit terms. Twice.",
+    text: "Thane Ironledger's bank offers to hold our gold under the Iron Teeth. A dwarf has never been robbed. A dwarf has also never given anything back. I've read the deposit terms. Twice.",
     left: { label: "Deposit it.", fx: { gold: -5 }, effect: "vault", next: { id: "city_dwarf_bank_2", delay: 4 } },
     right: { label: "It stays here.", fx: { gold: 10, army: -3 } },
   },
@@ -203,7 +203,7 @@ export default [
   },
   {
     id: "city_tres_recoin_1", char: "treasurer", when: { notEffects: ["mint"] },
-    text: "Every coin in the city wears your grandfather's face. I'd like yours. Call them in, melt them, strike them fresh. We keep a tenth for the trouble. Nobody misses a tenth of a face.",
+    text: "Every coin in the city wears your grandfather's face. I'd like yours. Call them in, melt them, strike them fresh. We keep a tenth for the trouble. A face is still a face at nine parts in ten.",
     left: { label: "Strike them.", fx: { gold: 15, people: -5 }, effect: "mint", next: { id: "city_tres_recoin_2", delay: 2 } },
     right: { label: "Grandfather stays.", fx: { people: 3, faith: 3 } },
   },
@@ -235,7 +235,7 @@ export default [
   // ---------- Guildmaster Crane ----------
   {
     id: "city_merc_goblin_market", char: "merchant", weight: 2,
-    text: "Nizzik's stalls under the Elf Steps sell a knife for a copper. The Guild sells one for six. Theirs break in a week. Nobody remembers that when they're holding a copper.",
+    text: "Nizzik's stalls under the Elf Steps sell a knife for a copper. The Guild sells one for six. Theirs break in a week. A man holding a copper has a very short memory.",
     left: { label: "Close the goblin stalls.", fx: { gold: 10, people: -10 }, set: ["city_goblin_market_shut"] },
     right: { label: "Sell better knives.", fx: { people: 5, gold: -3 } },
   },
@@ -247,7 +247,7 @@ export default [
   },
   {
     id: "city_merc_strike_1", char: "merchant",
-    text: "The Coin Row porters have set down their loads. Every load. There's a cart of herring in the sun outside the counting house that is rapidly becoming a public matter.",
+    text: "The Coin Row porters have set down their loads. Every load. A cart of herring stands in the sun outside the counting house and is rapidly becoming a public matter.",
     left: { label: "Pay them what they ask.", fx: { gold: -10, people: 10 } },
     right: { label: "Hire the goblins.", fx: { gold: 10, people: -10 }, next: { id: "city_merc_strike_2", delay: 1 } },
   },
@@ -288,7 +288,7 @@ export default [
   },
   {
     id: "city_arch_market", char: "architect", weight: 2,
-    text: "A new market square where the pig-yards are. Stone, drained, a fountain if you're feeling generous. The pigs would need somewhere. I have thoughts about the Church's orchard.",
+    text: "A new market square where the pig-yards are. Stone, drained, a fountain if you're feeling generous. The pigs would need somewhere. The Church's orchard has occurred to me.",
     left: { label: "Build it. Pigs to the orchard.", fx: { gold: -10, people: 10, faith: -10 } },
     right: { label: "The pigs stay.", fx: { people: -5, gold: 3 } },
   },
@@ -336,7 +336,7 @@ export default [
   },
   {
     id: "city_arch_saltgate_2", char: "architect", chainOnly: true,
-    text: "Done. Thirty feet, dwarf-cut, a gate twelve men could hold against a fleet. I'd like a plaque. Something modest. My name, mainly, in a large modest way.",
+    text: "Done. Thirty feet, dwarf-cut, a gate twelve men could hold against a fleet. A plaque would be fitting. Something modest. My name, mainly, in a large modest way.",
     left: { label: "A plaque.", fx: { army: 10, people: 5, gold: -5 }, effect: "high_walls" },
     right: { label: "It's my wall.", fx: { army: 10, gold: -3 }, effect: "high_walls" },
   },
@@ -359,7 +359,7 @@ export default [
   },
   {
     id: "city_spy_kethra_letter_1", char: "spymaster",
-    text: "\"A letter from the Emperor of Kethra to someone at your court. Unsigned. It mentions 'the arrangement' and 'after the funeral'. Nobody at court is ill, which narrows the funeral to one.\"",
+    text: "\"A letter from the Emperor of Kethra to someone at your court. Unsigned. It mentions 'the arrangement' and 'after the funeral'. The court is in excellent health. That narrows the funeral to one.\"",
     left: { label: "Find who it's for.", fx: { gold: -10 }, next: { id: "city_spy_kethra_letter_2", delay: 1 } },
     right: { label: "Burn it. Sleep less.", fx: { army: -5, people: -5 } },
   },
@@ -389,7 +389,7 @@ export default [
   },
   {
     id: "city_spy_dossier_1", char: "spymaster",
-    text: "\"I have the Flamekeeper. Three mistresses, a son in Kethra, a shipment of holy relics that came off a cow. It's all in a box. I'd like you to have the box.\"",
+    text: "\"I have the Flamekeeper. Three mistresses, a son in Kethra, a shipment of holy relics that came off a cow. It's all in a box. The box should be yours.\"",
     left: { label: "Give me the box.", fx: { faith: -10, gold: 20, army: 5 }, set: ["city_flame_box"], next: { id: "city_spy_dossier_2", delay: 2 } },
     right: { label: "Burn the box.", fx: { faith: 10, gold: -5 } },
   },
@@ -437,7 +437,7 @@ export default [
   },
   {
     id: "city_spy_identity_4", char: "spymaster", chainOnly: true,
-    text: "The curtain is back. Nobody mentions it. This year's Treasury ledger balances to the copper, in a hand that isn't quite Penn's. \"Nothing to report,\" says the voice behind the curtain.",
+    text: "The curtain is back. The council has agreed, without discussion, not to discuss it. The Treasury ledger balances to the copper, in a hand that isn't quite Penn's. \"Nothing to report,\" says the voice.",
     left: { label: "Good.", fx: { army: 5, gold: 5 } },
     right: { label: "Who am I paying?", fx: { gold: -5, army: -5 } },
   },
@@ -469,7 +469,7 @@ export default [
   },
   {
     id: "city_assassin_figs", char: "assassin", when: { effects: ["wanted"] }, weight: 2,
-    text: "A boy of twelve with a tray of figs, in your chamber, smiling. Nobody let him in. Nobody saw him on the stair. The figs look excellent.",
+    text: "A boy of twelve with a tray of figs, in your chamber, smiling. The door is still barred from the inside. The guard on the stair swears the stair was empty. The figs look excellent.",
     left: { label: "Take a fig.", random: [
       { chance: 0.5, fx: { people: 5 } },
       { chance: 0.5, die: "poison" },
@@ -504,7 +504,7 @@ export default [
   },
   {
     id: "city_gob_rumour", char: "goblin",
-    text: "A rumour, Majesty. Fresh this morning. About you. Fifty crowns and you hear it. A hundred and nobody else does. Nizzik recommends the hundred, personally.",
+    text: "A rumour, Majesty. Fresh this morning. About you. Fifty crowns and you hear it. A hundred and it dies with Nizzik. Nizzik recommends the hundred, personally.",
     left: { label: "Fifty. Tell me.", fx: { gold: -5 }, random: [
       { chance: 0.5, fx: { army: -10 } },
       { chance: 0.5, fx: { people: -10 } },
@@ -527,7 +527,7 @@ export default [
   // ---------- the trade ----------
   {
     id: "city_slaver_1", char: "slaver", once: true,
-    text: "A man who gives no name. \"Forty a month go out through the Saltgate cellars. Orcs, halflings, a dwarf once. Nobody counts them. For a fee, Your Grace, you could not count them either.\"",
+    text: "A man who gives no name. \"Forty a month go out through the Saltgate cellars. Orcs, halflings, a dwarf once. There's no ledger. For a fee, Your Grace, there could go on being no ledger.\"",
     left: { label: "Name the fee.", fx: { gold: 25, faith: -10, people: -5 }, set: ["city_slaves_ignored"] },
     right: { label: "Break the cellars.", fx: { gold: -15, army: -10, faith: 10 }, next: { id: "city_slaver_2", delay: 1 } },
   },

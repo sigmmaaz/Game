@@ -23,7 +23,7 @@ export default [
   },
   {
     id: "mon_dragon_terms", char: "dragon", chainOnly: true,
-    text: "\"A. Fifth. Of the gold. Every year. In return. I do not. Eat. Anything. With a. Name.\" He waits. He is very good at waiting.",
+    text: "\"A. Fifth. Of the gold. Every year. In return. I do not. Eat. Anything. With a. Name.\" He waits. Waiting is a thing he does very well.",
     left: { label: "A fifth. Fine.", fx: { gold: -15, people: 5 }, effect: "dragon_tax", set: ["mon_dragon_paying"], next: { id: "mon_dragon_collect", delay: 3 } },
     right: { label: "No.", fx: { army: 5, gold: 5 }, set: ["mon_dragon_refused"], next: { id: "mon_dragon_refused_1", delay: 2 } },
   },
@@ -35,7 +35,7 @@ export default [
   },
   {
     id: "mon_dragon_collect", char: "dragon", chainOnly: true, when: { effects: ["dragon_tax"] },
-    text: "He lands on the treasury roof, which holds, barely. \"You. Rounded. Down.\" Mistress Penn, from the doorway, says she did no such thing. Vorrath produces a coin. It is the wrong coin.",
+    text: "He lands on the treasury roof, which holds, barely. \"You. Rounded. Down.\" Mistress Penn, from the doorway, says she did no such thing. Vorrath produces a coin. Wrong coin.",
     left: { label: "Pay the difference.", fx: { gold: -10 }, next: { id: "mon_dragon_talk", delay: 3 } },
     right: { label: "It's a fifth. Count again.", fx: { gold: 5 }, random: [
       { chance: 0.7, fx: { army: 5 }, next: { id: "mon_dragon_talk", delay: 3 } },
@@ -75,7 +75,7 @@ export default [
   {
     id: "mon_dragon_hoard", char: "dwarf_thane", chainOnly: true,
     text: "\"Cinder Tor. We are aware what's under it. We are aware of your arrangement. We propose to count it as a courtesy. The counting fee is standard.\" Borri slides a page across. The page is long.",
-    left: { label: "Nobody counts it.", fx: { gold: 5, army: 10, faith: 5 }, set: ["dwarf_grudge"] },
+    left: { label: "It stays uncounted.", fx: { gold: 5, army: 10, faith: 5 }, set: ["dwarf_grudge"] },
     right: { label: "Count it. Split it.", fx: { gold: 25, faith: -10 }, removeEffect: "dragon_tax", unset: ["dragon_friend"], set: ["mon_dragon_betrayed"], next: { id: "mon_dragon_betrayed", delay: 1 } },
   },
   {
@@ -153,7 +153,7 @@ export default [
   // ---------- Ombrun the giant ----------
   {
     id: "mon_giant_intro", char: "giant", once: true, weight: 1.5,
-    text: "He kneels, which takes down the gatehouse. \"Sorry. Sorry. Ombrun. From the hills. I stepped on a village. Nobody was in it. I checked after. Sorry.\" He is crying, which floods the courtyard.",
+    text: "He kneels, which takes down the gatehouse. \"Sorry. Sorry. Ombrun. From the hills. I stepped on a village. Empty one. I checked after. Sorry.\" He is crying, which floods the courtyard.",
     left: { label: "Which village?", fx: { people: -10 }, set: ["mon_giant_met"], next: { id: "mon_giant_village", delay: 0 } },
     right: { label: "Go home. Carefully.", fx: { people: 5, army: -5 }, set: ["mon_giant_met"] },
   },
@@ -168,13 +168,13 @@ export default [
   },
   {
     id: "mon_giant_work", char: "giant", weight: 1.5, when: { flags: ["mon_giant_met"] },
-    text: "\"They said you were building a wall. In the north.\" Ombrun has brought a rock. It is most of a hillside. \"I brought a rock.\" The road behind him is no longer a road.",
+    text: "\"They said you were building a wall. In the north.\" Ombrun has brought a rock. Most of a hillside, really. \"I brought a rock.\" The road behind him is no longer a road.",
     left: { label: "Put it on the wall.", fx: { army: 10, gold: 15, people: -10 } },
     right: { label: "Put it back.", fx: { people: 5, army: -5 } },
   },
   {
     id: "mon_giant_hug", char: "giant", when: { flags: ["mon_giant_helpful"] }, weight: 1.5,
-    text: "He has learned about birthdays and believes it is yours. He is coming across the courtyard with his arms open. Captain Rook is shouting something. Ombrun can't hear him over his own happiness.",
+    text: "He has learned about birthdays and believes it is yours. He's coming across the courtyard with his arms open. Captain Rook is shouting something. Ombrun can't hear him over his own happiness.",
     left: { label: "Stand still.", fx: {}, random: [
       { chance: 0.75, fx: { people: 10, army: -5 } },
       { chance: 0.25, die: "stepped_on_by_giant" },
@@ -283,7 +283,7 @@ export default [
   },
   {
     id: "mon_vamp_old", char: "vampire", chainOnly: true,
-    text: "\"I've outlived nineteen of your family. I attended most of the funerals. Yours will be a shame; you've been a decent neighbor.\" He pauses. \"I could attend it later. Or earlier. Neighbor's choice.\"",
+    text: "\"I've outlived nineteen of your family. I attended most of the funerals. Yours will be a shame; you've been a decent neighbor.\" He pauses. \"I could attend it later. Earlier is possible. Your choice.\"",
     left: { label: "Later.", fx: { faith: -5, gold: -10 } },
     right: { label: "Get out of my house.", fx: { faith: 15, army: 5 }, unset: ["mon_vamp_invited"], set: ["mon_vamp_hunted"] },
   },
@@ -297,7 +297,7 @@ export default [
   // ---------- the dead who don't stay buried ----------
   {
     id: "mon_skel_graveyard", char: "skeleton", once: true, weight: 1.5,
-    text: "The yard at St. Orrin's has started talking. Not the ghosts, the bones. This one came in person. \"We've a list of grievances. Mostly the damp and the rent, sire. Nobody said there'd be rent.\"",
+    text: "The yard at St. Orrin's has started talking. Not the ghosts, the bones. This one came in person. \"We've a list of grievances. Mostly the damp and the rent, sire. The rent was never mentioned.\"",
     left: { label: "There's no rent.", fx: { faith: -10, people: 5 }, set: ["mon_dead_talking"], next: { id: "mon_skel_rent", delay: 3 } },
     right: { label: "Back in the ground.", fx: { faith: 10, army: -5 }, set: ["mon_dead_talking"], next: { id: "mon_skel_riot", delay: 4 } },
   },
@@ -330,7 +330,7 @@ export default [
   },
   {
     id: "mon_necro_king", char: "necromancer", when: { minYear: 15 }, once: true, weight: 0.5,
-    text: "\"Your father. I have him. Not his soul, that's the Church's business. The rest. He wants to tell you where he hid the good silver, and he wants you to know the crown was never meant for you.\"",
+    text: "\"Your father. He's with me. Not his soul, that's the Church's business. The rest. He wants to tell you where he hid the good silver, and he wants you to know the crown was never meant for you.\"",
     left: { label: "Let him talk.", fx: { gold: 15, faith: -20, people: -5 } },
     right: { label: "Put him back.", fx: { faith: 10, army: 5, gold: -5 } },
   },
@@ -353,7 +353,7 @@ export default [
   },
   {
     id: "mon_wolf_speaks", char: "wolf", once: true, weight: 0.5, when: { minYear: 6 },
-    text: "The wolf sits on the council table. Nobody let it in. It doesn't speak, exactly. You understand anyway: The wood was ours. The lambs are payment. Stop counting them and the boys stop going.",
+    text: "The wolf sits on the council table. The doors are shut. It doesn't speak, exactly. You understand anyway: The wood was ours. The lambs are payment. Stop counting them and the boys stop going.",
     left: { label: "Stop counting lambs.", fx: { people: 10, gold: -10, faith: -10 }, set: ["mon_wolf_pact"] },
     right: { label: "Bring me its skin.", fx: { army: 10, people: 5 }, set: ["mon_wolf_war"], next: { id: "mon_wolf_war", delay: 2 } },
   },
@@ -400,13 +400,13 @@ export default [
   },
   {
     id: "mon_beast_mill", char: "beast", weight: 1.5,
-    text: "The mill at Coldwater runs all night with nobody in it. The grain comes out ground. It comes out fine, actually. Nobody will go inside. The baker wants to know if he's allowed the flour.",
+    text: "The mill at Coldwater runs all night with the door locked and the miller at home. The grain comes out ground. It comes out fine, actually. The baker wants to know if he's allowed the flour.",
     left: { label: "Take the flour.", fx: { people: 10, faith: -10, gold: 10 } },
     right: { label: "Burn the mill.", fx: { faith: 10, people: -10, gold: -10 } },
   },
   {
     id: "mon_beast_court", char: "beast", once: true, weight: 0.5, when: { minYear: 10 },
-    text: "It has come to court. It is large and mostly mouth and it has waited its turn behind the halflings. It sets down a lamb, gently. It waits. Wendel believes it's a petition. Nobody knows for what.",
+    text: "It has come to court. It is large and mostly mouth and it has waited its turn behind the halflings. It sets down a lamb, gently. It waits. Wendel believes it's a petition. For what, Wendel can't say.",
     left: { label: "Granted.", fx: { faith: -10, people: 10 }, random: [
       { chance: 0.7, fx: { army: 10 } },
       { chance: 0.3, fx: { people: -20 } },
@@ -429,7 +429,7 @@ export default [
   },
   {
     id: "mon_gob_curse", char: "goblin", chainOnly: true,
-    text: "\"Small thing, Majesty. The chest came with a curse. Not my fault, came with the chest. I can lift it. I happen to have the lifting. Right here.\" He does. It is in a jar. It is looking at you.",
+    text: "\"Small thing, Majesty. The chest came with a curse. Not my fault, came with the chest. I can lift it. I happen to have the lifting. Right here.\" He does. In a jar. The jar is looking at you.",
     left: { label: "Lift it.", fx: { gold: -15, faith: 5 } },
     right: { label: "I'll risk the curse.", fx: { gold: 5 }, random: [
       { chance: 0.6, fx: { people: -10 } },
@@ -438,13 +438,13 @@ export default [
   },
   {
     id: "mon_gob_cousin", char: "goblin", when: { flags: ["mon_gob_map_bought"] }, once: true,
-    text: "\"Now this. This is my cousin Skeg. Very good with locks. Very good with your locks, specifically, which is why I'm selling him before he sells you.\" Skeg waves. He is holding your seal.",
+    text: "\"Now this. This is my cousin Skeg. Very good with locks. Very good with your locks, specifically, which is why I'm selling him before he sells you.\" Skeg waves. Your seal is in his other hand.",
     left: { label: "Buy the cousin.", fx: { gold: -10, army: 5 }, set: ["mon_gob_skeg"] },
     right: { label: "Arrest them both.", fx: { army: 5, gold: 15 }, set: ["mon_gob_grudge"], next: { id: "mon_gob_revenge", delay: 4 } },
   },
   {
     id: "mon_gob_revenge", char: "goblin", chainOnly: true,
-    text: "\"No hard feelings about the dungeon, Majesty. Got out Tuesday. Point is, you have a lovely dungeon and nobody selling in it. I've fixed that. The guards owe me eleven shillings.\"",
+    text: "\"No hard feelings about the dungeon, Majesty. Got out Tuesday. Point is, you have a lovely dungeon and not a single stall in it. I've fixed that. The guards owe me eleven shillings.\"",
     left: { label: "Pay the guards' debt.", fx: { gold: -10, army: 5 }, unset: ["mon_gob_grudge"] },
     right: { label: "Sell HIM.", fx: { gold: 20, people: -5, faith: -5 } },
   },
@@ -482,7 +482,7 @@ export default [
   },
   {
     id: "mon_rat_war", char: "steward", when: { flags: ["mon_rat_war"] }, weight: 1.5,
-    text: "Wendel, shaking. \"The rats have taken the east pantry, Majesty. And two cats. Not killed. Recruited. There's a kind of flag. I've drawn it, if you'd like to see the flag.\"",
+    text: "Wendel, shaking. \"The rats have taken the east pantry, Majesty. And two cats. Not killed. Recruited. They have a flag of sorts. I've drawn it, if you'd like to see the flag.\"",
     left: { label: "Poison the cellar.", fx: { gold: -10, people: 5 }, random: [
       { chance: 0.6, fx: { people: 5 }, unset: ["mon_rat_war"] },
       { chance: 0.4, fx: { people: -15 }, effect: "plague" },
@@ -537,7 +537,7 @@ export default [
   // ---------- dead kings ----------
   {
     id: "mon_ghost_tax", char: "ghost", weight: 1.5,
-    text: "Your great-uncle, translucent, at the foot of the bed. \"Taxes. Double them. Nobody riots in the first year. I did it four times.\" He died in a riot. He does not bring this up.",
+    text: "Your great-uncle, translucent, at the foot of the bed. \"Taxes. Double them. The first year they just grumble. I did it four times.\" He died in a riot. He does not bring this up.",
     left: { label: "Double them.", fx: { gold: 25, people: -20 } },
     right: { label: "You died in a riot.", fx: { faith: 5, gold: 5 } },
   },
@@ -552,7 +552,7 @@ export default [
   },
   {
     id: "mon_ghost_wall", char: "ghost", weight: 1,
-    text: "A king you don't recognize, with an arrow through him that he seems used to. \"Build the wall higher. I said that. Nobody listened.\" The arrow is elvish. He was shot from inside the wall.",
+    text: "A king you don't recognize, with an arrow through him that he seems used to. \"Build the wall higher. I said that. Nine times, at council.\" The arrow is elvish. He was shot from inside the wall.",
     left: { label: "Higher walls.", fx: { gold: -20, army: 10 }, effect: "high_walls" },
     right: { label: "Who shot you?", fx: { faith: 5, army: 5 } },
   },
@@ -583,17 +583,17 @@ export default [
     id: "mon_assassin_menu", char: "assassin", chainOnly: true,
     text: "\"Anyone. Once. Discreetly. Then we forget your face.\" She waits. \"Most kings pick the brother. It's dull. I mention it so you can be original.\"",
     left: { label: "The Marshal.", fx: { army: -20, gold: -15, people: 5 }, set: ["court_thorne_dead"] },
-    right: { label: "Nobody. Yet.", fx: { gold: -10 }, set: ["mon_hands_client"] },
+    right: { label: "No one. Yet.", fx: { gold: -10 }, set: ["mon_hands_client"] },
   },
   {
     id: "mon_assassin_warning", char: "assassin", chainOnly: true, when: { effects: ["wanted"] },
-    text: "A note on your pillow. A knife through the note. The knife is your own, from the locked case downstairs. The note says: 'Reconsider. — Q.H.' It's very neatly written.",
+    text: "Your wine, at dinner, is a different colour. Beside the cup, a folded card: 'Reconsider. — Q.H.' The taster is fine. The taster didn't taste it. He's asked to speak to you about his terms.",
     left: { label: "Pay them off.", fx: { gold: -25 }, removeEffect: "wanted" },
     right: { label: "Double the guard.", fx: { army: 10, gold: -10 }, next: { id: "mon_assassin_strike", delay: 4 } },
   },
   {
     id: "mon_assassin_strike", char: "captain", chainOnly: true, when: { effects: ["wanted"] },
-    text: "\"The cook's dead, Sire. Not stabbed. Just dead, at the stove, tasting the soup. They wanted us to see what the soup does.\" Rook has not slept. \"Nobody in the palace will eat.\"",
+    text: "\"The cook's dead, Sire. Not stabbed. Just dead, at the stove, tasting the soup. They wanted us to see what the soup does.\" Rook has not slept. \"The kitchens are empty. So is every plate upstairs.\"",
     left: { label: "I'll eat first.", fx: { people: 15, army: 10 }, random: [
       { chance: 0.6, fx: {} },
       { chance: 0.4, die: "poison" },
@@ -602,7 +602,7 @@ export default [
   },
   {
     id: "mon_assassin_house", char: "spymaster", chainOnly: true, when: { effects: ["wanted"] },
-    text: "The Whisperer, behind the screen. \"A bakery. In the palace bread for a year. I burned it and hanged eleven. There's a twelfth. She left a note: the contract's paid. She's just curious now.\"",
+    text: "The Whisperer, behind the screen. \"A bakery. In the palace bread for a year. I burned it and hanged eleven. A twelfth got out. She left a note: the contract's paid. She's just curious now.\"",
     left: { label: "Let her be curious.", fx: { faith: -5 }, random: [
       { chance: 0.6, fx: { army: 5 }, removeEffect: "wanted" },
       { chance: 0.4, die: "assassin_blade" },
@@ -626,7 +626,7 @@ export default [
   },
   {
     id: "mon_assassin_prince", char: "assassin", when: { effects: ["heir"] }, once: true, weight: 0.5,
-    text: "\"Nobody's paid for the boy. I mention it because the price for a prince is low and the price for a king is high, and your brother has recently asked which is which.\"",
+    text: "\"The boy's not been paid for. I mention it because the price for a prince is low and the price for a king is high, and your brother has recently asked which is which.\"",
     left: { label: "Double the prince's guard.", fx: { gold: -15, army: -5 } },
     right: { label: "Hire you for Edmund.", fx: { gold: -20, faith: -10 }, set: ["court_edmund_dead"] },
   },

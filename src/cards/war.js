@@ -5,7 +5,7 @@ export default [
   {
     id: "war_thorne_any_war", char: "general", weight: 2,
     text: "Marshal Thorne has a map. The map has pins in it. \"Kethra. The Greenreach. The Scar. The trolls, if we're desperate. Pick one, Sire. The men are sharpening things at each other.\"",
-    left: { label: "Nobody. Sharpen the ploughs.", fx: { army: -10, people: 5, gold: 10 } },
+    left: { label: "None. Sharpen the ploughs.", fx: { army: -10, people: 5, gold: 10 } },
     right: { label: "Put a pin in Kethra.", fx: { army: 10, gold: -5 }, set: ["war_thorne_kethra_pin"], next: { id: "war_kethra_1", delay: 2 } },
   },
   {
@@ -106,7 +106,7 @@ export default [
   },
   {
     id: "war_colonels_hanged", char: "executioner", chainOnly: true,
-    text: "\"Three colonels. Good rope, good drop, no speeches. Their regiments watched. Nobody cheered and nobody didn't. I'd keep the Marshal close for a while, Sire. Or far.\"",
+    text: "\"Three colonels. Good rope, good drop, no speeches. Their regiments watched. Not a cheer, not a murmur. I'd keep the Marshal close for a while, Sire. Or far.\"",
     left: { label: "Close.", fx: { army: 5, gold: -5 } },
     right: { label: "Far. The northern border.", fx: { army: -5 }, set: ["war_thorne_retired"] },
   },
@@ -135,7 +135,7 @@ export default [
   },
   {
     id: "war_rook_corrupt_1", char: "captain",
-    text: "\"Six of my men are taking coin at the postern gate. Merchants in, questions out. I know their names. I've known for a year. I'd like to have not known for a year.\"",
+    text: "\"Six of my men are taking coin at the postern gate. Merchants in, questions out. I know their names. I've known for a year. That year is the part I'm ashamed of.\"",
     left: { label: "Flog them. Publicly.", fx: { army: -10, people: 5, faith: 5 } },
     right: { label: "Take a cut.", fx: { gold: 20, army: -5 }, set: ["war_rook_cut"], next: { id: "war_rook_corrupt_2", delay: 3 } },
   },
@@ -209,13 +209,13 @@ export default [
   },
   {
     id: "war_gavriel_relic_2", char: "knight", chainOnly: true,
-    text: "Gavriel is thinner and missing a glove. \"The troll had the Ember. He also had a family, a fair bit of reading, and a strong view on trespass. I have the Ember. I'd rather not say how.\"",
+    text: "Gavriel is thinner and missing a glove. \"The troll had the Ember. He also had a family, a fair bit of reading, and a strong view on trespass. The Ember's in my saddlebag. I'd rather not say how.\"",
     left: { label: "To the temple with it.", fx: { faith: 15, people: 5 }, next: { id: "war_gavriel_relic_3", delay: 4 } },
     right: { label: "Keep it in the vault.", fx: { faith: -10, gold: 15 }, next: { id: "war_gavriel_relic_3", delay: 4 } },
   },
   {
     id: "war_gavriel_relic_3", char: "troll", chainOnly: true,
-    text: "The troll fills the doorway. He hasn't been announced; nobody was brave enough. \"Your knight took a thing from my cave and my brother's arm. I want one of them back. I'm not fussy which.\"",
+    text: "The troll fills the doorway. The herald took one look and went for his lunch. \"Your knight took a thing from my cave and my brother's arm. I want one of them back. I'm not fussy which.\"",
     left: { label: "Return the Ember.", fx: { faith: -15, people: 5 } },
     right: { label: "Give him the knight.", fx: { army: -15, faith: 5 }, set: ["war_gavriel_gone"] },
   },
@@ -347,7 +347,7 @@ export default [
   },
   {
     id: "war_kethra_hostage_1", char: "foreign_envoy", once: true, weight: 0.8,
-    text: "\"We hold your cousin Aldous. You hold the Emperor's nephew, who we're told is enjoying the cheese. A simple exchange at the bridge. Or keep the nephew; the Emperor has several.\"",
+    text: "\"We hold your cousin Aldous. You hold the Emperor's nephew, who we're told is enjoying the cheese. A simple exchange at the bridge. Keep the nephew if you like; the Emperor has several.\"",
     left: { label: "Exchange them.", fx: { people: 5, army: 5 }, next: { id: "war_kethra_hostage_2", delay: 1 } },
     right: { label: "Keep the nephew.", fx: { gold: 20, army: -5 }, set: ["war_nephew_kept"] },
   },
@@ -374,7 +374,7 @@ export default [
   },
   {
     id: "war_kethra_marriage_offer", char: "foreign_king", when: { notEffects: ["married"], notFlags: ["war_kethra_war"] }, once: true, weight: 0.6,
-    text: "\"My daughter Livia. Twenty-two, reads, rides, poisoned nobody I know of. Marry her and the border becomes a line on a map instead of a place people die. That's the whole offer.\"",
+    text: "\"My daughter Livia. Twenty-two, reads, rides, hasn't poisoned anyone that I've heard of. Marry her and the border becomes a line on a map instead of a place people die. That's the whole offer.\"",
     left: { label: "Marry Livia.", fx: { gold: 15, army: 10, people: -5, faith: -5 }, effect: "married", set: ["court_queen_kethran"] },
     right: { label: "Borders are for dying on.", fx: { army: 10, gold: -5 } },
   },
@@ -388,7 +388,7 @@ export default [
   // ---------- the Whisperer ----------
   {
     id: "war_whisper_assassinate_1", char: "spymaster", when: { effects: ["spy_network"] },
-    text: "A voice from the curtain. \"The Kethran Marshal drinks from one cup. It is a very reachable cup. This is not a proposal. Proposals are written down.\"",
+    text: "A voice from the curtain. \"The Kethran Marshal drinks from one cup. A very reachable cup. This is not a proposal. Proposals are written down.\"",
     left: { label: "Reach the cup.", fx: { army: 10, faith: -10 }, random: [
       { chance: 0.6, fx: { gold: -10 }, set: ["war_kethran_marshal_dead"] },
       { chance: 0.4, fx: { people: -10 }, effect: "wanted", next: { id: "war_whisper_assassinate_2", delay: 2 } },
@@ -406,7 +406,7 @@ export default [
   },
   {
     id: "war_whisper_double_1", char: "spymaster", when: { effects: ["spy_network"] },
-    text: "\"The Kethran envoy's secretary sells me the Emperor's letters. Yesterday he sold me one of yours. He is either working for both of us or for neither. I'd like to find out which. Slowly.\"",
+    text: "\"The Kethran envoy's secretary sells me the Emperor's letters. Yesterday he sold me one of yours. He works for both of us or for neither. Finding out which will take time. Slowly is better.\"",
     left: { label: "Slowly.", fx: { gold: -10 }, next: { id: "war_whisper_double_2", delay: 2 } },
     right: { label: "Quickly. A knife.", fx: { army: 5, faith: -5 } },
   },
@@ -418,7 +418,7 @@ export default [
   },
   {
     id: "war_whisper_plot_1", char: "spymaster", when: { effects: ["spy_network"] },
-    text: "\"Your brother has been buying horses. Not riding horses. Fast horses. Fast horses in four towns, all of which are a night's ride from the palace. I have said nothing. I am saying this.\"",
+    text: "\"Your brother has been buying horses. Not riding horses. Fast horses. Fast horses in four towns, all a night's ride from the palace. Until this moment I've said nothing. I am saying this.\"",
     left: { label: "Arrest Edmund.", fx: { people: -10, army: 5, gold: 10 }, set: ["war_edmund_arrested"] },
     right: { label: "Buy his horses.", fx: { gold: -15, people: 5 }, next: { id: "war_whisper_plot_2", delay: 1 } },
   },
@@ -439,7 +439,7 @@ export default [
   },
   {
     id: "war_whisper_wanted", char: "spymaster", when: { effects: ["wanted"] },
-    text: "\"The Guild has your name in ink. Ink can be bought back. Or the Guild's clerk could stop writing. I have his address. I have everyone's address.\"",
+    text: "\"The Guild has your name in ink. Ink can be bought back. The Guild's clerk could also simply stop writing. I have his address. I have everyone's address.\"",
     left: { label: "Buy the ink back.", fx: { gold: -15 }, removeEffect: "wanted" },
     right: { label: "Stop the clerk.", fx: { faith: -5 }, random: [
       { chance: 0.5, fx: { army: 5 }, removeEffect: "wanted" },
@@ -477,7 +477,7 @@ export default [
   },
   {
     id: "war_orc_treaty", char: "orc_envoy", chainOnly: true,
-    text: "Shazza brings the treaty herself. It is one sentence long. \"You don't cross the Scar with soldiers. We don't cross it with riders. Anyone who does is nobody's problem but the crows'.\"",
+    text: "Shazza brings the treaty herself. It is one sentence long. \"You don't cross the Scar with soldiers. We don't cross it with riders. Anyone who does belongs to the crows.\"",
     left: { label: "Sign the sentence.", fx: { army: -10, people: 10, gold: 5 }, set: ["war_orc_peace"] },
     right: { label: "Add a clause about herds.", fx: { army: 5, people: -5 }, unset: ["orc_favor"] },
   },
@@ -503,7 +503,7 @@ export default [
   },
   {
     id: "war_refugee_camp", char: "refugee", when: { effects: ["war"] },
-    text: "\"There's a camp under the east wall. Four thousand of us. The guards throw bread over. The Church throws pamphlets. Something's going round the tents that isn't either.\"",
+    text: "\"Four thousand of us under the east wall. The guards throw bread over. The Church throws pamphlets. Something's going round the tents that isn't either.\"",
     left: { label: "Doctors. Now.", fx: { gold: -15, people: 5 } },
     right: { label: "Move the camp downriver.", fx: { people: -10 }, random: [
       { chance: 0.7, fx: {} },
@@ -586,7 +586,7 @@ export default [
   },
   {
     id: "war_ombrun_2", char: "giant", chainOnly: true,
-    text: "\"I fought. I put my foot down and eleven men were under it. Nobody told me they'd be there. They were very small.\" He's been crying, which takes a while. \"I'm going home now.\"",
+    text: "\"I fought. I put my foot down and eleven men were under it. They didn't say there'd be men there. They were very small.\" He's been crying, which takes a while. \"I'm going home now.\"",
     left: { label: "Stay. One more battle.", fx: { army: 10 }, random: [
       { chance: 0.7, fx: { people: -5 } },
       { chance: 0.3, die: "stepped_on_by_giant" },
@@ -644,13 +644,13 @@ export default [
   },
   {
     id: "war_chancellor_peace", char: "chancellor", when: { effects: ["war"] },
-    text: "\"I have drafted a peace. I've drafted one every year, in case. It says nothing happened and nobody's sorry. Kethra will sign it. So would the Marshal, if you signed it first and held his hand.\"",
+    text: "\"I have drafted a peace. I've drafted one every year, in case. It says nothing happened and no one owes an apology. Kethra will sign it. So would the Marshal, if you signed first and held his hand.\"",
     left: { label: "Sign it.", fx: { people: 10, army: -15, gold: 15 }, removeEffect: "war", unset: ["war_kethra_war"] },
     right: { label: "Burn the draft.", fx: { army: 10, people: -5 } },
   },
   {
     id: "war_flamekeeper_blessing", char: "flamekeeper", when: { effects: ["war"] },
-    text: "Osric, hands folded over his stomach. \"The Flame blesses your war. Formally. In writing. For a consideration, of course; blessings cost oil. Unblessed wars lose. I have seen the records.\"",
+    text: "Osric, hands folded over his stomach. \"The Flame blesses your war. Formally. In writing. For a consideration, of course; blessings cost oil. Unblessed wars lose. The records are quite clear.\"",
     left: { label: "Pay for the blessing.", fx: { gold: -15, faith: 10, army: 5 } },
     right: { label: "Swords don't need oil.", fx: { faith: -15, army: 5, gold: 5 } },
   },
@@ -671,7 +671,7 @@ export default [
   },
   {
     id: "war_ghost_king", char: "ghost", when: { effects: ["war"] }, once: true, weight: 0.5,
-    text: "A dead king in your father's chair. \"I had a war with Kethra. Won it, mostly. Cost me both sons and the west. It's on a plaque in the Marshal's hall. Nobody reads the plaque.\"",
+    text: "A dead king in your father's chair. \"I had a war with Kethra. Won it, mostly. Cost me both sons and the west. It's on a plaque in the Marshal's hall. The plaque has never once been read.\"",
     left: { label: "What did you win?", fx: { faith: 5, army: -5 } },
     right: { label: "I'll read the plaque.", fx: { people: 5 } },
   },
@@ -689,7 +689,7 @@ export default [
   },
   {
     id: "war_healer_wounded", char: "healer", when: { effects: ["war"] },
-    text: "Amaury, sleeves red. \"Six hundred wounded in the tiltyard. I have four surgeons and a theory about maggots. The theory is holding up. The surgeons aren't.\"",
+    text: "Amaury, sleeves red. \"Six hundred wounded in the tiltyard. Four surgeons and a theory about maggots. The theory is holding up. The surgeons aren't.\"",
     left: { label: "Hire every barber in the city.", fx: { gold: -15, army: 10, people: 5 } },
     right: { label: "Trust the maggots.", fx: { army: -15, faith: 3, gold: 5 } },
   },

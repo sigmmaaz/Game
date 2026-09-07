@@ -4,7 +4,7 @@ export default [
   // ---------- coronation ----------
   {
     id: "story_coronation", char: "chancellor", chainOnly: true,
-    text: "The crown fits. That's the last thing that will. Your predecessor left debts, a war nobody remembers starting, and a dog. The dog is loyal. Start there.",
+    text: "The crown fits. That's the last thing that will. Your predecessor left debts, a war whose cause is in a drawer somewhere, and a dog. The dog is loyal. Start there.",
     left: { label: "Read me the debts.", fx: { gold: 5, people: -5 } },
     right: { label: "Where's the dog?", fx: { people: 5 }, next: { id: "story_dog_intro", delay: 0 } },
   },
@@ -42,7 +42,7 @@ export default [
   },
   {
     id: "story_demon_return", char: "demon", chainOnly: true,
-    text: "The fire goes black in the middle of a council session. Nobody else sees him. \"Just checking in. You look tired. Your grandfather looked tired at this point too.\"",
+    text: "The fire goes black in the middle of a council session. The Chancellor keeps talking about drains. \"Just checking in. You look tired. Your grandfather looked tired at this point too.\"",
     left: { label: "Leave me alone.", fx: { people: -5 }, next: { id: "story_demon_return", delay: 11 } },
     right: { label: "How did he die?", fx: { faith: -3 }, next: { id: "story_demon_grandfather", delay: 0 } },
   },
@@ -63,7 +63,7 @@ export default [
   },
   {
     id: "story_demon_check_2", char: "demon", chainOnly: true,
-    text: "\"You're stalling. I admire it. Here's a hint, free: there's a woman in the Thornwood who knows how these bargains are written. She won't like you. Nobody does. Go anyway.\"",
+    text: "\"You're stalling. I admire it. Here's a hint, free: there's a woman in the Thornwood who knows how these bargains are written. She won't like you. She doesn't like anyone. Go anyway.\"",
     left: { label: "Find the witch.", fx: { faith: -5 }, set: ["seek_mab"], next: { id: "story_mab_1", delay: 2 } },
     right: { label: "I don't take hints from you.", fx: { army: 5 }, next: { id: "story_demon_final", delay: 9 } },
   },
@@ -75,7 +75,7 @@ export default [
   },
   {
     id: "story_mab_2", char: "witch", chainOnly: true,
-    text: "\"You don't get out. You get it read properly. He promised a long line of kings. He never said human. Put something on the throne that isn't one of you, and the line still runs. He's got nothing to collect.\"",
+    text: "\"You don't get out. You get it read properly. He promised a long line of kings. He never said human. Put something on the throne that isn't one of you and the line runs on. He's nothing to collect.\"",
     left: { label: "That's absurd.", fx: { faith: 5 }, next: { id: "story_demon_final", delay: 8 } },
     right: { label: "Who, then?", fx: {}, set: ["mab_plan"], next: { id: "story_mab_3", delay: 0 } },
   },
@@ -127,7 +127,7 @@ export default [
   {
     id: "story_demon_ending", char: "demon", chainOnly: true,
     when: { flags: ["nonhuman_heir"] },
-    text: "He reads it. He reads it again. He looks at your heir, who isn't human, and at the word 'kings', which doesn't say human either. Something behind his face goes very still. \"Oh,\" he says. \"Oh, that's good.\"",
+    text: "He reads it. He reads it again. He looks at your heir, who isn't human, and at the word 'kings', which doesn't say human either. Something behind his face goes very still. \"Oh,\" he says. \"Oh, good.\"",
     left: { label: "Get out.", fx: { faith: 20, people: 10 }, set: ["bargain_broken"], removeEffect: "doomed", next: { id: "story_demon_gone", delay: 0 } },
     right: { label: "We could renegotiate.", fx: { gold: 25, faith: -20 }, set: ["bargain_broken", "demon_partner"], removeEffect: "doomed", next: { id: "story_demon_gone", delay: 0 } },
   },
@@ -205,7 +205,7 @@ export default [
   {
     id: "story_elixir_offer", char: "alchemist",
     when: { effects: ["old_age"], notEffects: ["elixir"] }, once: true,
-    text: "Master Quill has made something. It's green and it's moving a bit. \"It will not let you die of age. I'm fairly sure. I have tested it on a chicken. The chicken is fine. The chicken is, if anything, too fine.\"",
+    text: "Master Quill has made something. It's green and it's moving a bit. \"It will not let you die of age. I'm fairly sure. I tested it on a chicken. The chicken is fine. If anything, too fine.\"",
     left: { label: "Drink it.", fx: { faith: -10 }, random: [
       { chance: 0.6, effect: "elixir", removeEffect: "old_age", set: ["drank_elixir"] },
       { chance: 0.4, die: "poison" },
@@ -216,7 +216,7 @@ export default [
   // ---------- fallback ----------
   {
     id: "story_empty_hall", char: "steward", chainOnly: true,
-    text: "Wendel checks the antechamber twice. Nobody. \"No petitions today, Majesty. It's... quite unsettling, honestly.\"",
+    text: "Wendel checks the antechamber twice. Empty. Even the bench is empty. \"No petitions today, Majesty. It's... quite unsettling, honestly.\"",
     left: { label: "Enjoy it.", fx: { people: 2 } },
     right: { label: "Find someone.", fx: { gold: -2 } },
   },
@@ -230,7 +230,7 @@ export default [
   },
   {
     id: "story_abdicate", char: "hermit", when: { minReign: 20 }, once: true, weight: 0.4,
-    text: "The Hermit walks in past the guards, who are used to him. \"You could just leave. Nobody does. I've watched a dozen of you sit there until it killed you. There are goats in the hills. Goats don't need a king.\"",
+    text: "The Hermit walks in; the guards are used to him. \"You could just leave. None of you do. I've watched a dozen of you sit there till it killed you. There are goats in the hills. Goats need no king.\"",
     left: { label: "I'm a king.", fx: { army: 5 } },
     right: { label: "...Goats.", fx: {}, set: ["abdicated"], die: "peaceful" },
   },

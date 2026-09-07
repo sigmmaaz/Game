@@ -40,7 +40,7 @@ export default [
   },
   {
     id: "elf_envoy_sleepers", char: "elf_envoy",
-    text: "Lord Cael brings an apology. Three of your woodcutters were found asleep at the forest edge and were not woken for a week. \"Our rangers are thorough. It is a flaw.\"",
+    text: "Lord Cael brings an apology. Three of your woodcutters were found asleep at the forest edge and were not woken for a week. \"Our rangers are thorough. A flaw, we admit.\"",
     left: { label: "Soldiers go with the cutters.", fx: { army: 5, gold: -5 }, set: ["elf_grudge"] },
     right: { label: "The cutters stay home.", fx: { people: -10, gold: -5 } },
   },
@@ -150,7 +150,7 @@ export default [
   },
   {
     id: "elf_spymaster_letters", char: "spymaster",
-    text: "The Whisperer has read Lord Cael's letters home for nine years. They are all about the weather. \"Nobody writes about the weather for nine years, Sire. Unless the weather is us.\"",
+    text: "The Whisperer has read Lord Cael's letters home for nine years. They are all about the weather. \"Nine years of weather, Sire. Either he is very dull, or the weather is us.\"",
     left: { label: "Have him followed.", fx: { gold: -10, army: 5 } },
     right: { label: "It's a wet country.", fx: { people: 3 } },
   },
@@ -162,7 +162,7 @@ export default [
   },
   {
     id: "elf_treasurer_remembrance", char: "treasurer",
-    text: "Mistress Penn has found a line in the ledger: \"To Greenreach, in remembrance, forty marks.\" Paid every year for two centuries. Nobody remembers what it remembers.",
+    text: "Mistress Penn has found a line in the ledger: \"To Greenreach, in remembrance, forty marks.\" Paid every year for two centuries. Remembrance of what, the ledger doesn't say.",
     left: { label: "Keep paying.", fx: { gold: -10 } },
     right: { label: "Stop paying.", fx: { gold: 15 }, random: [
       { chance: 0.5, fx: { gold: 15 } },
@@ -251,7 +251,7 @@ export default [
   },
   {
     id: "elf_ranger_favor_road", char: "elf_ranger", when: { flags: ["elf_favor"] },
-    text: "The rangers have cleared the bandits from the Coldwater road. Nobody asked. \"The Lady remembers the wood you gave. This is what remembering looks like. The other kind looks different.\"",
+    text: "The rangers have cleared the bandits from the Coldwater road. Unbidden. \"The Lady remembers the wood you gave. This is what remembering looks like. The other kind looks different.\"",
     left: { label: "Thank them.", fx: { people: 10, gold: 5 } },
     right: { label: "Who gave permission?", fx: { army: 3 } },
   },
@@ -277,7 +277,7 @@ export default [
   },
   {
     id: "elf_scholar_histories", char: "elf_scholar",
-    text: "\"Your histories say your people took this land from nobody. Ours say otherwise, and were written at the time. I could correct yours in an afternoon.\"",
+    text: "\"Your histories say this land was empty when your people came. Ours say otherwise, and were written at the time. I could correct yours in an afternoon.\"",
     left: { label: "Correct them.", fx: { faith: -10, people: -5 }, set: ["elf_favor"] },
     right: { label: "Ours are fine.", fx: { faith: 5, army: 5, gold: 5 } },
   },
@@ -293,7 +293,7 @@ export default [
     id: "elf_sera_cells", char: "half_elf",
     text: "Sera spent the night in the cells. Your guards took her for an elf spy. The elf hostel took her for a human one. \"I'd like a badge. Something that says what I'm for.\"",
     left: { label: "The royal badge.", fx: { army: -5, people: -5, faith: -3 }, set: ["elf_sera_court"] },
-    right: { label: "Nobody knows what anyone's for.", fx: { people: 3 } },
+    right: { label: "What's anyone for?", fx: { people: 3 } },
   },
   {
     id: "elf_sera_queen", char: "half_elf", when: { flags: ["elf_alliance"], effects: ["married"] },
@@ -480,7 +480,7 @@ export default [
   },
   {
     id: "elf_war_4", char: "elf_envoy", chainOnly: true,
-    text: "Lord Cael returns under a green branch. He is bowing again, a little. \"The Lady offers terms. The Thornwood, the mill-stream, your archives. Or we continue. We are not tired. Are you?\"",
+    text: "Lord Cael returns under a green branch. He is bowing again, a little. \"The Lady offers terms. The Thornwood, the mill-stream, your archives. Otherwise we continue. We are not tired. Are you?\"",
     left: { label: "Take the terms.", fx: { gold: -20, people: 10, army: -10 }, removeEffect: "war", unset: ["elf_at_war", "elf_grudge"], set: ["elf_peace"], next: { id: "elf_war_peace", delay: 4 } },
     right: { label: "Continue.", random: [
       { chance: 0.5, fx: { army: -10 }, next: { id: "elf_war_5", delay: 2 } },
@@ -515,7 +515,7 @@ export default [
   },
   {
     id: "elf_wine_2", char: "steward", chainOnly: true,
-    text: "Wendel reports the summerwine is gone. Eleven bottles. The Chancellor wears a look of terrible peace and has forgiven everyone, by name. Nobody can find the Marshal.",
+    text: "Wendel reports the summerwine is gone. Eleven bottles. The Chancellor wears a look of terrible peace and has forgiven everyone, by name. The Marshal was last seen heading for the orchard.",
     left: { label: "Find the Marshal.", fx: { army: -5, gold: -5 }, next: { id: "elf_wine_3", delay: 0 } },
     right: { label: "Let him be happy.", fx: { army: -10, people: 5 } },
   },
@@ -576,7 +576,7 @@ export default [
   },
   {
     id: "elf_sera_3", char: "half_elf", chainOnly: true,
-    text: "Sera has been offered gold by the Greenreach to report on you, and by your Whisperer to report on the Greenreach. \"I'm telling you because nobody else asked what I wanted.\"",
+    text: "Sera has been offered gold by the Greenreach to report on you, and by your Whisperer to report on the Greenreach. \"I'm telling you because you're the only one who hasn't asked me for anything yet.\"",
     left: { label: "What do you want?", fx: { people: 5 }, next: { id: "elf_sera_4", delay: 2 } },
     right: { label: "Take both purses.", fx: { gold: 15, army: -5 }, next: { id: "elf_sera_4", delay: 4 } },
   },
@@ -584,7 +584,7 @@ export default [
     id: "elf_sera_4", char: "half_elf", chainOnly: true,
     text: "\"A house. With a door. Somewhere people stop asking which half I am.\" She is not crying. Half of her would consider it undignified.",
     left: { label: "Give her a house.", fx: { gold: -15, people: 5 }, set: ["elf_sera_home"], next: { id: "elf_sera_5", delay: 5 } },
-    right: { label: "Nobody gets that.", fx: { people: -10 } },
+    right: { label: "That isn't something I can give.", fx: { people: -10 } },
   },
   {
     id: "elf_sera_5", char: "half_elf", chainOnly: true,
@@ -605,7 +605,7 @@ export default [
   // ---------- CHAIN: the Lady comes in person ----------
   {
     id: "elf_lady_visit_1", char: "elf_queen", when: { minReign: 3 }, once: true, weight: 0.5,
-    text: "The Lady Aerinwe is in your hall. Nobody announced her. The guards stand very still; two are weeping and do not know why. She has come to look at you.",
+    text: "The Lady Aerinwe is in your hall. She was not announced; the herald is sitting on the floor. Two guards are weeping and do not know why. She has come to look at you.",
     left: { label: "Kneel.", fx: { faith: -10, people: 5, army: -5 }, next: { id: "elf_lady_visit_2", delay: 0 } },
     right: { label: "Stand.", fx: { army: 10, faith: 5 }, next: { id: "elf_lady_visit_2", delay: 0 } },
   },

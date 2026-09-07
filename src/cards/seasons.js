@@ -12,7 +12,7 @@ export default [
   },
   {
     id: "sea_flood_2", char: "messenger", chainOnly: true,
-    text: "Water's down. It left three feet of mud, a dead horse in the Flame chapel, and the tax rolls for Lowmarket, which are now paste. Nobody down there is sad about the rolls.",
+    text: "Water's down. It left three feet of mud, a dead horse in the Flame chapel, and the tax rolls for Lowmarket, which are now paste. Lowmarket is not in mourning for the rolls.",
     left: { label: "Rewrite the rolls.", fx: { gold: 15, people: -15 } },
     right: { label: "Lowmarket's had a bad year.", fx: { gold: -5, people: 15 } },
   },
@@ -77,13 +77,13 @@ export default [
   // ---------- earthquake ----------
   {
     id: "sea_quake_1", char: "messenger", once: true, weight: 0.5,
-    text: "The ground moved, Sire. Two chimneys down and the old chapel floor has split. Under it there's a stair nobody built, going down. The Flamekeeper wants it sealed before anyone looks.",
+    text: "The ground moved, Sire. Two chimneys down and the old chapel floor has split. Under it there's a stair that isn't on any plan, going down. The Flamekeeper wants it sealed before anyone looks.",
     left: { label: "Seal it.", fx: { faith: 10, gold: -5 } },
     right: { label: "Captain Rook. Torches.", fx: { faith: -10 }, next: { id: "sea_quake_2", delay: 0 } },
   },
   {
     id: "sea_quake_2", char: "captain", chainOnly: true,
-    text: "Rook came back up grey. \"Forty steps, then a door. Dwarf-work, but old. There's a name cut into it. Yours, Sire. Well. Your family's. And a date about three hundred years off.\"",
+    text: "Rook came back up grey. \"Forty steps, then a door. Dwarf-work, but old. A name cut into it. Yours, Sire. Well. Your family's. And a date about three hundred years off.\"",
     left: { label: "Open the door.", fx: { faith: -10 }, random: [
       { chance: 0.5, fx: { gold: 30 }, set: ["sea_vault_opened"] },
       { chance: 0.5, fx: { army: -15 }, set: ["sea_vault_opened"], die: "buried_alive" },
@@ -184,12 +184,12 @@ export default [
   },
   {
     id: "sea_leech", char: "healer",
-    text: "Amaury has a jar. The jar is moving. \"Twelve leeches. Behind the knees. It draws off the choler that makes a man sign things. The Chancellor swears by it and look how long he's lasted.\"",
+    text: "Amaury has a bowl. The bowl is steaming. \"Powdered dragon scale. Genuine; I bought it from a goblin. Taken behind the knees as a poultice it draws off the choler that makes a man sign things.\"",
     left: { label: "Behind the knees, then.", fx: { faith: 5 }, random: [
       { chance: 0.7, fx: { army: -5 } },
       { chance: 0.3, fx: { people: -15 } },
     ] },
-    right: { label: "Put them on the Chancellor.", fx: { people: 5, gold: 10 } },
+    right: { label: "Try it on the Chancellor.", fx: { people: 5, gold: 10 } },
   },
   {
     id: "sea_plague_1", char: "healer", weight: 1,
@@ -201,11 +201,11 @@ export default [
     id: "sea_plague_2", char: "healer", chainOnly: true,
     text: "\"It's in the grain. It was always in the grain. The rats sleep in the granary and the granary feeds the city. Burn it, Majesty, or bury the city one street at a time.\"",
     left: { label: "Burn the granary.", fx: { people: -10, gold: -10 }, removeEffect: "granary", next: { id: "sea_plague_3", delay: 2 } },
-    right: { label: "Nobody burns grain.", fx: { people: 5 }, effect: "plague", next: { id: "sea_plague_3", delay: 2 } },
+    right: { label: "Grain doesn't burn. Not mine.", fx: { people: 5 }, effect: "plague", next: { id: "sea_plague_3", delay: 2 } },
   },
   {
     id: "sea_plague_3", char: "healer", chainOnly: true,
-    text: "\"It's over, or it's resting. Two hundred dead, most of them poor, which the Guild calls efficient. I have a theory about the rats. I'd like a grant and forty more rats.\"",
+    text: "\"It's over, or it's resting. Two hundred dead, most of them poor, which the Guild calls efficient. The rats interest me. A grant, please, and forty more rats.\"",
     left: { label: "A grant. No rats.", fx: { gold: -10, faith: -5 }, removeEffect: "plague" },
     right: { label: "You've had enough rats.", fx: { gold: 10, people: 5 }, removeEffect: "plague", random: [
       { chance: 0.75, fx: {} },
@@ -245,7 +245,7 @@ export default [
   },
   {
     id: "sea_dog_room", char: "dog", when: { flags: ["dog_kept"] },
-    text: "Biscuit will not go into the east tower room. He'll stand at the door and growl at the floor. The last king's valet used that room. Nobody's found the valet.",
+    text: "Biscuit will not go into the east tower room. He'll stand at the door and growl at the floor. The last king's valet used that room. The valet was never found.",
     left: { label: "Have the floor up.", fx: { gold: -5 }, random: [
       { chance: 0.5, fx: { gold: 15, faith: -5 } },
       { chance: 0.5, fx: { faith: -10, people: -5 }, set: ["sea_valet_found"] },
@@ -274,7 +274,7 @@ export default [
   },
   {
     id: "sea_pib_newyear_2", char: "jester", chainOnly: true,
-    text: "\"Told you. Great man, great height.\" He means the bell-ringer, who fell out of the belfry into a hay cart and is fine. \"Next year: a king weds a stranger. Or a duck. It's blurry.\"",
+    text: "\"Told you. Great man, great height.\" He means the bell-ringer, who fell out of the belfry into a hay cart and is fine. \"Next year: a king weds a stranger. Possibly a duck. It's blurry.\"",
     left: { label: "Give him a raise.", fx: { gold: -5, people: 5 } },
     right: { label: "Give him to the belfry.", fx: { people: -5, army: 3 } },
   },
@@ -350,7 +350,7 @@ export default [
   // ---------- old age ----------
   {
     id: "sea_old_stairs", char: "steward", when: { effects: ["old_age"] }, oncePerReign: true,
-    text: "\"I've had a rail put on the tower stair, Majesty. Nobody asked me to. I've also moved your bedchamber down a floor and told the guard it's for security. It is not for security.\"",
+    text: "\"I've had a rail put on the tower stair, Majesty. On my own authority, which I don't have. I've also moved your bedchamber down a floor and told the guard it's for security. It is not for security.\"",
     left: { label: "Move it back up.", fx: { army: 5 }, random: [
       { chance: 0.8, fx: { people: 3 } },
       { chance: 0.2, die: "fell_from_tower" },
@@ -359,7 +359,7 @@ export default [
   },
   {
     id: "sea_old_feast", char: "mother", when: { effects: ["old_age"] }, oncePerReign: true,
-    text: "\"You're older than your father got. Nobody expected it, least of all me.\" She has ordered a feast; there's a whole boar. \"Eat something. You look like a rumour of yourself.\"",
+    text: "\"You're older than your father got. I had money on the other outcome.\" She has ordered a feast; there's a whole boar. \"Eat something. You look like a rumour of yourself.\"",
     left: { label: "Eat.", fx: { people: 10, gold: -10 }, random: [
       { chance: 0.75, fx: {} },
       { chance: 0.25, die: "choked_at_feast" },

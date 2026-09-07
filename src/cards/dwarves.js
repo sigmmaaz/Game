@@ -106,7 +106,7 @@ export default [
     id: "dwarf_eng_wall", char: "dwarf_engineer",
     text: "\"Your city wall. I could bring it down in an afternoon with two barrels and a nap. I mention this because someone else could too, and they wouldn't nap first.\"",
     left: { label: "Reinforce the wall.", fx: { gold: -15, army: 10 } },
-    right: { label: "Nobody else has barrels.", fx: { army: -5, people: 3, gold: 10 } },
+    right: { label: "Who else has barrels?", fx: { army: -5, people: 3, gold: 10 } },
   },
 
   // ---------- everyday: Dunna ----------
@@ -182,7 +182,7 @@ export default [
   },
   {
     id: "dwarf_general_plans", char: "general", once: true, when: { minReign: 2 },
-    text: "Thorne. \"The Deep Holds have iron, powder, and a front door I could hold with forty men. Or take with four hundred. I've drawn up both plans. I prefer the second.\"",
+    text: "Thorne. \"The Deep Holds have iron, powder, and a front door I could hold with forty men or take with four hundred. I've drawn up both plans. I prefer the second.\"",
     left: { label: "Neither plan.", fx: { army: -10, gold: 5 } },
     right: { label: "The second.", fx: { army: 10, gold: -15 }, effect: "war", set: ["dwarf_grudge"], next: { id: "dwarf_war_1", delay: 2 } },
   },
@@ -203,9 +203,9 @@ export default [
   },
   {
     id: "dwarf_flamekeeper_depth", char: "flamekeeper",
-    text: "Osric. \"The dwarves worship downward. The Flame rises. These are not compatible theologies, and now they're selling lamps in my parish. I want a sermon-tax on all dwarf goods.\"",
-    left: { label: "Tax them.", fx: { faith: 10, gold: 10 }, set: ["dwarf_grudge"] },
-    right: { label: "No.", fx: { faith: -10, people: 5 } },
+    text: "Osric. \"The dwarves are burying their dead under my parish. Not in it. Under. I hear them chanting through the crypt floor at vespers. It is a theology of downward and I will not have it beneath me.\"",
+    left: { label: "Fine them a mile of rock.", fx: { faith: 10, gold: 10 }, set: ["dwarf_grudge"] },
+    right: { label: "Under is theirs.", fx: { faith: -10, people: 5 } },
   },
   {
     id: "dwarf_child_contract", char: "child",
@@ -246,7 +246,7 @@ export default [
   },
   {
     id: "dwarf_loan_annex", char: "dwarf_envoy", chainOnly: true,
-    text: "\"If the principal is unpaid at your death, it passes to the heir, who may not refuse it, on pain of what the annex calls 'the customary remedy'. Nobody has needed to ask what that is.\"",
+    text: "\"If the principal is unpaid at your death, it passes to the heir, who may not refuse it, on pain of what the annex calls 'the customary remedy'. In four hundred years, the question hasn't come up.\"",
     left: { label: "Take the gold anyway.", fx: { gold: 30 }, set: ["dwarf_loan"], next: { id: "dwarf_loan_2", delay: 4 } },
     right: { label: "Keep your gold.", fx: { people: -5, gold: 3 } },
   },
@@ -264,7 +264,7 @@ export default [
   },
   {
     id: "dwarf_loan_4", char: "dwarf_envoy", chainOnly: true,
-    text: "Dunna, with a sealed iron box. \"It's the loan, called in full. Or it's the customary remedy. I don't know which. I wasn't allowed to look.\"",
+    text: "Dunna, with a sealed iron box. \"It's the loan, called in full, or it's the customary remedy. I don't know which. I wasn't allowed to look.\"",
     left: { label: "Open it.", fx: {}, random: [
       { chance: 0.5, fx: { gold: -35 }, unset: ["dwarf_loan", "dwarf_loan_late"] },
       { chance: 0.5, die: "dwarven_contract" },
@@ -307,7 +307,7 @@ export default [
   // ---------- chain: Hesk's inventions ----------
   {
     id: "dwarf_hesk_1", char: "dwarf_engineer", once: true,
-    text: "Hesk unrolls a drawing. It's a tower on wheels. It throws a smaller tower. \"For sieges. Or for arguing. Twelve years of thinking. Three of them in hospital.\"",
+    text: "Hesk unrolls a drawing. It's a tower on wheels. It throws a smaller tower. \"For sieges, mainly. Also for arguing. Twelve years of thinking. Three of them in hospital.\"",
     left: { label: "Build one.", fx: { gold: -10, army: 10 }, next: { id: "dwarf_hesk_2", delay: 2 } },
     right: { label: "Keep thinking.", fx: { army: -3, gold: 5 } },
   },
@@ -366,7 +366,7 @@ export default [
   },
   {
     id: "dwarf_tunnel_2", char: "captain", chainOnly: true,
-    text: "\"My men went down. They came up with a receipt. Your grandfather sold the ground under the city, but not the city. The dwarves kept the ground. There's a stamp.\"",
+    text: "\"My men went down. They came up with a receipt. Your grandfather sold the ground under the city, but not the city. The dwarves kept the ground. Stamped and everything.\"",
     left: { label: "Buy the ground back.", fx: { gold: -25, people: 5 } },
     right: { label: "Fill it in.", fx: { gold: -5, army: 5 }, set: ["dwarf_grudge"], next: { id: "dwarf_tunnel_3", delay: 3 } },
   },
@@ -404,7 +404,7 @@ export default [
   },
   {
     id: "dwarf_treaty_3", char: "dwarf_envoy", chainOnly: true,
-    text: "\"Struck. Both. Borri says you read it, which nobody has done since the Ground Sale, and he's very slightly impressed. He wants that phrase in the minutes.\" She slides the pen.",
+    text: "\"Struck. Both. Borri says you read it, which hasn't happened since the Ground Sale, and he's very slightly impressed. He wants that phrase in the minutes.\" She slides the pen.",
     left: { label: "Sign.", fx: { gold: 5 }, set: ["dwarf_contract_signed"], effect: "prosperity" },
     right: { label: "One more clause. Mine.", fx: { army: 5, people: 5 }, next: { id: "dwarf_treaty_4", delay: 1 } },
   },
@@ -422,7 +422,7 @@ export default [
   },
   {
     id: "dwarf_treaty_dividend", char: "dwarf_envoy", when: { flags: ["dwarf_contract_signed"] },
-    text: "\"The year's iron, on schedule, to the pound. The wheat you sent was a bushel short. I'd like to say it doesn't matter. The ledger doesn't let me.\"",
+    text: "\"The year's iron, on schedule, to the pound. The wheat you sent was a bushel short. I would love to say it doesn't matter. The ledger doesn't let me.\"",
     left: { label: "Send the bushel.", fx: { gold: -3, army: 3 } },
     right: { label: "A bushel.", fx: { gold: 5 }, set: ["dwarf_grudge"] },
   },
@@ -500,7 +500,7 @@ export default [
   },
   {
     id: "dwarf_under_2", char: "dwarf_engineer", chainOnly: true,
-    text: "\"I'm not describing it. I'm a dwarf, we describe everything, it's how you know it's bad. There's a door. It's older than the Holds. It's warm.\"",
+    text: "\"I'm not describing it. I'm a dwarf, we describe everything, it's how you know it's bad. A door. Older than the Holds. Warm.\"",
     left: { label: "Open it.", fx: { faith: -10 }, next: { id: "dwarf_under_3", delay: 1 } },
     right: { label: "Seal it in stone.", fx: { gold: -10, faith: 5 }, set: ["dwarf_under_sealed"] },
   },
@@ -517,7 +517,7 @@ export default [
       { chance: 0.6, fx: { faith: 15 } },
       { chance: 0.4, fx: { faith: -15, people: -10 }, next: { id: "dwarf_under_4", delay: 1 } },
     ] },
-    right: { label: "Nobody opens it.", fx: { faith: -10, gold: -5 }, set: ["dwarf_under_sealed"] },
+    right: { label: "It stays shut.", fx: { faith: -10, gold: -5 }, set: ["dwarf_under_sealed"] },
   },
   {
     id: "dwarf_under_4", char: "dwarf_thane", chainOnly: true,
@@ -555,7 +555,7 @@ export default [
   // ---------- chain: the ale ----------
   {
     id: "dwarf_ale_1", char: "innkeeper", once: true,
-    text: "\"The dwarves want to sell their ale in the city. I've had it. I was ill for a day and honest for three. Nobody wants honest for three days, Majesty. Not in my trade.\"",
+    text: "\"The dwarves want to sell their ale in the city. I've had it. I was ill for a day and honest for three. Three honest days is bad for my trade, Majesty. It's bad for most trades.\"",
     left: { label: "License it.", fx: { gold: 15, people: 5 }, set: ["dwarf_ale"], next: { id: "dwarf_ale_2", delay: 3 } },
     right: { label: "Ban it.", fx: { people: -5 }, set: ["dwarf_grudge"] },
   },
@@ -575,7 +575,7 @@ export default [
   // ---------- rare ----------
   {
     id: "dwarf_rare_ledger_burn", char: "dwarf_thane", once: true, weight: 0.5, when: { flags: ["dwarf_grudge"], minYear: 15 },
-    text: "Borri, whispering, which for a dwarf means shouting quietly. \"The grudge ledger is a book. Books burn. I'm old. I'd let it happen, for a price. Nobody in the Holds may know I said this.\"",
+    text: "Borri, whispering, which for a dwarf means shouting quietly. \"The grudge ledger is a book. Books burn. I'm old. I'd let it happen, for a price. If the Holds hear I said this, I never did.\"",
     left: { label: "Pay the price.", fx: { gold: -25, people: 5 }, unset: ["dwarf_grudge"] },
     right: { label: "A dwarf who'd burn a ledger.", fx: { faith: 5, army: 5 } },
   },

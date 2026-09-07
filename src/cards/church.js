@@ -35,13 +35,13 @@ export default [
   },
   {
     id: "church_osric_bell", char: "flamekeeper",
-    text: "The great bell at Saint Ivo's cracked while ringing for your health. Some say omen. I say bronze. Bronze is eleven hundred crowns.",
-    left: { label: "Recast it.", fx: { gold: -15, faith: 5, people: 5 } },
-    right: { label: "Ring a smaller one.", fx: { faith: -10, gold: 10 } },
+    text: "The great bell at Saint Ivo's can be heard in eleven parishes. Kethra's cathedral bell can be heard in fourteen. I have had a founder draw up a fifteenth-parish bell. Bronze is eleven hundred crowns.",
+    left: { label: "Cast it.", fx: { gold: -15, faith: 5, people: 5 } },
+    right: { label: "Eleven parishes will do.", fx: { faith: -10, gold: 10 } },
   },
   {
     id: "church_osric_elves", char: "flamekeeper",
-    text: "The elves do not burn their dead, Majesty. They plant them. I have seen the orchards. The apples are very large and I would not eat one.",
+    text: "The elves do not burn their dead, Majesty. They plant them. I've walked the orchards. The apples are very large and I would not eat one.",
     left: { label: "Ban elven apples.", fx: { faith: 10, gold: -10, people: -5 } },
     right: { label: "Send me a basket.", fx: { faith: -10, people: 5 } },
   },
@@ -53,7 +53,7 @@ export default [
   },
   {
     id: "church_osric_school", char: "flamekeeper",
-    text: "The Tower teaches children to read. Reading leads to questions, questions to doubt, doubt to the Hollow. I would like a school of our own. Or theirs, closed.",
+    text: "The Tower teaches children to read. Reading leads to questions, questions to doubt, doubt to the Hollow. I would like a school of our own, or theirs shut, and I am not particular which.",
     left: { label: "Close the Tower's school.", fx: { faith: 15, people: -15 } },
     right: { label: "Fund a Church school.", fx: { gold: -10, faith: 10 } },
   },
@@ -65,7 +65,7 @@ export default [
   },
   {
     id: "church_osric_pamphlet", char: "flamekeeper",
-    text: "A bookseller on Candle Row sells a pamphlet claiming the Flame is merely hot. Merely. I have the pamphlet. I also have the bookseller.",
+    text: "A bookseller on Candle Row sells a pamphlet claiming the Flame is merely hot. Merely. The pamphlet is in my sleeve. The bookseller is in my cellar.",
     left: { label: "Burn the pamphlet.", fx: { faith: 10, people: -5 } },
     right: { label: "Release him.", fx: { faith: -15, people: 10 } },
   },
@@ -112,13 +112,13 @@ export default [
   },
   {
     id: "church_angel_2", char: "angel", chainOnly: true,
-    text: "\"The Flame is pleased with you. Broadly. It asks a small token. Gold, for the poor. I will carry it myself, to save you the trouble.\" He holds out a sack. It is a large sack.",
+    text: "\"The Flame is pleased with you. Broadly. It asks a small token. Gold, for the poor. I will carry it myself, to save you the trouble.\" He holds out a sack. A large sack.",
     left: { label: "Fill it.", fx: { gold: -20, faith: 10 }, set: ["church_angel_paid"], next: { id: "church_angel_3", delay: 3 } },
     right: { label: "The poor can come to me.", fx: { faith: -5, people: 5, gold: 10 }, next: { id: "church_angel_3", delay: 3 } },
   },
   {
     id: "church_angel_3", char: "spymaster", chainOnly: true,
-    text: "The Whisperer reports a very bright man drinking in a tavern in Kethra, buying rounds. He is wearing wings. They are, the report says, quite well made.",
+    text: "The Whisperer reports a very bright man drinking in a tavern in Kethra, buying rounds. The man wears wings. They are, the report says, quite well made.",
     left: { label: "Bring him back.", fx: { army: -5 }, random: [
       { chance: 0.5, fx: { gold: 15 }, set: ["church_angel_fraud"], next: { id: "church_angel_4", delay: 4 } },
       { chance: 0.5, fx: { army: -10 }, next: { id: "church_angel_4", delay: 4 } },
@@ -200,13 +200,13 @@ export default [
   },
   {
     id: "church_hollow_spread", char: "peasant", chainOnly: true,
-    text: "There's grey hoods in Marrow village now, Yer Grace. They don't do nothing. They sit in the square. Nobody's brought in the barley. Nobody seems to mind, and that's what minds me.",
+    text: "There's grey hoods in Marrow village now, Yer Grace. They don't do nothing. They sit in the square. The barley's standing in the field, and the folk stand looking at it, and that's what minds me.",
     left: { label: "Send soldiers.", fx: { army: -5, people: 5, faith: 10 } },
     right: { label: "Sitting isn't a crime.", fx: { people: -15, faith: -10 } },
   },
   {
     id: "church_hollow_water", char: "cultist", when: { flags: ["church_hollow_met"] },
-    text: "The hooded man is back, on no writ at all. He has brought you a cup of water. \"You looked thirsty. Everyone looks thirsty. Nobody has to be.\"",
+    text: "The hooded man is back, on no writ at all. He has brought you a cup of water. \"You looked thirsty. Everyone looks thirsty. You needn't be.\"",
     left: { label: "Drink.", fx: { faith: -10 }, random: [
       { chance: 0.7, fx: { people: 5 } },
       { chance: 0.3, die: "poison" },
@@ -215,7 +215,7 @@ export default [
   },
   {
     id: "church_hollow_bowls", char: "cultist",
-    text: "A grey-hooded girl left a bowl on the chapel step. It is empty. They leave them everywhere, Osric says; the poor stand looking into them and stop being hungry, and then stop.",
+    text: "A grey-hooded girl left a bowl on the chapel step. Empty. They leave them everywhere, Osric says; the poor stand looking into them and stop being hungry, and then stop.",
     left: { label: "Smash the bowls.", fx: { faith: 10, people: -5 } },
     right: { label: "Leave them.", fx: { faith: -10, people: 5 }, next: { id: "church_hollow_spread", delay: 3 } },
   },
@@ -223,7 +223,7 @@ export default [
   // ---------- the purge ----------
   {
     id: "church_purge_1", char: "flamekeeper", oncePerReign: true, when: { notEffects: ["purge"] },
-    text: "There is rot in the provinces, Sire. Hedge-witches, corner-mages, men who pray to wells. I have a list. It is a long list. Give me the year and I will give you a clean kingdom.",
+    text: "There is rot in the provinces, Sire. Hedge-witches, corner-mages, men who pray to wells. My clerks have drawn up a list. It is a long list. Give me the year and I will give you a clean kingdom.",
     left: { label: "Take the year.", fx: { faith: 10, people: -10 }, effect: "purge", next: { id: "church_purge_2", delay: 3 } },
     right: { label: "Burn the list.", fx: { faith: -15, people: 10, gold: 5 } },
   },
@@ -250,7 +250,7 @@ export default [
   },
   {
     id: "church_purge_ongoing", char: "peasant", when: { effects: ["purge"] }, weight: 2,
-    text: "They took the ferryman at Hollin, Majesty. For heresy. He can't read, so I don't know where he got it. Nobody'll take the ferry now. The heresy might be in the boat.",
+    text: "They took the ferryman at Hollin, Majesty. For heresy. He can't read, so I don't know where he got it. The ferry sits tied up and folk walk four miles round. The heresy might be in the boat.",
     left: { label: "Release the ferryman.", fx: { faith: -10, people: 10 } },
     right: { label: "Burn the boat too.", fx: { faith: 5, people: -10, gold: -5 } },
   },
@@ -270,13 +270,13 @@ export default [
   },
   {
     id: "church_trial_3", char: "peasant", chainOnly: true,
-    text: "The mud-widow's been made a sort of saint down at Cobb's Reach, m'lord. Not by the Church. By us. There's a shrine. People leave mud. The Flamekeeper's man came to look and got some thrown at him.",
+    text: "The mud-widow's been made a sort of saint down at Cobb's Reach, m'lord. Not by the Church. By us. We built a shrine. People leave mud. The Flamekeeper's man came to look and got some thrown at him.",
     left: { label: "Let them keep their shrine.", fx: { faith: -10, people: 10 } },
     right: { label: "Tear it down.", fx: { faith: 10, people: -15 } },
   },
   {
     id: "church_trial_scholar", char: "elf_scholar", once: true,
-    text: "An elven scholar stands accused of heresy for saying the Flame was lit by an elf. She has brought the elf. He is very old and would like to sit down.",
+    text: "An elven scholar stands accused of heresy for saying the Flame was lit by an elf. She has brought the elf. He's very old and would like to sit down.",
     left: { label: "Let him sit.", fx: { faith: -15, people: 5 }, set: ["church_elf_lit_flame"] },
     right: { label: "Both of them. Out.", fx: { faith: 10, army: -5 } },
   },
@@ -284,7 +284,7 @@ export default [
   // ---------- relics ----------
   {
     id: "church_relic_thumbs_1", char: "merchant",
-    text: "Guildmaster Crane has acquired the left thumb of Saint Ivo. He also has the right thumb, and, from a different ship, a third. He is offering the set at a discount.",
+    text: "Guildmaster Crane has acquired the left thumb of Saint Ivo. He also has the right thumb, and, from a different ship, a third. The set is offered at a discount.",
     left: { label: "Buy the set.", fx: { gold: -15, faith: 10 }, next: { id: "church_relic_thumbs_2", delay: 3 } },
     right: { label: "Saints have two thumbs.", fx: { people: 5, gold: 10 } },
   },
@@ -340,7 +340,7 @@ export default [
   },
   {
     id: "church_miracle_doctor", char: "healer",
-    text: "\"A boy at Cobb's Reach rose on the third day, Sire. I have examined him. He was not dead; he was very drunk. I told the Flamekeeper. The Flamekeeper told me to stop examining things.\"",
+    text: "\"A boy at Cobb's Reach rose on the third day, Sire. On examination, he was not dead; he was very drunk. I told the Flamekeeper. The Flamekeeper told me to stop examining things.\"",
     left: { label: "Stop examining things.", fx: { faith: 10, people: 5, gold: 10 } },
     right: { label: "Publish it.", fx: { faith: -15, people: -5 } },
   },
@@ -360,7 +360,7 @@ export default [
   },
   {
     id: "church_temple_3", char: "treasurer", chainOnly: true,
-    text: "\"The Temple has eaten a fifth of the treasury and has no roof. The masons found a dwarf tunnel under it and won't dig until someone says whose it is. I have a candle in my office. It is holy enough.\"",
+    text: "\"The Temple has eaten a fifth of the treasury and has no roof. The masons found a dwarf tunnel under it and won't dig until someone says whose it is. My office has a candle. It is holy enough.\"",
     left: { label: "Pay the dwarves to leave.", fx: { gold: -20 }, next: { id: "church_temple_4", delay: 3 } },
     right: { label: "Build over the tunnel.", fx: { gold: -10 }, random: [
       { chance: 0.7, fx: { army: -5 }, next: { id: "church_temple_4", delay: 3 } },
@@ -410,7 +410,7 @@ export default [
   },
   {
     id: "church_excomm_buy", char: "treasurer", when: { effects: ["excommunicated"] },
-    text: "\"The Church will lift the ban for a donation. I have the figure. It is a round one. Round in the way the sun is round.\"",
+    text: "\"The Church will lift the ban for a donation. The figure is written here. It is a round one. Round in the way the sun is round.\"",
     left: { label: "Pay it.", fx: { gold: -25, faith: 10 }, removeEffect: "excommunicated" },
     right: { label: "Let it stand.", fx: { people: -5, gold: 15 } },
   },
@@ -451,7 +451,7 @@ export default [
   },
   {
     id: "church_mage_ice", char: "flamekeeper", chainOnly: true,
-    text: "Saint Ivo's chapel is now a large, clear block of ice, with the choir still inside. Alive, Sylvane assures us. Cold. Osric is not asking for anything. He is simply standing here, dripping.",
+    text: "Saint Ivo's chapel is now a large, clear block of ice, with the choir still inside. Alive, Sylvane assures us. Cold. Osric is not asking for anything. Osric is simply standing here, dripping.",
     left: { label: "Make peace between them.", fx: { gold: -20, faith: 5 } },
     right: { label: "Let them fight it out.", random: [
       { chance: 0.5, fx: { faith: -15, people: -10 } },
@@ -484,7 +484,7 @@ export default [
   },
   {
     id: "church_quill_heresy", char: "alchemist",
-    text: "The Church has ruled alchemy a heresy, on the grounds that only the Flame may change one thing into another. Quill has a rebuttal. It is in a jar. It is ticking.",
+    text: "The Church has ruled alchemy a heresy, on the grounds that only the Flame may change one thing into another. Quill has a rebuttal. The rebuttal is in a jar. The jar is ticking.",
     left: { label: "Jar in the river.", fx: { faith: 10, gold: -5 } },
     right: { label: "Send the jar to Osric.", fx: { faith: -20 }, random: [
       { chance: 0.6, fx: { people: 10 } },
@@ -493,7 +493,7 @@ export default [
   },
   {
     id: "church_quill_holy", char: "alchemist",
-    text: "Quill has distilled holy oil down to what he calls its essence. It is a thimbleful. It has eaten through the thimble, the table and most of the floor. He would like to try it on the Flame.",
+    text: "Quill has distilled holy oil down to what he calls its essence. A thimbleful. It has eaten through the thimble, the table and most of the floor. He would like to try it on the Flame.",
     left: { label: "Absolutely not.", fx: { faith: 5, gold: -5 } },
     right: { label: "Try it.", fx: { faith: -15 }, random: [
       { chance: 0.6, fx: { people: 10 } },
@@ -620,7 +620,7 @@ export default [
     id: "church_elf_scrolls", char: "elf_scholar",
     text: "An elven scholar asked to copy the Church's founding scrolls. Osric refused. She has now offered to correct them instead, as she was present for most of it.",
     left: { label: "Let her correct them.", fx: { faith: -20, people: 5 } },
-    right: { label: "Nobody corrects the scrolls.", fx: { faith: 10, gold: 5 } },
+    right: { label: "The scrolls stand as written.", fx: { faith: 10, gold: 5 } },
   },
   {
     id: "church_half_elf_law", char: "half_elf",

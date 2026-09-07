@@ -8,7 +8,7 @@ export default [
   // ---------- everyday: the Scar ----------
   {
     id: "orc_tax_goats", char: "orc_warchief", weight: 2, when: G,
-    text: "Your tax man came to the Scar. He counted our goats. We counted him. He is fine. He is not coming back.",
+    text: "Your tax man came to the Scar. He counted our goats. We counted him. He's fine. He's not coming back.",
     left: { label: "Send another.", fx: { gold: 20, army: 5, people: -5 } },
     right: { label: "Keep the goats.", fx: { gold: -5, people: 5 } },
   },
@@ -50,7 +50,7 @@ export default [
   },
   {
     id: "orc_ward_1", char: "orc_warchief", once: true, when: G,
-    text: "My son wants to see a city. He is fourteen and stupid. Keep him a year. Feed him. Do not let him near your daughter or your wine.",
+    text: "My son wants to see a city. Fourteen and stupid. Keep him a year. Feed him. Do not let him near your daughter or your wine.",
     left: { label: "Send him.", fx: { people: -5 }, set: ["orc_ward"], next: { id: "orc_ward_2", delay: 2 } },
     right: { label: "Cities are bad for boys.", fx: { army: 5, gold: 5 } },
   },
@@ -143,13 +143,13 @@ export default [
   },
   {
     id: "orc_knives", char: "peasant", weight: 2,
-    text: "The orc traders sell better knives than the smithy, and cheaper. Smithy's furious. My wife's delighted. I'd like a decision I can blame on you.",
+    text: "The orc traders sell better knives than the smithy, and cheaper. Smithy's furious. My wife's delighted. Give me a decision I can blame on you.",
     left: { label: "Ban orc knives.", fx: { people: -5, gold: 10 } },
     right: { label: "Let them sell.", fx: { people: 10, gold: -5 }, set: ["orc_trade"] },
   },
   {
     id: "orc_kneel", char: "orc_warchief", weight: 1, when: G,
-    text: "Your priests say we should kneel. Orcs do not kneel. Our knees do not do that. It is a matter of bone. Tell your priests.",
+    text: "Your priests say we should kneel. Orcs do not kneel. Our knees do not do that. Bone, not pride. Tell your priests.",
     left: { label: "They don't have to.", fx: { faith: -10, army: 5 } },
     right: { label: "Everyone kneels.", fx: { faith: 15 }, random: [
       { chance: 0.7, fx: { people: -5 } },
@@ -158,7 +158,7 @@ export default [
   },
   {
     id: "orc_dead_grandfather", char: "orc_shaman", weight: 0.8,
-    text: "Your dead grandfather is under the palace. Not his body. Him. He is loud. He is asking for you. I would not go, but I am not a king.",
+    text: "Your dead grandfather is under the palace. Not his body. Him. Loud, and asking for you by name. I would not go, but I am not a king.",
     left: { label: "Go down.", fx: { faith: -10 }, random: [
       { chance: 0.6, fx: { army: 10, people: 5, gold: 10 } },
       { chance: 0.4, die: "buried_alive" },
@@ -167,19 +167,19 @@ export default [
   },
   {
     id: "orc_horse_killing", char: "orc_warchief", weight: 1, when: G,
-    text: "A man of yours killed a rider of mine over a horse. The horse was the rider's. Under our law you owe me a man. Send him. Or send a better horse.",
+    text: "A man of yours killed a rider of mine over a horse. The horse was the rider's. Under our law you owe me a man. Send him, or send a horse better than the one he died for.",
     left: { label: "Send the man.", fx: { people: -15, army: 5 } },
     right: { label: "Send a horse.", fx: { gold: -5, people: 5 } },
   },
   {
     id: "orc_fence_builder", char: "peasant", weight: 2,
-    text: "There's an orc in the village. Just one. He builds things. Fences, mostly. Nobody asked him. Nobody's stopped him. It's a very good fence.",
+    text: "There's an orc in the village. Just one. He builds things. Fences, mostly. No one hired him. No one's stopped him. It's a very good fence.",
     left: { label: "Leave him.", fx: { people: 10 } },
     right: { label: "Send him home.", fx: { people: -5, army: 5 } },
   },
   {
     id: "orc_jester", char: "jester", weight: 1,
-    text: "The orcs sent a jester, Majesty. He told one joke. Nobody laughed. He hit the Chancellor. Everybody laughed. I'd like to discuss my terms.",
+    text: "The orcs sent a jester, Majesty. He told one joke. Silence. He hit the Chancellor. Everybody laughed. I'd like to discuss my terms.",
     left: { label: "Hire the orc.", fx: { people: 15, gold: -5 } },
     right: { label: "Keep Pib.", fx: { people: -5, gold: 5 } },
   },
@@ -232,7 +232,7 @@ export default [
   },
   {
     id: "orc_grukhar_dies", char: "orc_envoy", once: true, weight: 0.5, when: { minYear: 30, notFlags: ["orc_grukhar_dead"] },
-    text: "My father is dead. Not a duel. His heart. He would have hated that. I lead the Ashfang now. Everything you agreed with him, you agree with me. Or we find out what happens.",
+    text: "My father is dead. Not a duel. His heart. He would have hated that. I lead the Ashfang now. Everything you agreed with him, you agree with me, or we find out what happens.",
     left: { label: "I agree with you.", fx: { army: -5, people: 5 }, set: ["orc_grukhar_dead"] },
     right: { label: "We'll find out.", fx: { army: 10, people: -5 }, set: ["orc_grukhar_dead", "orc_grudge"] },
   },
@@ -253,7 +253,7 @@ export default [
   },
   {
     id: "orc_death_seen", char: "orc_shaman", once: true, weight: 0.5,
-    text: "I saw how you die. I will not tell you. Nobody should carry that. But I would not eat at the dark of the year, and I would not stand under anything heavy.",
+    text: "I saw how you die. I will not tell you. That is too heavy for one man. But I would not eat at the dark of the year, and I would not stand under anything heavy.",
     left: { label: "Tell me.", fx: { faith: -10, gold: -10 }, set: ["orc_death_told"] },
     right: { label: "Keep it.", fx: { faith: 5, people: -3 } },
   },
@@ -265,7 +265,7 @@ export default [
   },
   {
     id: "orc_luck_stone", char: "orc_warchief", once: true, weight: 0.5, when: { flags: ["orc_respect"], notFlags: ["orc_grukhar_dead"] },
-    text: "My daughter is cleverer than me. My son is stronger. Neither is as lucky. Luck is the only thing that kept me alive. This is my luck. It is a stone. Do not lose it.",
+    text: "My daughter is cleverer than me. My son is stronger. Neither is as lucky. Luck is the only thing that kept me alive. This is my luck. A stone. Do not lose it.",
     left: { label: "Keep it close.", fx: { people: 5, faith: -5 }, set: ["orc_luck_stone"] },
     right: { label: "I have enough stones.", fx: { army: -10 } },
   },
@@ -279,7 +279,7 @@ export default [
   // ---------- chain: the blood oath ----------
   {
     id: "orc_oath_1", char: "orc_warchief", once: true, when: { minReign: 3, notFlags: ["orc_blood_oath", "orc_grudge", "orc_grukhar_dead"] },
-    text: "You kept your word about the cattle. Three times. Nobody keeps their word three times. Come to the Scar. Bring a knife. Bring no priests.",
+    text: "You kept your word about the cattle. Three times. Three times is not luck. Come to the Scar. Bring a knife. Bring no priests.",
     left: { label: "Go.", fx: { faith: -5 }, next: { id: "orc_oath_2", delay: 0 } },
     right: { label: "Kings don't cross the Scar.", fx: { army: 5, faith: 5, people: -3 } },
   },
@@ -329,19 +329,19 @@ export default [
   },
   {
     id: "orc_duel_won", char: "orc_warchief", chainOnly: true,
-    text: "His arm is in a sling. He is grinning. \"Nobody has cut me in twenty years. My daughter is angry. My riders are impressed. Eat with us. You have earned bad meat.\"",
+    text: "His arm is in a sling. He is grinning. \"Twenty years since anyone cut me. My daughter is angry. My riders are impressed. Eat with us. You have earned bad meat.\"",
     left: { label: "Eat.", fx: { people: 5, gold: 5, faith: -5 }, unset: ["orc_grudge"] },
     right: { label: "Go home and bleed.", fx: { army: 5, people: -3 } },
   },
   {
     id: "orc_duel_champion", char: "knight", chainOnly: true,
-    text: "Sir Gavriel lost an ear and won the fight. Grukhar shook his hand, then turned his back on you and walked off. The clans did the same. Nobody has ever heard that many orcs be quiet.",
+    text: "Sir Gavriel lost an ear and won the fight. Grukhar shook his hand, then turned his back on you and walked off. The clans did the same. Three thousand orcs, and not a sound but boots.",
     left: { label: "Reward Gavriel.", fx: { gold: -10, army: 5 } },
     right: { label: "A win is a win.", fx: { people: -10, army: -5 }, set: ["orc_grudge"] },
   },
   {
     id: "orc_duel_coward", char: "orc_envoy", chainOnly: true,
-    text: "You did not come. My father waited a day, then went home and sharpened things. I can fix this. It costs. Or you can wait for him to fix it. That costs more.",
+    text: "You did not come. My father waited a day, then went home and sharpened things. I can fix this. It costs. Waiting for him to fix it costs more.",
     left: { label: "Pay.", fx: { gold: -15 }, unset: ["orc_coward"] },
     right: { label: "Let him come.", fx: { army: -10, people: -5 }, set: ["orc_grudge"], next: { id: "orc_raid_3", delay: 2 } },
   },
@@ -361,7 +361,7 @@ export default [
   },
   {
     id: "orc_merc_3", char: "orc_mercenary", chainOnly: true,
-    text: "Spring came. We didn't go. Nobody quite told us to. Your Marshal tried, and Ugroth laughed at him, and now the Marshal doesn't come to the barracks.",
+    text: "Spring came. We didn't go. The order never quite arrived. Your Marshal tried, and Ugroth laughed at him, and now the Marshal doesn't come to the barracks.",
     left: { label: "Pay them off.", fx: { gold: -20, army: -10 }, unset: ["orc_merc_hired"] },
     right: { label: "Fine. Stay.", fx: { army: 10, people: -10 }, next: { id: "orc_merc_4", delay: 3 } },
   },
@@ -399,7 +399,7 @@ export default [
   },
   {
     id: "orc_ref_3", char: "orc_envoy", chainOnly: true,
-    text: "Your refugees. Mine. They've built a village. They call it Grukhar's Debt. They want to pay your tax, which nobody has ever wanted. Take it, or they'll be insulted.",
+    text: "Your refugees. Mine. They've built a village. They call it Grukhar's Debt. They want to pay your tax. In the history of your line, that is a first. Take it, or they'll be insulted.",
     left: { label: "Take the tax.", fx: { gold: 20, people: 5, faith: -5 }, next: { id: "orc_ref_4", delay: 2 } },
     right: { label: "They owe nothing.", fx: { people: -5, army: 5 }, set: ["orc_goodwill"], next: { id: "orc_ref_4", delay: 2 } },
   },
@@ -469,7 +469,7 @@ export default [
   },
   {
     id: "orc_vis_3", char: "orc_shaman", chainOnly: true,
-    text: "I asked the ancestors. They laughed. They only laugh about kings. Third dream: your hall, full of my people, eating. Nobody dead. That is the strange one.",
+    text: "I asked the ancestors. They laughed. They only laugh about kings. Third dream: your hall, full of my people, eating. Everyone alive. That is the strange one.",
     left: { label: "Feed them, then.", fx: { gold: -10, people: -10, army: 5 }, set: ["orc_goodwill"], next: { id: "orc_vis_4", delay: 3 } },
     right: { label: "Enough dreams.", fx: { faith: 5 } },
   },
@@ -606,7 +606,7 @@ export default [
   },
   {
     id: "orc_trade_3", char: "peasant", chainOnly: true,
-    text: "The orc cheese, Sire. Everyone's eating it. Nobody knows what it's made from. Three people have asked. The orcs just smile. It's very good cheese.",
+    text: "The orc cheese, Sire. Everyone's eating it. What it's made from is a mystery. Three people have asked. The orcs just smile. It's very good cheese.",
     left: { label: "Ask what's in it.", fx: {}, random: [
       { chance: 0.7, fx: { people: 5 } },
       { chance: 0.3, fx: { people: -10, faith: -5 } },

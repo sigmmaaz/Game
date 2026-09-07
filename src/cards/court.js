@@ -27,9 +27,9 @@ export default [
   },
   {
     id: "court_chancellor_debt_2", char: "chancellor", chainOnly: true,
-    text: "The dwarves have sent a clerk. Only a clerk. He's been standing in the courtyard for six days reading the contract aloud. The guards have started nodding along.",
-    left: { label: "Pay him.", fx: { gold: -20 } },
-    right: { label: "Remove him.", fx: { army: 5 }, random: [
+    text: "The dwarves have sent a bill. Only a bill. It arrived on a cart, in eleven volumes, and the carter wants paying too. Volume one is the interest. Volume two is the interest on the carter.",
+    left: { label: "Pay it.", fx: { gold: -20 } },
+    right: { label: "Send the cart back.", fx: { army: 5 }, random: [
       { chance: 0.6, fx: { people: -10 } },
       { chance: 0.4, die: "dwarven_contract" },
     ] },
@@ -53,7 +53,7 @@ export default [
   // ---------- the Treasurer ----------
   {
     id: "court_treasurer_mint_1", char: "treasurer", when: { notEffects: ["mint"] },
-    text: "Mistress Penn sets a coin on the table. Then a slightly smaller coin. 'Same face. Same king. Less silver. Nobody looks at a king's face that closely.'",
+    text: "Mistress Penn sets a coin on the table. Then a slightly smaller coin. 'Same face. Same king. Less silver. Who studies a king's face that closely? Bakers, possibly. We'll see.'",
     left: { label: "Do it.", fx: { gold: 15 }, effect: "mint", next: { id: "court_treasurer_mint_2", delay: 3 } },
     right: { label: "They look at mine.", fx: { faith: 5, gold: -5 } },
   },
@@ -65,7 +65,7 @@ export default [
   },
   {
     id: "court_treasurer_geese", char: "treasurer",
-    text: "A tax on geese. Hear me out. Everyone has a goose. Nobody loves a goose. A copper a goose and the treasury eats for a year.",
+    text: "A tax on geese. Hear me out. Everyone has a goose. No one has ever wept over a goose. A copper a goose and the treasury eats for a year.",
     left: { label: "Tax the geese.", fx: { gold: 20, people: -10 }, set: ["court_goose_tax"] },
     right: { label: "Leave the geese.", fx: { people: 5 } },
   },
@@ -165,7 +165,7 @@ export default [
   },
   {
     id: "court_spy_report", char: "spymaster", when: { effects: ["spy_network"] }, weight: 2,
-    text: "'The baker on Coin Street calls you the Goose King, on account of the tax. It's caught on. There's a song.'",
+    text: "'The baker on Coin Street calls you the Goose King, on account of the tax. It's caught on. Someone has set it to music.'",
     left: { label: "Hang the baker.", fx: { people: -15, army: 5 } },
     right: { label: "Is it a good song?", fx: { people: 5 } },
   },
@@ -189,7 +189,7 @@ export default [
   },
   {
     id: "court_spy_face", char: "spymaster", once: true, weight: 0.5,
-    text: "The curtain moves. For the first time a hand comes through. A woman's hand, old, ink on the fingers. 'You may look. Once. Nobody who has looked has told anyone.'",
+    text: "The curtain moves. For the first time a hand comes through. A woman's hand, old, ink on the fingers. 'You may look. Once. Those who have looked have kept it to themselves. All of them.'",
     left: { label: "Look.", fx: { faith: -5 }, random: [
       { chance: 0.7, fx: { army: 5 }, set: ["court_saw_whisperer"] },
       { chance: 0.3, die: "poison" },
@@ -206,8 +206,8 @@ export default [
   },
   {
     id: "court_steward_roof", char: "steward",
-    text: "'The roof over the great hall leaks. Onto the throne. Specifically. I've moved the throne twice. The leak follows it.'",
-    left: { label: "Fix the roof.", fx: { gold: -5, people: 5 } },
+    text: "'The great hall chimney has stopped drawing. The smoke comes out into the hall and goes, specifically, to you. I have moved the throne twice. The smoke has found it both times.'",
+    left: { label: "Fix the chimney.", fx: { gold: -5, people: 5 } },
     right: { label: "Move the throne again.", fx: { faith: -5, people: -5 } },
   },
   {
@@ -232,7 +232,7 @@ export default [
   },
   {
     id: "court_jester_1", char: "jester",
-    text: "Pib does a handstand, falls over, and stays down. 'That one's called The King. Nobody laughed. That's also The King.'",
+    text: "Pib does a handstand, falls over, and stays down. 'That one's called The King.' The hall is silent. 'That's also The King.'",
     left: { label: "Get up.", fx: { people: 3, army: -3 } },
     right: { label: "Sit with me a while.", fx: { people: 3 }, set: ["court_pib_close"], next: { id: "court_jester_2", delay: 2 } },
   },
@@ -409,7 +409,7 @@ export default [
   },
   {
     id: "court_arch_granary_2", char: "architect", chainOnly: true,
-    text: "'Halfway. The foundations struck a cellar. Old. There are jars in it, sealed, and they're humming. I'd like to keep building over them. Quickly.'",
+    text: "'Halfway. The foundations struck a cellar. Old. There are jars in it, sealed, and they're humming. My preference is to keep building over them. Quickly.'",
     left: { label: "Build over them.", fx: { gold: -10 }, next: { id: "court_arch_granary_3", delay: 2 } },
     right: { label: "Open a jar.", fx: { faith: -10 }, random: [
       { chance: 0.6, fx: { gold: 15 }, next: { id: "court_arch_granary_3", delay: 2 } },
@@ -418,7 +418,7 @@ export default [
   },
   {
     id: "court_arch_granary_3", char: "architect", chainOnly: true,
-    text: "'Finished. Rat-proof, damp-proof, and I've had a priest bless the cellar, which he did from outside. The first grain goes in tomorrow. I'd like paying before it does.'",
+    text: "'Finished. Rat-proof, damp-proof, and I've had a priest bless the cellar, which he did from outside. The first grain goes in tomorrow. My fee should go in before it.'",
     left: { label: "Pay him.", fx: { gold: -10, people: 10 }, effect: "granary" },
     right: { label: "Half now.", fx: { gold: -5, people: 5, army: -3 }, effect: "granary" },
   },
@@ -609,7 +609,7 @@ export default [
   },
   {
     id: "court_queen_affair", char: "queen", when: { effects: ["married"] },
-    text: "'The Whisperer has told you I'm sleeping with Sir Gavriel. I'm not. Gavriel is the only man at court who hasn't tried. I'd like to know what it costs to replace the Whisperer.'",
+    text: "'The Whisperer has told you I'm sleeping with Sir Gavriel. I'm not. Gavriel is the only man at court who hasn't tried. What does it cost to replace the Whisperer?'",
     left: { label: "I believe you.", fx: { people: 5, army: 5, gold: -5 } },
     right: { label: "Gavriel goes to the border.", fx: { army: -10, faith: 5 } },
   },
@@ -632,7 +632,7 @@ export default [
   // ---------- the Prince ----------
   {
     id: "court_prince_sword", char: "prince", when: { flags: ["has_prince"] },
-    text: "Your son has hit the Chancellor with a wooden sword. The Chancellor says it didn't hurt. There's a visible dent. 'He'll make a fine king,' he says, through his teeth.",
+    text: "Your son has hit the Chancellor with a wooden sword. The Chancellor says it didn't hurt. The dent says otherwise. 'He'll make a fine king,' he says, through his teeth.",
     left: { label: "Take the sword.", fx: { people: -3, army: -5 } },
     right: { label: "Give him a real one.", fx: { army: 10, gold: -5 }, set: ["court_prince_martial"] },
   },
@@ -676,7 +676,7 @@ export default [
   },
   {
     id: "court_princess_treasury", char: "princess", when: { flags: ["court_has_princess"], minReign: 12 },
-    text: "The princess has run the treasury for a year. Mistress Penn allowed it because nobody told her not to. Revenue is up a fifth. Penn wants to know if she's sacked.",
+    text: "The princess has run the treasury for a year. Mistress Penn allowed it because the order to stop never came. Revenue is up a fifth. Penn wants to know if she's sacked.",
     left: { label: "Penn stays. She rules it.", fx: { gold: 20, faith: -5 }, set: ["court_princess_treasury"] },
     right: { label: "Back to embroidery.", fx: { gold: -10, people: -5 } },
   },

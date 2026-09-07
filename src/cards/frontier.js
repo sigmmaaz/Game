@@ -28,13 +28,13 @@ export default [
   },
   {
     id: "fr_threeways_5", char: "elf_ranger", chainOnly: true,
-    text: "A ranger with a Threeways market-token on a cord. \"It works. Nobody planned it, which is why. A dwarf owes me a drink and a human owes me a boot. Whatever you're about to do to it, do less.\"",
+    text: "A ranger with a Threeways market-token on a cord. \"It works. It wasn't planned, which is why. A dwarf owes me a drink and a human owes me a boot. Whatever you're about to do to it, do less.\"",
     left: { label: "Do less.", fx: { people: 10, gold: -5 }, set: ["fr_tw_free"] },
     right: { label: "Do more.", fx: { gold: 10, people: -10 }, next: { id: "fr_threeways_6", delay: 1 } },
   },
   {
     id: "fr_threeways_6", char: "messenger", chainOnly: true,
-    text: "Threeways burned, Sire. Started in the eel stall, ended at the granary. Elves blame dwarves, dwarves blame orcs, orcs blame your garrison, the eel woman blames everyone. Nobody's wrong.",
+    text: "Threeways burned, Sire. Started in the eel stall, ended at the granary. Elves blame dwarves, dwarves blame orcs, orcs blame your garrison, the eel woman blames everyone. Every one of them has a point.",
     left: { label: "Rebuild it. All of us.", fx: { gold: -15, people: 10 }, set: ["fr_tw_rebuilt"] },
     right: { label: "Let the ash settle.", fx: { gold: 5, people: -15, army: -5 } },
   },
@@ -75,7 +75,7 @@ export default [
   },
   {
     id: "fr_marriage_4", char: "peasant", chainOnly: true,
-    text: "Tam Wickes, older. \"She writes. Ruk built her a house with a door you can stand up in. There's a grandchild. Green as a bean. I want a pass north to see him and the border man says no.\"",
+    text: "Tam Wickes, older. \"She writes. Ruk built her a house with a door you can stand up in. I've a grandson. Green as a bean. I want a pass north to see him and the border man says no.\"",
     left: { label: "Give him a pass.", fx: { people: 5, army: -5 } },
     right: { label: "The border is closed.", fx: { people: -10, faith: 5 } },
   },
@@ -115,7 +115,7 @@ export default [
   },
   {
     id: "fr_river_2", char: "elf_ranger", chainOnly: true,
-    text: "The ranger doesn't sit. \"The Hollow Grove is where we put our dead. Standing, in the trees. Your dwarf wants forty feet of water over them. Say no. Or go and say it to them.\"",
+    text: "The ranger doesn't sit. \"The Hollow Grove is where we put our dead. Standing, in the trees. Your dwarf wants forty feet of water over them. Say no, or come and say yes to their faces.\"",
     left: { label: "The dam stands.", fx: { gold: 15, people: 5 }, set: ["elf_grudge"], random: [
       { chance: 0.7, fx: { army: -5 }, next: { id: "fr_river_4", delay: 3 } },
       { chance: 0.3, die: "elf_arrow" },
@@ -208,9 +208,9 @@ export default [
   },
   {
     id: "fr_goblin_3", char: "goblin", chainOnly: true,
-    text: "Nizzik, smiling again. \"No hard feelings. I've sold the story to the halflings, the dwarves and the Scar. Nobody comes to Fallow Cross market now. It was a nice market. Anyway. Prices are up.\"",
+    text: "Nizzik, smiling again. \"No hard feelings. I've sold the story to the halflings, the dwarves and the Scar. Fallow Cross market is three stalls and a dog now. Nice market, it was. Prices are up.\"",
     left: { label: "How much to shut up?", fx: { gold: -15, people: 5 } },
-    right: { label: "Nobody listens to goblins.", fx: { gold: -10, people: -10 } },
+    right: { label: "Who listens to goblins?", fx: { gold: -10, people: -10 } },
   },
 
   // ---------- barges ----------
@@ -231,7 +231,7 @@ export default [
   },
   {
     id: "fr_barge_troll", char: "troll", weight: 0.7,
-    text: "The Kingsbridge troll. \"Halfling barges go under my bridge. Under is still my bridge. I want a barrel a barge. The mayor says talk to you. So. Talk. Or come to the bridge and we'll talk there.\"",
+    text: "The Kingsbridge troll. \"Halfling barges go under my bridge. Under is still my bridge. I want a barrel a barge. The mayor says talk to you. So. Talk. Otherwise I come to the palace and we talk here.\"",
     left: { label: "A barrel a barge.", fx: { people: -5, gold: -5 } },
     right: { label: "Nothing goes under free.", fx: { army: 5 }, random: [
       { chance: 0.7, fx: { gold: 5 } },
@@ -335,7 +335,7 @@ export default [
   },
   {
     id: "fr_census_2", char: "flamekeeper", chainOnly: true,
-    text: "An Iron Quarter smith, apron on. \"Not a citizen, your census says. Fair. Then no tax, no horseshoes, and I'm taking my anvil. It's in your barracks.\"",
+    text: "Osric, with the census under his arm. \"Anyone who pays is a citizen. So an orc tithes and then sits in a pew, and a dwarf tithes and asks why the sermon is about fire. Which pews, Majesty?\"",
     left: { label: "They paid. Give them a pew.", fx: { faith: -15, people: 10, gold: 5 } },
     right: { label: "Pews are for humans.", fx: { faith: 10, gold: -10 } },
   },
@@ -361,7 +361,7 @@ export default [
   },
   {
     id: "fr_regiment_3", char: "knight", chainOnly: true,
-    text: "Gavriel, arm in a sling. \"Kethran raiders at the coast. My company held them. We lost the elf. The orcs want to bury her their way, the dwarves theirs, and nobody knows hers. Choose one.\"",
+    text: "Gavriel, arm in a sling. \"Kethran raiders at the coast. My company held them. We lost the elf. The orcs want to bury her their way, the dwarves theirs, and she never said what hers was. Choose one.\"",
     left: { label: "Orc way. Face down.", fx: { faith: -10, army: 5 } },
     right: { label: "Send her home to Greenreach.", fx: { army: -5, faith: 5, gold: -5 }, set: ["fr_elf_returned"] },
   },
@@ -369,7 +369,7 @@ export default [
   // ---------- kegs and turnips ----------
   {
     id: "fr_smuggle_1", char: "spymaster", once: true,
-    text: "The Whisperer, behind the curtain. \"Dwarven powder is coming over the Iron Teeth in beer kegs. Enough to remove a palace. The buyer's in the city. I can name him, for a price. Or name someone.\"",
+    text: "The Whisperer, behind the curtain. \"Dwarven powder is coming over the Iron Teeth in beer kegs. Enough to remove a palace. The buyer's here. I can name him, for a price. I can also name someone.\"",
     left: { label: "Name him.", fx: { gold: -10 }, next: { id: "fr_smuggle_2", delay: 1 } },
     right: { label: "Name someone.", fx: { people: -10, army: 5, gold: 5 } },
   },
@@ -392,7 +392,7 @@ export default [
   // ---------- the conference ----------
   {
     id: "fr_peace_1", char: "chancellor", once: true, weight: 0.5, when: { minReign: 4 },
-    text: "Vane. \"A peace conference. All peoples, one table, at Threeways. Nobody's tried since your great-grandfather's, which ended in what our histories call a misunderstanding and the elves call Tuesday.\"",
+    text: "Vane. \"A peace conference. All peoples, one table, at Threeways. The last attempt was your great-grandfather's, which ended in what our histories call a misunderstanding and the elves call Tuesday.\"",
     left: { label: "Convene it.", fx: { gold: -10 }, next: { id: "fr_peace_2", delay: 1 } },
     right: { label: "Peace by letter.", fx: { people: -5 } },
   },
@@ -404,7 +404,7 @@ export default [
   },
   {
     id: "fr_peace_3", char: "messenger", chainOnly: true,
-    text: "Third day, Sire. Nobody has died. Lord Cael has spoken once. Grukhar has eaten a chair. Thane Borri has drafted forty pages. The Lady's cup-bearer is asking which cup is yours.",
+    text: "Third day, Sire. No deaths yet. Lord Cael has spoken once. Grukhar has eaten a chair. Thane Borri has drafted forty pages. The Lady's cup-bearer is asking which cup is yours.",
     left: { label: "Drink with them.", fx: {}, random: [
       { chance: 0.35, fx: { people: 15, army: 5 }, set: ["elf_alliance", "fr_peace_signed"] },
       { chance: 0.35, fx: { army: 10, people: 5 }, set: ["orc_blood_oath", "fr_peace_signed"] },
@@ -437,7 +437,7 @@ export default [
   },
   {
     id: "fr_fort_3", char: "captain", chainOnly: true,
-    text: "Hesk, at the fort. \"Your walls are good. Ours would be better. A season and I'll put a second wall inside the first, and a third nobody finds. Price is in the drawer. Don't open it yet.\"",
+    text: "Rook, back from the Scar. \"The wooden fort's up. An orc rode out, looked at it, and nailed a bill to the gate for the timber. Says it's his forest. He also fixed the gate hinge while he was there.\"",
     left: { label: "Pay the orc.", fx: { gold: -5, people: 5 } },
     right: { label: "Burn the bill.", fx: { army: 5 }, set: ["orc_grudge"] },
   },
@@ -480,7 +480,7 @@ export default [
     id: "fr_licence", char: "goblin", weight: 2,
     text: "Nizzik. \"Border licence: sixty crowns a year for a goblin, six for a dwarf, nothing for an elf. Not complaining. I'm offering to buy the licence office. A hundred goblins through by spring, all paid.\"",
     left: { label: "Sell him the office.", fx: { gold: 25, people: -10 } },
-    right: { label: "Nobody buys a border.", fx: { gold: -5, people: 5 } },
+    right: { label: "A border isn't for sale.", fx: { gold: -5, people: 5 } },
   },
   {
     id: "fr_sera_wage", char: "half_elf", weight: 1.5,
@@ -490,7 +490,7 @@ export default [
   },
   {
     id: "fr_dwarf_refugees", char: "refugee", weight: 1.5,
-    text: "A dwarf woman with three children and no beard-clasp. \"The Deep Holds sealed a gallery. Ours. Nobody said why. Forty of us at your border. We can dig, smith and count. We can't go home.\"",
+    text: "A dwarf woman with three children and no beard-clasp. \"The Deep Holds sealed a gallery. Ours. No reason given, and dwarves give reasons for everything. Forty of us at your border. We can't go home.\"",
     left: { label: "Let them in.", fx: { people: -5, gold: 15 }, set: ["fr_dwarf_refugees"] },
     right: { label: "Send them back to the Holds.", fx: { people: 5, gold: -5, faith: -5 } },
   },
@@ -502,9 +502,9 @@ export default [
   },
   {
     id: "fr_salt", char: "peasant", weight: 2,
-    text: "Orc trader came through Sallow selling salt at half price. Everybody bought. Then the salt-tax man came, said orc salt's untaxed, and fined us for buying it. Tax the orc, not us. Or tax nobody.",
+    text: "Orc trader came through Sallow selling salt at half price. Everybody bought. Then the salt-tax man came, said orc salt's untaxed, and fined us for buying it. Tax the orc, not us. Or tax the sea.",
     left: { label: "Tax the orc.", fx: { gold: 15, people: -5 }, set: ["orc_grudge"] },
-    right: { label: "Tax nobody.", fx: { gold: -10, people: 10 } },
+    right: { label: "Tax the sea.", fx: { gold: -10, people: 10 } },
   },
   {
     id: "fr_rope", char: "merchant", weight: 1.5,
@@ -553,7 +553,7 @@ export default [
   },
   {
     id: "fr_chapels", char: "flamekeeper", weight: 1.5,
-    text: "Osric. \"The border chapels have started blessing orc marriages, dwarf contracts and elf... whatever elves do. The priests say it brings in coin. It does. I'd like it stopped, and I'd like the coin.\"",
+    text: "Osric. \"The border chapels have started blessing orc marriages, dwarf contracts and elf... whatever elves do. The priests say it brings in coin. It does. Stop the blessings. Send me the coin.\"",
     left: { label: "Stop it. He gets the coin.", fx: { faith: 10, people: -10, gold: -10 } },
     right: { label: "The chapels are doing fine.", fx: { faith: -15, gold: 15, people: 5 } },
   },
@@ -586,7 +586,7 @@ export default [
   },
   {
     id: "fr_three_necks", char: "executioner", weight: 1.5,
-    text: "The executioner, cap in hand. \"Border court sent me a goblin thief, a dwarf forger and an orc who hit a tax man. Three peoples wanting three bodies back. Or one rope, and let them argue.\"",
+    text: "The executioner, cap in hand. \"Border court sent me a goblin thief, a dwarf forger and an orc who hit a tax man. Three peoples want three bodies back. One rope would settle it; they can argue after.\"",
     left: { label: "Hang them all.", fx: { faith: 5, people: 5, army: 5 }, set: ["orc_grudge", "dwarf_grudge"] },
     right: { label: "Send them home to be judged.", fx: { people: -10, gold: -5 } },
   },
@@ -634,7 +634,7 @@ export default [
   },
   {
     id: "fr_queen_market", char: "queen", when: { effects: ["married"] }, weight: 1.5,
-    text: "The Queen. \"I went to Threeways in a plain cloak. An orc sold me a ring, a dwarf appraised it as glass, an elf said it was older than the dwarf. I liked it there. I'd like to go back. Without guards.\"",
+    text: "The Queen. \"I went to Threeways in a plain cloak. An orc sold me a ring, a dwarf appraised it as glass, an elf said it was older than the dwarf. I liked it there. I'm going back. Without guards.\"",
     left: { label: "Without the guards.", fx: { people: 10, army: -5 }, random: [
       { chance: 0.8, fx: {} },
       { chance: 0.2, fx: { people: -10, army: -10 } },

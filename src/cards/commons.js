@@ -61,7 +61,7 @@ export default [
   },
   {
     id: "com_peasant_harvest", char: "peasant", once: true, weight: 0.8,
-    text: "Cheddle again, Hob Tarrant. Just come to say the harvest's the best in forty years. Barns are full. Nobody's died. Thought you'd want to hear a good one for once. That's all.",
+    text: "Cheddle again, Hob Tarrant. Just come to say the harvest's the best in forty years. Barns are full. Not one funeral since Lady Day. Thought you'd want to hear a good one for once. That's all.",
     left: { label: "Tax the surplus.", fx: { gold: 25, people: -10 } },
     right: { label: "Let it stand.", fx: { people: 10 }, effect: "prosperity" },
   },
@@ -134,7 +134,7 @@ export default [
   },
   {
     id: "com_inn_curfew", char: "innkeeper",
-    text: "Bess. This curfew. Nobody out after dark. I sell beer. Beer is a night thing, Majesty. Nobody drinks at noon except the Chancellor, and he doesn't come to mine.",
+    text: "Bess. This curfew. Doors shut at dusk. I sell beer. Beer is a night thing, Majesty. The only man in this city who drinks at noon is the Chancellor, and he doesn't come to mine.",
     left: { label: "Lift the curfew.", fx: { people: 10, army: -8 } },
     right: { label: "Sell beer at noon.", fx: { people: -8, faith: 3, gold: 5 } },
   },
@@ -230,7 +230,7 @@ export default [
   },
   {
     id: "com_msg_landslide", char: "messenger",
-    text: "Half of Stoke Pallow slid into the valley in the night. Nobody hurt — it slid slowly, they walked alongside. But the village is now in Sir Pell's land, and he's charging them rent.",
+    text: "Half of Stoke Pallow slid into the valley in the night. All safe; it slid slowly, they walked alongside. But the village is now in Sir Pell's land, and he's charging them rent.",
     left: { label: "The village is theirs.", fx: { people: 10, army: -5 } },
     right: { label: "Land is land. Pay.", fx: { people: -12, gold: 10 } },
   },
@@ -355,7 +355,7 @@ export default [
   },
   {
     id: "com_gnome_4", char: "gnome", chainOnly: true,
-    text: "Tock, with a drawing. Wings. \"It flies. I've flown a goat off the clock tower and the goat is, with one exception, fine. It's built for a man your weight. I need someone brave, or someone your weight.\"",
+    text: "Tock, with a drawing. Wings. \"It flies. I flew a goat off the clock tower and the goat is, with one exception, fine. It's built for a man your weight. I need someone brave, or someone your weight.\"",
     left: { label: "Strap me in.", fx: { people: 10 }, random: [
       { chance: 0.5, fx: { people: 15, faith: -10 } },
       { chance: 0.5, die: "fell_from_tower" },
@@ -393,7 +393,7 @@ export default [
   },
   {
     id: "com_knight_3", char: "knight", chainOnly: true,
-    text: "Sir Gavriel. \"A fae lord has challenged me to single combat over the wolf. I'll fight him. Their rules say my liege stands as second, in the ring, unarmed. That's you. Wear something you don't mind losing.\"",
+    text: "Sir Gavriel. \"A fae lord has challenged me over the wolf. I'll fight him. Their rules say my liege stands as second, in the ring, unarmed. That's you. Wear something you don't mind losing.\"",
     left: { label: "Stand as second.", fx: { army: 15, faith: -5 }, random: [
       { chance: 0.7, fx: { people: 10 } },
       { chance: 0.3, die: "fae_bargain" },
@@ -469,19 +469,19 @@ export default [
   // ---------- Captain Sable ----------
   {
     id: "com_pirate_1", char: "pirate", once: true,
-    text: "Captain Sable, who was asked to leave her sword at the door and hasn't. \"Kethran grain ships. Fat, slow, badly guarded. A paper saying I'm yours, and the Crown gets a third. If it goes wrong, you never met me.\"",
+    text: "Captain Sable, asked to leave her sword at the door, hasn't. \"Kethran grain ships. Fat, slow, badly guarded. A paper saying I'm yours, and the Crown gets a third. If it goes wrong, you never met me.\"",
     left: { label: "Write the paper.", fx: { gold: 15, army: -5 }, set: ["com_sable_marque"], next: { id: "com_pirate_2", delay: 3 } },
     right: { label: "Hang her.", fx: { faith: 5, people: -5, gold: -3 } },
   },
   {
     id: "com_pirate_2", char: "pirate", chainOnly: true,
-    text: "Sable, with a chest. \"Your third. Also, I took a ship that turned out to be yours. Flying Kethran colors, which I'd call your captain's fault. I kept the cargo. I brought you the captain. He's furious.\"",
+    text: "Sable, with a chest. \"Your third. Also, I took a ship that turned out to be yours. Flying Kethran colors, which I'd call your captain's fault. I kept the cargo. I brought you the captain. He's livid.\"",
     left: { label: "Give the cargo back.", fx: { gold: -10, army: 8 }, next: { id: "com_pirate_3", delay: 4 } },
     right: { label: "Keep it. Hang the captain.", fx: { gold: 20, army: -12 }, set: ["com_kethra_tension"], next: { id: "com_pirate_3", delay: 3 } },
   },
   {
     id: "com_pirate_3", char: "pirate", chainOnly: true,
-    text: "Sable, in a hurry. \"Kethra's sent a fleet. For me, but they've got your paper. They'll hang me and call it your war. I can outrun them with you aboard — nobody fires on a king. Probably.\"",
+    text: "Sable, in a hurry. \"Kethra's sent a fleet. For me, but they've got your paper. They'll hang me and call it your war. I can outrun them with you aboard; they won't fire on a king. Probably.\"",
     left: { label: "Aboard.", fx: { army: -10 }, random: [
       { chance: 0.6, fx: { gold: 20, people: 10 } },
       { chance: 0.4, die: "lost_at_sea" },
@@ -490,15 +490,15 @@ export default [
   },
   {
     id: "com_pirate_raid", char: "pirate", when: { flags: ["com_sable_marque"] }, weight: 1.5,
-    text: "Sable. \"Slow year. Kethra's guarding its grain now. There's a fat Church barge on the Marl, though, carrying tithe upriver. Nobody would know. Well. You would.\"",
-    left: { label: "Nobody would know.", fx: { gold: 25, faith: -20 } },
+    text: "Sable. \"Slow year. Kethra's guarding its grain now. There's a fat Church barge on the Marl, though, carrying tithe upriver. Very quiet stretch of river. Well. You'd know.\"",
+    left: { label: "Quiet stretch. Take it.", fx: { gold: 25, faith: -20 } },
     right: { label: "Not the Church.", fx: { faith: 5, gold: -5 } },
   },
 
   // ---------- Marrow the slaver ----------
   {
     id: "com_slaver_1", char: "slaver", once: true,
-    text: "A man called Marrow, who smells of the coast. \"Labor, Majesty. Kethran prisoners, orc debtors, some nobody's asked about. Cheap. They'd build your walls in half the time and eat half the bread.\"",
+    text: "A man called Marrow, who smells of the coast. \"Labor, Majesty. Kethran prisoners, orc debtors, some with no one to ask after them. Cheap. They'd build your walls in half the time on half the bread.\"",
     left: { label: "Buy them.", fx: { gold: -10, army: 10, faith: -10, people: -10 }, set: ["com_slaver_bought"], next: { id: "com_slaver_2", delay: 3 } },
     right: { label: "Chain him. See how he likes it.", fx: { people: 10, faith: 8, army: -5 } },
   },
@@ -547,7 +547,7 @@ export default [
   // ---------- famine ----------
   {
     id: "com_famine_1", char: "peasant", when: { notEffects: ["famine"] }, once: true,
-    text: "Nan Cobb, of Marlow Bottom, with a hundred behind her. \"Rain since planting. The wheat's lying flat and black. There isn't a harvest, Lordship. There's a field. We've come for bread.\"",
+    text: "Nan Cobb, of Marlow Bottom, with a hundred behind her. \"Rain since planting. The wheat's lying flat and black. There isn't a harvest, Lordship. Just a field. We've come for bread.\"",
     left: { label: "Open the stores.", fx: { gold: -20, people: 10 }, effect: "famine", next: { id: "com_famine_2", delay: 1 } },
     right: { label: "Pray for a dry spell.", fx: { faith: 8, people: -15 }, effect: "famine", next: { id: "com_famine_2", delay: 1 } },
   },
@@ -582,7 +582,7 @@ export default [
   },
   {
     id: "com_bridge_2", char: "troll", chainOnly: true,
-    text: "A troll, comfortable under the Cheddle bridge. \"Nobody was using it right. Bridge needs a troll. I'm the troll. Penny a foot, two a cart. Or the king can walk through the river.\"",
+    text: "A troll, comfortable under the Cheddle bridge. \"Two villages, one bridge, and neither of you under it. Bridge needs a troll. I'm the troll. Penny a foot, two a cart, and the king wades.\"",
     left: { label: "Pay the troll.", fx: { gold: -10, people: 8 } },
     right: { label: "Walk through the river.", fx: { army: 5 }, random: [
       { chance: 0.7, fx: { people: -8 } },
@@ -601,7 +601,7 @@ export default [
     id: "com_mill_2", char: "flamekeeper", chainOnly: true,
     text: "The High Flamekeeper. \"The chapel is moved. The font is now dry. The miller grinds twice as fast and half the parish eats bread instead of fasting. I want him excommunicated. Him, or his wheel.\"",
     left: { label: "Excommunicate the wheel.", fx: { faith: 8, people: -5 } },
-    right: { label: "Nobody's excommunicated.", fx: { faith: -10, people: 8 } },
+    right: { label: "The wheel's forgiven. So's he.", fx: { faith: -10, people: 8 } },
   },
 
   // ---------- festivals & misc everyday ----------
