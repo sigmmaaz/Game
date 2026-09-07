@@ -4,12 +4,14 @@ import { Game, createRng } from "../src/engine.js";
 import cards from "../src/cards/index.js";
 
 const N = Number(process.argv[2] ?? 300);
+const RANDOM = process.argv.includes("--random");
 const rng = createRng(12345);
 const mem = { store: {}, getItem: (k) => mem.store[k] ?? null, setItem: (k, v) => (mem.store[k] = v), removeItem: (k) => delete mem.store[k] };
 const game = new Game(cards, { storage: mem, rng });
 
 // A slightly-sensible player: avoids the side whose preview would push a meter past the edge.
 function pick() {
+  if (RANDOM) return rng() < 0.5 ? "left" : "right";
   const s = game.reign.stats;
   const score = (side) => {
     const p = game.preview(side);

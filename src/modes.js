@@ -41,6 +41,7 @@ export function duelCard(game, mode, rng) {
 }
 
 export function duelChoose(game, mode, side, rng) {
+  if (!mode.tell) duelCard(game, mode, rng);
   const r = game.reign;
   const strike = side === "right" ? "high" : "low";
   // To hit high you strike where the high guard is open (they went low), and vice versa.
@@ -117,6 +118,7 @@ export function deepCard(game, mode, rng) {
 }
 
 export function deepChoose(game, mode, side, rng) {
+  if (!mode.room) deepCard(game, mode, rng);
   const r = game.reign;
   const res = { deltas: {}, death: null };
   const hit = (k, v) => { r.stats[k] += v; res.deltas[k] = (res.deltas[k] ?? 0) + v; };

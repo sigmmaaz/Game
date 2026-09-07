@@ -8,8 +8,10 @@ import commons from "./commons.js";
 import monsters from "./monsters.js";
 import war from "./war.js";
 import seasons from "./seasons.js";
+import city from "./city.js";
+import frontier from "./frontier.js";
 
 // Every card file in the game. New files must be added here and pass tools/validate.js.
-const files = [story, court, elves, orcs, dwarves, church, commons, monsters, war, seasons];
+const files = [story, court, elves, orcs, dwarves, church, commons, monsters, war, seasons, city, frontier];
 
 export default files.flat();
