@@ -6,19 +6,19 @@ export default [
     id: "elf_envoy_wardens", char: "elf_envoy", weight: 2,
     text: "Your wardens at Ashford shot at a hunting party of ours in the fog. They missed. Our people have already composed a song about the marksmanship.",
     left: { label: "Flog the wardens.", fx: { army: -10, people: -5 } },
-    right: { label: "The fog is ours too.", fx: { army: 10 }, set: ["elf_grudge"] },
+    right: { label: "The fog is ours too.", fx: { army: 10, gold: 10 }, set: ["elf_grudge"] },
   },
   {
     id: "elf_envoy_map", char: "elf_envoy", weight: 2,
     text: "Lord Cael unrolls a map older than your dynasty. On it the border is forty miles east of where you keep it. \"We thought you would like to see the original.\"",
-    left: { label: "Maps age.", fx: { army: 5, people: 5 }, set: ["elf_grudge"] },
+    left: { label: "Maps age.", fx: { army: 5, people: 5, gold: 10 }, set: ["elf_grudge"] },
     right: { label: "Move the boundary stones.", fx: { people: -15, gold: -5 }, set: ["elf_favor"] },
   },
   {
     id: "elf_envoy_stag", char: "elf_envoy",
     text: "The stag your huntsmen killed in the Thornwood was four hundred years old. It had a name. Lord Cael does not tell you what it was.",
     left: { label: "Reparations. For a deer.", fx: { gold: -10, people: -5 } },
-    right: { label: "It was a deer.", fx: { army: 5, people: 3 }, set: ["elf_grudge"] },
+    right: { label: "It was a deer.", fx: { army: 5, people: 3, gold: 5 }, set: ["elf_grudge"] },
   },
   {
     id: "elf_envoy_cup", char: "elf_envoy", once: true,
@@ -36,7 +36,7 @@ export default [
     id: "elf_envoy_tolls", char: "elf_envoy", weight: 2,
     text: "\"We have waited eleven years for an answer on the Thornwood tolls.\" Lord Cael says it the way one mentions rain. \"Eleven years is not long. We simply note it.\"",
     left: { label: "Abolish the tolls.", fx: { gold: -15, people: -5 }, set: ["elf_favor"] },
-    right: { label: "Note eleven more.", fx: { gold: 10 }, set: ["elf_grudge"] },
+    right: { label: "Note eleven more.", fx: { gold: 20 }, set: ["elf_grudge"] },
   },
   {
     id: "elf_envoy_sleepers", char: "elf_envoy",
@@ -57,7 +57,7 @@ export default [
     id: "elf_envoy_refugees", char: "elf_envoy",
     text: "There are humans camped at our border. Yours. They say your tax collectors are worse than our wolves. We have wolves. We cannot confirm the comparison.",
     left: { label: "Bring them home. Lower the tax.", fx: { gold: -15, people: 10 } },
-    right: { label: "Keep them.", fx: { people: -10, army: 5 } },
+    right: { label: "Keep them.", fx: { people: -10, army: 5, gold: 10 } },
   },
   {
     id: "elf_envoy_missionaries", char: "elf_envoy",
@@ -68,7 +68,7 @@ export default [
   {
     id: "elf_envoy_aging", char: "elf_envoy", when: { effects: ["old_age"] }, oncePerReign: true,
     text: "Lord Cael studies your face with real interest. \"You are aging. It is remarkable, up close. The Lady asks whether you have thought about who we speak to next, and whether he will be worse.\"",
-    left: { label: "My son.", fx: { faith: 3, people: 3 } },
+    left: { label: "My son.", fx: { faith: 3, people: 3, gold: 5 } },
     right: { label: "Not your concern.", fx: { army: 5, faith: -3 } },
   },
   {
@@ -81,7 +81,7 @@ export default [
     id: "elf_envoy_loan_due", char: "elf_envoy", when: { flags: ["elf_debt"], minYear: 30 }, once: true, weight: 0.5,
     text: "\"Your loan is ninety years old today. I congratulate you on outliving the man who took it. The Thornwood is now ours. We have already moved in. You will not have noticed.\"",
     left: { label: "Fight for it.", fx: { army: 15 }, effect: "war", set: ["elf_at_war"], unset: ["elf_debt"], next: { id: "elf_war_2", delay: 1 } },
-    right: { label: "It was never really ours.", fx: { people: -15 }, unset: ["elf_debt"], set: ["elf_favor"] },
+    right: { label: "It was never really ours.", fx: { people: -15, gold: 10 }, unset: ["elf_debt"], set: ["elf_favor"] },
   },
   {
     id: "elf_envoy_shrine", char: "elf_envoy",
@@ -118,7 +118,7 @@ export default [
     text: "\"The Emperor of Kethra has asked the Greenreach for an alliance against you. The Lady has not answered him. She wished you to know she has not answered, and that she can count.\"",
     left: { label: "Pay for her silence.", fx: { gold: -20 }, set: ["elf_favor"] },
     right: { label: "Let her answer.", fx: { army: 5 }, random: [
-      { chance: 0.5, fx: { army: 5 } },
+      { chance: 0.5, fx: { army: 5, gold: 10 } },
       { chance: 0.5, fx: { army: -15, gold: -10 } },
     ] },
   },
@@ -128,21 +128,12 @@ export default [
     left: { label: "Ask what it would take.", fx: { gold: -15, people: -5 }, unset: ["elf_grudge"] },
     right: { label: "Water's cheaper.", fx: { gold: 5, army: 3 } },
   },
-  {
-    id: "elf_envoy_mistakes", char: "elf_envoy",
-    text: "Lord Cael has served four of your kings. \"Each of you makes the same eleven mistakes, in the same order. You are on the fourth. Would you like to hear the fifth?\"",
-    left: { label: "Yes.", fx: { faith: -5, gold: 5, army: 3 } },
-    right: { label: "I'll surprise you.", fx: { army: 5 }, random: [
-      { chance: 0.5, fx: { army: 5 } },
-      { chance: 0.5, fx: { army: 5, people: -10 } },
-    ] },
-  },
 
   // ---------- humans, about elves ----------
   {
     id: "elf_flamekeeper_expel", char: "flamekeeper", weight: 1.5,
     text: "The Flamekeeper wants the elf envoy gone. \"It does not age, Sire. It does not pray. It attended the founding of the Church and finds us charming. Charming.\"",
-    left: { label: "Expel Cael.", fx: { faith: 15, army: -5 }, set: ["elf_grudge"] },
+    left: { label: "Expel Cael.", fx: { faith: 15, army: -5, gold: 10 }, set: ["elf_grudge"] },
     right: { label: "He stays.", fx: { faith: -15, people: 3 } },
   },
   {
@@ -173,9 +164,9 @@ export default [
     id: "elf_treasurer_remembrance", char: "treasurer",
     text: "Mistress Penn has found a line in the ledger: \"To Greenreach, in remembrance, forty marks.\" Paid every year for two centuries. Nobody remembers what it remembers.",
     left: { label: "Keep paying.", fx: { gold: -10 } },
-    right: { label: "Stop paying.", fx: { gold: 10 }, random: [
-      { chance: 0.5, fx: { gold: 10 } },
-      { chance: 0.5, fx: { gold: 10, army: -10 }, set: ["elf_grudge"] },
+    right: { label: "Stop paying.", fx: { gold: 15 }, random: [
+      { chance: 0.5, fx: { gold: 15 } },
+      { chance: 0.5, fx: { gold: 15, army: -10 }, set: ["elf_grudge"] },
     ] },
   },
   {
@@ -191,12 +182,6 @@ export default [
     right: { label: "Send him home.", fx: { people: -5 }, set: ["elf_favor"] },
   },
   {
-    id: "elf_mother_neck", char: "mother",
-    text: "Your mother remembers Lord Cael from her own wedding. \"He looked exactly like that. He said I had a lovely long neck. I have thought about it for forty years.\"",
-    left: { label: "Ask him what he meant.", fx: { faith: -3, people: 3 } },
-    right: { label: "He's an elf, Mother.", fx: { people: 3, army: 3 } },
-  },
-  {
     id: "elf_jester_impression", char: "jester",
     text: "Pib did Lord Cael at the feast. Slow voice, long pauses. Cael watched the whole thing, then said \"Yes. Exactly like that,\" and Pib has not spoken since.",
     left: { label: "Give Pib the day off.", fx: { people: 5, gold: -3 } },
@@ -205,7 +190,7 @@ export default [
   {
     id: "elf_merchant_casks", char: "merchant",
     text: "Guildmaster Crane has three casks of elven summerwine, source unstated. He wants a royal monopoly on it. He also wants a royal pardon, unrelated, in advance.",
-    left: { label: "Monopoly and pardon.", fx: { gold: 15, faith: -5 }, set: ["elf_grudge"] },
+    left: { label: "Monopoly and pardon.", fx: { gold: 20, faith: -5 }, set: ["elf_grudge"] },
     right: { label: "Confiscate the casks.", fx: { gold: 5, people: 5, army: -5 } },
   },
 
@@ -214,21 +199,21 @@ export default [
     id: "elf_ranger_poachers", char: "elf_ranger", weight: 2,
     text: "\"Your poachers cross the Whitewater at night for the silver-hart. We do not object to hunting. We object to the leaving of bodies in our streams.\"",
     left: { label: "Hang the poachers.", fx: { people: -10, faith: 5 } },
-    right: { label: "The hart is free game.", fx: { people: 8 }, set: ["elf_grudge"] },
+    right: { label: "The hart is free game.", fx: { people: 8, gold: 10 }, set: ["elf_grudge"] },
   },
   {
     id: "elf_ranger_wolves", char: "elf_ranger",
     text: "\"A wolf pack is moving east out of the Greenreach. We are not driving it. We note only that it is moving toward your villages and away from ours.\"",
     left: { label: "Send hunters.", fx: { army: 5, gold: -10 } },
-    right: { label: "Wolves eat what they eat.", fx: { people: -15 } },
+    right: { label: "Wolves eat what they eat.", fx: { people: -15, gold: 5 } },
   },
   {
     id: "elf_ranger_heath", char: "elf_ranger",
     text: "Your charcoal burners lit the Ravensmoor heath. It has burned for two days. The ranger's cloak still smokes. She has not sat down.",
     left: { label: "Every man to the fire.", fx: { army: -10, gold: -10, people: 5 } },
-    right: { label: "Heath regrows.", fx: { people: -5 }, set: ["elf_grudge"], random: [
-      { chance: 0.7, fx: { people: -5 } },
-      { chance: 0.3, fx: { people: -15 } },
+    right: { label: "Heath regrows.", fx: { people: -5, gold: 10 }, set: ["elf_grudge"], random: [
+      { chance: 0.7, fx: { people: -5, gold: 10 } },
+      { chance: 0.3, fx: { people: -15, gold: 10 } },
     ] },
   },
   {
@@ -242,12 +227,6 @@ export default [
     text: "A ranger has your daughter's pony. And your daughter. \"She crossed into the Greenreach after a fox. The fox is well. Please keep her on your side.\"",
     left: { label: "Reward her. Handsomely.", fx: { gold: -10, people: 5 } },
     right: { label: "Whip the groom.", fx: { people: -5, army: 3 } },
-  },
-  {
-    id: "elf_ranger_bandits", char: "elf_ranger",
-    text: "\"Bandits use your border woods and our shadow. We have killed eleven. The rest ran east and are yours. We are not pursuing. Pursuit is your habit, not ours.\"",
-    left: { label: "Send riders.", fx: { army: 5, gold: -5 } },
-    right: { label: "Let them run.", fx: { people: -10 } },
   },
   {
     id: "elf_ranger_herbs", char: "elf_ranger", when: { effects: ["plague"] },
@@ -267,14 +246,8 @@ export default [
   {
     id: "elf_ranger_collector", char: "elf_ranger",
     text: "A ranger pulled your tax collector out of the Whitewater. \"He was in the river because your farmers put him there. We returned him because he is yours. We do not want him.\"",
-    left: { label: "Hang the farmers.", fx: { faith: 5, people: -15, army: 5 } },
+    left: { label: "Hang the farmers.", fx: { faith: 5, people: -15, army: 5, gold: 10 } },
     right: { label: "Lower the tax.", fx: { gold: -15, people: 10 } },
-  },
-  {
-    id: "elf_ranger_toy_bow", char: "elf_ranger", when: { effects: ["heir"] },
-    text: "\"Your son shot a ranger's horse at Ashford. With a toy bow. The horse is offended, not hurt. The ranger asks that the boy be taught which direction the forest is.\"",
-    left: { label: "Beat the boy.", fx: { people: -5, army: 5 } },
-    right: { label: "Buy the horse an apple.", fx: { people: 5, gold: -3 } },
   },
   {
     id: "elf_ranger_favor_road", char: "elf_ranger", when: { flags: ["elf_favor"] },
@@ -306,7 +279,7 @@ export default [
     id: "elf_scholar_histories", char: "elf_scholar",
     text: "\"Your histories say your people took this land from nobody. Ours say otherwise, and were written at the time. I could correct yours in an afternoon.\"",
     left: { label: "Correct them.", fx: { faith: -10, people: -5 }, set: ["elf_favor"] },
-    right: { label: "Ours are fine.", fx: { faith: 5, army: 5 } },
+    right: { label: "Ours are fine.", fx: { faith: 5, army: 5, gold: 5 } },
   },
   {
     id: "elf_scholar_watch", char: "elf_scholar", when: { effects: ["old_age"] }, once: true,
@@ -321,12 +294,6 @@ export default [
     text: "Sera spent the night in the cells. Your guards took her for an elf spy. The elf hostel took her for a human one. \"I'd like a badge. Something that says what I'm for.\"",
     left: { label: "The royal badge.", fx: { army: -5, people: -5, faith: -3 }, set: ["elf_sera_court"] },
     right: { label: "Nobody knows what anyone's for.", fx: { people: 3 } },
-  },
-  {
-    id: "elf_sera_lifespan", char: "half_elf",
-    text: "\"I'll live two hundred years, the Doctor thinks. Long enough to bury everyone I know here, not long enough for anyone there to learn my name.\" She wants a day off.",
-    left: { label: "Take the week.", fx: { people: 3, gold: -3 } },
-    right: { label: "Nobody gets a week.", fx: { army: 3, people: -5 } },
   },
   {
     id: "elf_sera_queen", char: "half_elf", when: { flags: ["elf_alliance"], effects: ["married"] },
@@ -357,19 +324,19 @@ export default [
     id: "elf_hunt_1", char: "elf_envoy", when: { notFlags: ["elf_hunt_done"] },
     text: "The Lady would like the Thornwood hunt. Not the wood, only the hunt. Your huntsmen may keep the rabbits. \"We have no strong feelings about rabbits.\"",
     left: { label: "Grant it.", fx: { people: -10, army: -5 }, set: ["elf_favor"], next: { id: "elf_hunt_2", delay: 3 } },
-    right: { label: "The hunt is mine.", fx: { army: 5, people: 5 }, set: ["elf_grudge", "elf_hunt_done"] },
+    right: { label: "The hunt is mine.", fx: { army: 5, people: 5, gold: 10 }, set: ["elf_grudge", "elf_hunt_done"] },
   },
   {
     id: "elf_hunt_2", char: "elf_envoy", chainOnly: true,
     text: "\"The hunt was generous. The deer, however, cross into the Ashford pastures, where your farmers shoot them. The wood should follow the deer. It is only sense.\"",
     left: { label: "Give them Ashford wood.", fx: { people: -15, gold: -10 }, next: { id: "elf_hunt_3", delay: 3 } },
-    right: { label: "The deer can learn the border.", fx: { army: 5 }, set: ["elf_grudge", "elf_hunt_done"] },
+    right: { label: "The deer can learn the border.", fx: { army: 5, gold: 10 }, set: ["elf_grudge", "elf_hunt_done"] },
   },
   {
     id: "elf_hunt_3", char: "elf_envoy", chainOnly: true,
     text: "\"The Ashford wood needs a warden your people will obey. The Lady suggests your daughter. Fostered. Twenty years, thirty. She will come back knowing which trees to leave alone.\"",
     left: { label: "Take her.", fx: { people: -10, faith: -10, army: -5 }, set: ["elf_princess_fostered", "elf_hunt_done"], next: { id: "elf_hunt_4", delay: 8 } },
-    right: { label: "Take the wood back.", fx: { army: 10, people: 10 }, set: ["elf_grudge", "elf_hunt_done"], unset: ["elf_favor"] },
+    right: { label: "Take the wood back.", fx: { army: 10, people: 10, gold: 10 }, set: ["elf_grudge", "elf_hunt_done"], unset: ["elf_favor"] },
   },
   {
     id: "elf_hunt_4", char: "princess", chainOnly: true,
@@ -396,7 +363,7 @@ export default [
     text: "\"Your loggers took forty oaks from the edge. We have taken forty loggers, gently, into the deep wood. Both are being shown what they were worth. Yours, more slowly.\"",
     left: { label: "Give the oaks back.", fx: { gold: -15, people: -5 }, unset: ["elf_grudge"] },
     right: { label: "Soldiers into the wood.", fx: { army: -15 }, random: [
-      { chance: 0.6, fx: { army: -15, people: 5 } },
+      { chance: 0.6, fx: { army: -15, people: 5, gold: 15 } },
       { chance: 0.4, fx: { army: -25, people: -5 } },
     ] },
   },
@@ -406,7 +373,7 @@ export default [
     id: "elf_treaty_1", char: "elf_envoy", when: { notFlags: ["elf_treaty_done"] },
     text: "\"The Treaty of Larch Hollow. Your ancestors signed it in blood, which we found theatrical but binding. Clause nine gave us the Whitewater fords. You have been in breach for ninety years.\"",
     left: { label: "Read me clause nine.", fx: { gold: -3 }, next: { id: "elf_treaty_2", delay: 0 } },
-    right: { label: "Ninety years is precedent.", fx: { army: 5, people: 5 }, set: ["elf_grudge", "elf_treaty_done"] },
+    right: { label: "Ninety years is precedent.", fx: { army: 5, people: 5, gold: 15 }, set: ["elf_grudge", "elf_treaty_done"] },
   },
   {
     id: "elf_treaty_2", char: "elf_envoy", chainOnly: true,
@@ -418,7 +385,7 @@ export default [
     id: "elf_treaty_3", char: "elf_envoy", chainOnly: true,
     text: "The Lady will amend the clause. In exchange: one child of your house, fostered in Greenreach for twenty years. \"They come back. They always come back. They are simply... quieter.\"",
     left: { label: "Send a cousin.", fx: { people: -5, faith: -5 }, set: ["elf_fosterling", "elf_treaty_done"], next: { id: "elf_treaty_4", delay: 12 } },
-    right: { label: "No child of mine.", fx: { army: 5 }, set: ["elf_grudge", "elf_treaty_done"] },
+    right: { label: "No child of mine.", fx: { army: 5, gold: 5 }, set: ["elf_grudge", "elf_treaty_done"] },
   },
   {
     id: "elf_treaty_4", char: "elf_envoy", chainOnly: true,
@@ -435,12 +402,12 @@ export default [
     id: "elf_marriage_1", char: "elf_envoy", when: { notEffects: ["married"], notFlags: ["elf_alliance", "elf_grudge"] }, weight: 0.8,
     text: "\"The Lady proposes a marriage. Her niece Ithilwen, to you. She is young. Two hundred and six. She has agreed to try to find you interesting.\"",
     left: { label: "Accept.", fx: { faith: -10, people: -5 }, next: { id: "elf_marriage_2", delay: 1 } },
-    right: { label: "I'll marry a human.", fx: { faith: 10, people: 5 }, set: ["elf_grudge"] },
+    right: { label: "I'll marry a human.", fx: { faith: 10, people: 5, gold: 10 }, set: ["elf_grudge"] },
   },
   {
     id: "elf_marriage_2", char: "flamekeeper", chainOnly: true,
     text: "The Flamekeeper says the Flame cannot bless a union with a creature that predates the Flame. He has a document proving it. The document is newer than the bride.",
-    left: { label: "Marry her anyway.", fx: { faith: -20, people: 5 }, effect: "married", set: ["elf_alliance"], next: { id: "elf_marriage_3", delay: 2 } },
+    left: { label: "Marry her anyway.", fx: { faith: -20, people: 5, gold: 15 }, effect: "married", set: ["elf_alliance"], next: { id: "elf_marriage_3", delay: 2 } },
     right: { label: "Call it off.", fx: { faith: 10, people: -5 }, set: ["elf_grudge"] },
   },
   {
@@ -471,7 +438,7 @@ export default [
     id: "elf_alliance_ships", char: "elf_envoy", when: { flags: ["elf_alliance"] }, weight: 0.7,
     text: "\"Kethran ships were seen off the Greenreach coast. They were not seen again. Family is family. There will be no charge. There will be a song.\"",
     left: { label: "Feast the elves.", fx: { gold: -10, people: 5, army: 5 } },
-    right: { label: "Say nothing.", fx: { faith: 3 } },
+    right: { label: "Say nothing.", fx: { faith: 3, gold: 10 } },
   },
   {
     id: "elf_alliance_mirror", char: "elf_envoy", when: { effects: ["married"], notFlags: ["elf_alliance"] }, once: true,
@@ -493,7 +460,7 @@ export default [
   {
     id: "elf_war_2", char: "general", chainOnly: true,
     text: "Marshal Thorne is delighted. \"A real war. With elves. Forty years I've waited.\" He has a plan. It involves burning the Greenreach. All of it.",
-    left: { label: "Burn it.", fx: { army: 10, faith: 5, people: -10 }, next: { id: "elf_war_3", delay: 2 } },
+    left: { label: "Burn it.", fx: { army: 10, faith: 5, people: -10, gold: 10 }, next: { id: "elf_war_3", delay: 2 } },
     right: { label: "Meet them in the open.", fx: { army: -10 }, next: { id: "elf_war_3b", delay: 2 } },
   },
   {
@@ -508,7 +475,7 @@ export default [
   {
     id: "elf_war_3b", char: "general", chainOnly: true,
     text: "Thorne met them on the Ashford plain. \"They didn't come. We stood there three days in formation. Then we went home and they'd taken the granaries.\"",
-    left: { label: "Take them back.", fx: { army: -15, gold: -10 }, next: { id: "elf_war_4", delay: 2 } },
+    left: { label: "Take them back.", fx: { army: -15, gold: 5 }, next: { id: "elf_war_4", delay: 2 } },
     right: { label: "Hold the walls.", fx: { people: -15 }, next: { id: "elf_war_4", delay: 3 } },
   },
   {
@@ -572,7 +539,7 @@ export default [
   {
     id: "elf_scholar_1", char: "elf_scholar", when: { notFlags: ["elf_archives_open"] },
     text: "An elf scholar wants your archives. All of them. \"They rot in a damp tower. We have a dry one. We also have time to read them, which you demonstrably do not.\"",
-    left: { label: "Show her the tower.", fx: { faith: -5, gold: 5 }, set: ["elf_archives_open"], next: { id: "elf_scholar_2", delay: 2 } },
+    left: { label: "Show her the tower.", fx: { faith: -5, gold: 10 }, set: ["elf_archives_open"], next: { id: "elf_scholar_2", delay: 2 } },
     right: { label: "Our rot is our own.", fx: { faith: 5 } },
   },
   {
@@ -585,7 +552,7 @@ export default [
     id: "elf_scholar_3", char: "elf_scholar", chainOnly: true,
     text: "She has found a deed. The land under this palace was leased from the Greenreach for one thousand years. The lease ends in the spring.",
     left: { label: "Renew the lease.", fx: { gold: -25 }, set: ["elf_favor"] },
-    right: { label: "Lose the deed.", fx: { faith: -5, gold: 5 }, set: ["elf_grudge"], next: { id: "elf_scholar_4", delay: 4 } },
+    right: { label: "Lose the deed.", fx: { faith: -5, gold: 10 }, set: ["elf_grudge"], next: { id: "elf_scholar_4", delay: 4 } },
   },
   {
     id: "elf_scholar_4", char: "elf_scholar", chainOnly: true,
@@ -611,7 +578,7 @@ export default [
     id: "elf_sera_3", char: "half_elf", chainOnly: true,
     text: "Sera has been offered gold by the Greenreach to report on you, and by your Whisperer to report on the Greenreach. \"I'm telling you because nobody else asked what I wanted.\"",
     left: { label: "What do you want?", fx: { people: 5 }, next: { id: "elf_sera_4", delay: 2 } },
-    right: { label: "Take both purses.", fx: { gold: 10, army: -5 }, next: { id: "elf_sera_4", delay: 4 } },
+    right: { label: "Take both purses.", fx: { gold: 15, army: -5 }, next: { id: "elf_sera_4", delay: 4 } },
   },
   {
     id: "elf_sera_4", char: "half_elf", chainOnly: true,
@@ -652,6 +619,6 @@ export default [
     id: "elf_lady_visit_3", char: "elf_queen", chainOnly: true,
     text: "She touches the arm of your throne and the oak puts out one green leaf. \"Ninety years of peace between us, or the forest takes the rest of this chair. Choose slowly. I have time.\"",
     left: { label: "Peace.", fx: { faith: -10, army: -15, gold: 10, people: 10 }, removeEffect: "war", unset: ["elf_at_war", "elf_grudge"], set: ["elf_peace"] },
-    right: { label: "The chair is mine.", fx: { army: 15, faith: 5 }, set: ["elf_grudge"], unset: ["elf_peace"], next: { id: "elf_war_1", delay: 5 } },
+    right: { label: "The chair is mine.", fx: { army: 15, faith: 5, gold: 10 }, set: ["elf_grudge"], unset: ["elf_peace"], next: { id: "elf_war_1", delay: 5 } },
   },
 ];

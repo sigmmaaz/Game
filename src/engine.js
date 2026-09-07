@@ -122,7 +122,12 @@ export class Game {
     if (this.hasEffect(key)) return;
     const def = EFFECTS[key];
     this.reign.effects.push({ key, years: def.years ?? null });
-    while (this.reign.effects.length > MAX_EFFECTS) this.reign.effects.shift();
+    // States like marriage don't compete for the four tray slots.
+    const evictable = () => this.reign.effects.filter((e) => !EFFECTS[e.key].sticky);
+    while (evictable().length > MAX_EFFECTS) {
+      const victim = evictable()[0];
+      this.reign.effects = this.reign.effects.filter((e) => e !== victim);
+    }
     this.emit("effect", key);
   }
   removeEffect(key) {
