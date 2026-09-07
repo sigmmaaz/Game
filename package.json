@@ -8,6 +8,15 @@
     "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
     "validate": "node tools/validate.js",
     "simulate": "node tools/simulate.js",
-    "test": "node tools/validate.js && node tools/simulate.js"
+    "audit": "node tools/audit.js",
+    "test": "node tools/validate.js && node tools/test.js",
+    "build:www": "node tools/build-www.js",
+    "android:add": "npx cap add android",
+    "android:sync": "npm run build:www && npx cap sync android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/cli": "^8.5.1",
+    "@capacitor/core": "^8.5.1"
   }
 }

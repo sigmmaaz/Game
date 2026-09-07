@@ -241,7 +241,7 @@ export default [
     right: { label: "I don't play.", fx: { faith: 5, people: -5 } },
   },
   {
-    id: "mon_fae_insulted", char: "fae", chainOnly: true, when: { flags: ["mon_fae_insulted"] },
+    id: "mon_fae_insulted", char: "fae", once: true, when: { flags: ["mon_fae_insulted"] },
     text: "\"You've been rude twice. We keep count.\" Every clock in the palace has stopped. Every mirror shows the room from the wrong side. \"A gift, and you'll take it. All your milk is now honey. Forever.\"",
     left: { label: "Apologize.", fx: { faith: -5, people: 5 }, unset: ["mon_fae_insulted"] },
     right: { label: "I like honey.", fx: { people: -15, gold: 20 } },

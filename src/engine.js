@@ -229,7 +229,7 @@ export class Game {
     const res = m.kind === "duel" ? duelChoose(this, m, side, this.rng) : deepChoose(this, m, side, this.rng);
     const result = { side, card: null, choice: {}, deltas: res.deltas, death: res.death, saved: null, newEffect: null, mode: m.kind, ended: res.ended };
     if (!result.death) result.death = this.checkStats(result);
-    if (result.death) { this.die(result.death); result.epitaph = DEATHS[result.death]; }
+    if (result.death) { this.reign.mode = null; this.die(result.death); result.epitaph = DEATHS[result.death]; }
     else if (res.ended) { this.checkObjectives(); this.drawCard(); }
     this.save();
     this.emit("choice", result);

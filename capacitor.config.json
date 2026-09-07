@@ -1,0 +1,12 @@
+{
+  "appId": "com.sigmmaaz.crownofash",
+  "appName": "Crown of Ash",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#1b1410"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
